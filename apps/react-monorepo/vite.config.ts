@@ -38,6 +38,13 @@ export default defineConfig((configEnv) => ({
     })}`,
   },
 
+  optimizeDeps: {
+    esbuildOptions: {
+      jsx: 'automatic',
+      loader: { '.js': 'jsx' },
+    },
+  },
+
   plugins: [react(), nxViteTsPaths()],
 
   resolve: {
