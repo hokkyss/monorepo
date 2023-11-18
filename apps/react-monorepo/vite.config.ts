@@ -1,6 +1,7 @@
 import type { Plugin } from 'vite';
 import type { InlineConfig } from 'vitest';
 
+import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import resolve from '@rollup/plugin-node-resolve';
 import react from '@vitejs/plugin-react-swc';
 import { readFileSync } from 'fs';
@@ -47,9 +48,9 @@ export default defineConfig((configEnv) => ({
 
   plugins: [
     react(),
-    // nxViteTsPaths({
-    //   debug: true,
-    // }),
+    nxViteTsPaths({
+      debug: configEnv.mode === 'development',
+    }),
   ],
 
   resolve: {
