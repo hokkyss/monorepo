@@ -1,0 +1,10 @@
+{
+  "eslint.validate": ["typescript", "typescriptreact", "javascript", "javascriptreact", "json", "jsonc", "json5"],
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.organizeImports": true
+  },
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+}

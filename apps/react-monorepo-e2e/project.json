@@ -1,23 +1,23 @@
 {
-  "name": "react-monorepo-e2e",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "implicitDependencies": ["react-monorepo"],
+  "name": "react-monorepo-e2e",
   "projectType": "application",
   "sourceRoot": "apps/react-monorepo-e2e/src",
   "targets": {
     "e2e": {
       "executor": "@nx/playwright:playwright",
-      "outputs": ["{workspaceRoot}/dist/.playwright/apps/react-monorepo-e2e"],
       "options": {
         "config": "apps/react-monorepo-e2e/playwright.config.ts"
-      }
+      },
+      "outputs": ["{workspaceRoot}/dist/.playwright/apps/react-monorepo-e2e"]
     },
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": ["apps/react-monorepo-e2e/**/*.{js,ts}"]
-      }
+      },
+      "outputs": ["{options.outputFile}"]
     }
-  },
-  "implicitDependencies": ["react-monorepo"]
+  }
 }

@@ -1,8 +1,11 @@
-import { defineConfig, Plugin, transformWithEsbuild, loadEnv } from 'vite';
-import react from '@vitejs/plugin-react-swc';
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
+import react from '@vitejs/plugin-react-swc';
 import { readFileSync } from 'fs';
-import { InlineConfig } from 'vitest';
+import type { Plugin } from 'vite';
+import { defineConfig, loadEnv, transformWithEsbuild } from 'vite';
+import type { InlineConfig } from 'vitest';
+
+// console.log('aw');
 
 const jsxInJs = (matchers: RegExp[]): Plugin => ({
   load(id: string) {
@@ -61,5 +64,5 @@ export default defineConfig((configEnv) => ({
     },
     environment: 'happy-dom',
     include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
-  } as InlineConfig,
+  } satisfies InlineConfig,
 }));

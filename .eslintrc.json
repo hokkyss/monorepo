@@ -1,35 +1,49 @@
 {
-  "root": true,
-  "ignorePatterns": ["**/*"],
-  "plugins": ["@nx"],
+  "ignorePatterns": ["**/*", "**/package.json"],
   "overrides": [
     {
+      "extends": ["alloy", "alloy/react"],
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "rules": {
         "@nx/enforce-module-boundaries": [
           "error",
           {
-            "enforceBuildableLibDependency": true,
             "allow": [],
             "depConstraints": [
               {
-                "sourceTag": "*",
-                "onlyDependOnLibsWithTags": ["*"]
+                "onlyDependOnLibsWithTags": ["*"],
+                "sourceTag": "*"
               }
-            ]
+            ],
+            "enforceBuildableLibDependency": true
           }
-        ]
+        ],
+        "no-console": "error"
       }
     },
     {
+      "extends": ["plugin:@nx/typescript", "alloy/typescript"],
       "files": ["*.ts", "*.tsx"],
-      "extends": ["plugin:@nx/typescript"],
+      "rules": {
+        "@typescript-eslint/consistent-type-definitions": "off",
+        "@typescript-eslint/no-empty-interface": "off"
+      }
+    },
+    {
+      "extends": ["plugin:@nx/javascript"],
+      "files": ["*.js", "*.jsx"],
       "rules": {}
     },
     {
-      "files": ["*.js", "*.jsx"],
-      "extends": ["plugin:@nx/javascript"],
-      "rules": {}
+      "extends": ["plugin:jsonc/recommended-with-json", "plugin:jsonc/prettier"],
+      "files": ["*.json"],
+      "parser": "jsonc-eslint-parser",
+      "rules": {
+        "jsonc/comma-style": "error",
+        "jsonc/sort-keys": "error"
+      }
     }
-  ]
+  ],
+  "plugins": ["@nx"],
+  "root": true
 }

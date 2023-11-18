@@ -1,5 +1,4 @@
 {
-  "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
     "types": [
@@ -19,6 +18,7 @@
     "src/**/*.spec.jsx",
     "src/**/*.test.jsx"
   ],
+  "extends": "./tsconfig.json",
   "include": [
     "src/**/*.js",
     "src/**/*.jsx",

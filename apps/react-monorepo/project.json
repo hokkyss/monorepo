@@ -1,16 +1,11 @@
 {
-  "name": "react-monorepo",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/react-monorepo/src",
+  "name": "react-monorepo",
   "projectType": "application",
+  "sourceRoot": "apps/react-monorepo/src",
+  "tags": [],
   "targets": {
     "build": {
-      "executor": "@nx/vite:build",
-      "outputs": ["{options.outputPath}"],
-      "defaultConfiguration": "production",
-      "options": {
-        "outputPath": "dist/apps/react-monorepo"
-      },
       "configurations": {
         "development": {
           "mode": "development"
@@ -18,14 +13,37 @@
         "production": {
           "mode": "production"
         }
+      },
+      "defaultConfiguration": "production",
+      "executor": "@nx/vite:build",
+      "options": {
+        "outputPath": "dist/apps/react-monorepo"
+      },
+      "outputs": ["{options.outputPath}"]
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": ["apps/react-monorepo/**/*.{ts,tsx,js,jsx}"]
+      },
+      "outputs": ["{options.outputFile}"]
+    },
+    "preview": {
+      "configurations": {
+        "development": {
+          "buildTarget": "react-monorepo:build:development"
+        },
+        "production": {
+          "buildTarget": "react-monorepo:build:production"
+        }
+      },
+      "defaultConfiguration": "development",
+      "executor": "@nx/vite:preview-server",
+      "options": {
+        "buildTarget": "react-monorepo:build"
       }
     },
     "serve": {
-      "executor": "@nx/vite:dev-server",
-      "defaultConfiguration": "development",
-      "options": {
-        "buildTarget": "react-monorepo:build"
-      },
       "configurations": {
         "development": {
           "buildTarget": "react-monorepo:build:development",
@@ -35,38 +53,20 @@
           "buildTarget": "react-monorepo:build:production",
           "hmr": false
         }
-      }
-    },
-    "preview": {
-      "executor": "@nx/vite:preview-server",
+      },
       "defaultConfiguration": "development",
+      "executor": "@nx/vite:dev-server",
       "options": {
         "buildTarget": "react-monorepo:build"
-      },
-      "configurations": {
-        "development": {
-          "buildTarget": "react-monorepo:build:development"
-        },
-        "production": {
-          "buildTarget": "react-monorepo:build:production"
-        }
       }
     },
     "test": {
       "executor": "@nx/vite:test",
-      "outputs": ["{options.reportsDirectory}"],
       "options": {
         "passWithNoTests": true,
         "reportsDirectory": "../../coverage/apps/react-monorepo"
-      }
-    },
-    "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": ["apps/react-monorepo/**/*.{ts,tsx,js,jsx}"]
-      }
+      },
+      "outputs": ["{options.reportsDirectory}"]
     }
-  },
-  "tags": []
+  }
 }
