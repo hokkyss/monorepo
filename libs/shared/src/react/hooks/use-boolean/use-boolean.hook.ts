@@ -12,7 +12,7 @@ type Toggle = [
   },
 ];
 
-export default function useToggle(initialState = false): Toggle {
+export default function useBoolean(initialState = false): Toggle {
   const [value, setValue] = useState(initialState);
 
   const toggle = useCallback(() => setValue((prev) => !prev), []);

@@ -8,11 +8,8 @@
     "importHelpers": true,
     "lib": ["es2020", "dom"],
     "module": "esnext",
-    "moduleResolution": "node",
-    "paths": {
-      "@monorepo/shared": ["libs/shared/src/index.ts"],
-      "@monorepo/shared/react": ["libs/shared/src/react/index.ts"]
-    },
+    "moduleResolution": "Bundler",
+    "paths": {},
     "rootDir": ".",
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,

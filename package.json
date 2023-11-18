@@ -65,5 +65,9 @@
     "*.{ts,tsx,js,jsx}": [
       "yarn test"
     ]
-  }
+  },
+  "workspaces": [
+    "apps/*",
+    "libs/*"
+  ]
 }
