@@ -42,7 +42,7 @@ export declare type AnyObject = Record<never, never>;
  * @see https://github.com/Microsoft/TypeScript/issues/27024
  * @see https://stackoverflow.com/questions/53807517/how-to-test-if-two-types-are-exactly-the-same
  */
-type Equals<X, Y> = (<T>() => T extends X ? 1 : 2) extends <T>() => T extends Y ? 1 : 2 ? true : false;
+export type Equals<X, Y> = (<T>() => T extends X ? 1 : 2) extends <T>() => T extends Y ? 1 : 2 ? true : false;
 
 /**
  * Check if a Key exists in an object
@@ -84,67 +84,6 @@ export type UndefinedToOptional<T> = {
 } & {
   [Key in keyof T as undefined extends T[Key] ? never : Key]-?: T[Key];
 };
-
-/**
- * Intersects two objects recursively.
- * Readonly modifier will be treated as if there is no readonly modifier.
- * @example
- *
- * ```ts
- * type Foo = {
- *   v: string | null;
- *   x: number;
- *   y: any;
- *   z?: string;
- * };
- *
- * type Bar = {
- *   v: string;
- *   x: number;
- *   y: string;
- *   z?: string;
- * };
- *
- * type FooBar = Intersect<Foo, Bar> // { v: string; x: number; y: string; z: string | undefined; }
- * // {
- * //    v: string;
- * //    x: number;
- * //    y: string;
- * //    z: string | undefined; // is now required
- * // }
- * ```
- */
-export declare type Intersect<ObjectOne, ObjectTwo> = {
-  /* eslint-disable @typescript-eslint/no-explicit-any */
-  // take common properties
-  // if the value is null or undefined (or both), don't take the key.
-  // if the value are of equal, take the key
-  // if one of the value is any, take the other value
-  // if neither is any, take the value by &
-  // if not, check:
-  // if they are both objects, take the key to be intersected recursively
-  // if not, don't take it.
-  [P in CommonProperties<ObjectOne, ObjectTwo> as Equals<ObjectOne[P], ObjectTwo[P]> extends true
-    ? P
-    : ObjectOne[P] extends object
-      ? ObjectTwo[P] extends object
-        ? P
-        : never
-      : ObjectOne[P] extends ObjectTwo[P]
-        ? P
-        : ObjectTwo[P] extends ObjectOne[P]
-          ? P
-          : never]: Equals<ObjectOne[P], any> extends true
-    ? ObjectTwo[P]
-    : Equals<ObjectTwo[P], any> extends true
-      ? ObjectOne[P]
-      : ObjectOne[P] extends object
-        ? ObjectTwo[P] extends object
-          ? Intersect<ObjectOne[P], ObjectTwo[P]>
-          : never
-        : ObjectOne[P] & ObjectTwo[P];
-};
-/* eslint-enable @typescript-eslint/no-explicit-any */
 
 /**
  * Take only the methods of an object

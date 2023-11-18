@@ -14,7 +14,6 @@ export default function useMergeRef<T>(...refs: (ForwardedRef<T> | RefCallback<T
           ref(instance);
         } else {
           // NOTE: ref is reassigned through `current`.
-          // eslint-disable-next-line no-param-reassign
           ref.current = instance;
         }
       });

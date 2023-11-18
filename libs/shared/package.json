@@ -4,27 +4,26 @@
   "dependencies": {},
   "type": "commonjs",
   "peerDependencies": {
-    "react": ">=18.0.0",
-    "react-dom": ">=18.0.0"
+    "react": ">=18.0.0"
   },
   "exports": {
     "./package.json": "./package.json",
     ".": {
-      "development": {
-        "types": "./src/index.ts",
-        "import": "./src/index.ts"
-      },
       "production": {
         "types": "./index.cjs.d.ts",
         "module": "./index.esm.js",
         "import": "./index.cjs.mjs",
         "default": "./index.cjs.js"
+      },
+      "default": {
+        "types": "./src/index.ts",
+        "import": "./src/index.ts"
       }
     },
     "./react": {
       "production": {
         "types": "./react.cjs.d.ts",
-        "node": "./react.cjs.js",
+        "require": "./react.cjs.js",
         "import": "./react.esm.js"
       },
       "development": {

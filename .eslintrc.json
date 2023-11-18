@@ -1,5 +1,5 @@
 {
-  "ignorePatterns": ["**/*", "!*.json", "**/package.json"],
+  "ignorePatterns": ["**/*", "!**/*.json"],
   "overrides": [
     {
       "extends": ["alloy", "alloy/react", "plugin:perfectionist/recommended-natural"],
@@ -58,6 +58,12 @@
       "rules": {
         "jsonc/comma-style": "error",
         "jsonc/sort-keys": "error"
+      }
+    },
+    {
+      "files": ["package.json"],
+      "rules": {
+        "jsonc/sort-keys": "off"
       }
     }
   ],
