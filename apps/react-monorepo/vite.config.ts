@@ -1,11 +1,10 @@
+import type { Plugin } from 'vite';
+import type { InlineConfig } from 'vitest';
+
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import react from '@vitejs/plugin-react-swc';
 import { readFileSync } from 'fs';
-import type { Plugin } from 'vite';
 import { defineConfig, loadEnv, transformWithEsbuild } from 'vite';
-import type { InlineConfig } from 'vitest';
-
-// console.log('aw');
 
 const jsxInJs = (matchers: RegExp[]): Plugin => ({
   load(id: string) {
@@ -22,6 +21,14 @@ const jsxInJs = (matchers: RegExp[]): Plugin => ({
 });
 
 export default defineConfig((configEnv) => ({
+  build: {
+    rollupOptions: {
+      plugins: [jsxInJs([])],
+    },
+  },
+
+  cacheDir: '../../node_modules/.vite/react-monorepo',
+
   define: {
     __DEV__: configEnv.mode === 'development',
     global: 'window',
@@ -31,26 +38,11 @@ export default defineConfig((configEnv) => ({
     })}`,
   },
 
-  build: {
-    rollupOptions: {
-      plugins: [jsxInJs([])],
-    },
-  },
-
-  cacheDir: '../../node_modules/.vite/react-monorepo',
-
-  server: {
-    port: 4200,
-    host: 'localhost',
-  },
-
-  preview: {
-    port: 4300,
-    host: 'localhost',
-  },
-
-  resolve: {},
   plugins: [react(), nxViteTsPaths()],
+
+  resolve: {
+    mainFields: ['browser', 'module', 'jsnext:main', 'jsnext'],
+  },
 
   // Uncomment this if you are using workers.
   // worker: {
@@ -58,11 +50,11 @@ export default defineConfig((configEnv) => ({
   // },
 
   test: {
-    globals: true,
     cache: {
       dir: '../../node_modules/.vitest',
     },
     environment: 'happy-dom',
+    globals: true,
     include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
   } satisfies InlineConfig,
 }));

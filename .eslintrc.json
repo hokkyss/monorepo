@@ -2,7 +2,7 @@
   "ignorePatterns": ["**/*", "**/package.json"],
   "overrides": [
     {
-      "extends": ["alloy", "alloy/react"],
+      "extends": ["alloy", "alloy/react", "plugin:perfectionist/recommended-natural"],
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "rules": {
         "@nx/enforce-module-boundaries": [
@@ -18,7 +18,24 @@
             "enforceBuildableLibDependency": true
           }
         ],
-        "no-console": "error"
+        "no-console": "error",
+        "perfectionist/sort-imports": [
+          "error",
+          {
+            "groups": [
+              "side-effect",
+              ["type", "builtin-type", "external-type"],
+              "internal-type",
+              "parent-type",
+              "sibling-type",
+              ["builtin", "external"],
+              "internal",
+              "parent",
+              "sibling",
+              "unknown"
+            ]
+          }
+        ]
       }
     },
     {

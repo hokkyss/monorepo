@@ -43,6 +43,7 @@
     "eslint-plugin-import": "2.27.5",
     "eslint-plugin-jsonc": "^2.10.0",
     "eslint-plugin-jsx-a11y": "6.7.1",
+    "eslint-plugin-perfectionist": "^2.4.0",
     "eslint-plugin-playwright": "^0.15.3",
     "eslint-plugin-prettier": "^5.0.1",
     "eslint-plugin-react": "7.32.2",
