@@ -4,6 +4,7 @@
   "name": "react-monorepo-e2e",
   "projectType": "application",
   "sourceRoot": "apps/react-monorepo-e2e/src",
+  "tags": ["type:app", "name:react-monorepo"],
   "targets": {
     "e2e": {
       "executor": "@nx/playwright:playwright",

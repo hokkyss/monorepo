@@ -3,7 +3,7 @@
   "name": "react-monorepo",
   "projectType": "application",
   "sourceRoot": "apps/react-monorepo/src",
-  "tags": [],
+  "tags": ["type:app", "name:react-monorepo"],
   "targets": {
     "build": {
       "configurations": {
