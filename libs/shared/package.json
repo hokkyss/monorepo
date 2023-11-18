@@ -22,7 +22,6 @@
       }
     },
     "./react": {
-      "types": "./src/react/index.ts",
       "production": {
         "types": "./react.cjs.d.ts",
         "node": "./react.cjs.js",
