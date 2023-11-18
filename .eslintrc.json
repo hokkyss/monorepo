@@ -1,5 +1,5 @@
 {
-  "ignorePatterns": ["**/*", "**/package.json"],
+  "ignorePatterns": ["**/*", "!*.json", "**/package.json"],
   "overrides": [
     {
       "extends": ["alloy", "alloy/react", "plugin:perfectionist/recommended-natural"],
