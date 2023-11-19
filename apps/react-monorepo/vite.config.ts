@@ -1,4 +1,4 @@
-import type { Plugin } from 'vite';
+import type { Plugin, UserConfig } from 'vite';
 import type { InlineConfig } from 'vitest';
 
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
@@ -6,6 +6,9 @@ import resolve from '@rollup/plugin-node-resolve';
 import react from '@vitejs/plugin-react-swc';
 import { readFileSync } from 'fs';
 import { defineConfig, loadEnv, transformWithEsbuild } from 'vite';
+
+const mainFields = ['browser', 'module', 'main', 'jsnext:main', 'jsnext'];
+const extensions = ['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json'];
 
 const jsxInJs = (matchers: RegExp[]): Plugin => ({
   load(id: string) {
@@ -21,53 +24,67 @@ const jsxInJs = (matchers: RegExp[]): Plugin => ({
   name: 'jsx-in-js',
 });
 
-export default defineConfig((configEnv) => ({
-  build: {
-    rollupOptions: {
-      plugins: [resolve() as Plugin, jsxInJs([])],
-    },
-  },
+export default defineConfig(
+  (configEnv) =>
+    ({
+      build: {
+        rollupOptions: {
+          plugins: [
+            resolve({
+              browser: true,
+              exportConditions: ['require', 'default', 'module', 'import'],
+              extensions,
+              mainFields,
+            }) as Plugin,
+            jsxInJs([]),
+          ],
+        },
+      },
 
-  cacheDir: '../../node_modules/.vite/react-monorepo',
+      cacheDir: '../../node_modules/.vite/react-monorepo',
 
-  define: {
-    __DEV__: configEnv.mode === 'development',
-    global: 'window',
-    'process.env': `${JSON.stringify({
-      ...loadEnv(configEnv.mode, __dirname, 'VITE_'),
-      NODE_ENV: configEnv.mode,
-    })}`,
-  },
+      define: {
+        __DEV__: configEnv.mode === 'development',
+        global: 'window',
+        'process.env': `${JSON.stringify({
+          ...loadEnv(configEnv.mode, __dirname, 'VITE_'),
+          NODE_ENV: configEnv.mode,
+        })}`,
+      },
 
-  optimizeDeps: {
-    esbuildOptions: {
-      jsx: 'automatic',
-      loader: { '.js': 'jsx' },
-    },
-  },
+      optimizeDeps: {
+        esbuildOptions: {
+          jsx: 'automatic',
+          loader: { '.js': 'jsx' },
+          resolveExtensions: extensions,
+        },
+      },
 
-  plugins: [
-    react(),
-    nxViteTsPaths({
-      debug: configEnv.mode === 'development',
-    }),
-  ],
+      plugins: [
+        react(),
+        nxViteTsPaths({
+          debug: configEnv.mode === 'development',
+        }),
+      ],
 
-  resolve: {
-    mainFields: ['browser', 'module', 'jsnext:main', 'jsnext'],
-  },
+      resolve: {
+        conditions: [configEnv.mode, 'browser', 'import', 'module', 'default'],
+        extensions,
+        mainFields,
+      },
 
-  // Uncomment this if you are using workers.
-  // worker: {
-  //  plugins: [ nxViteTsPaths() ],
-  // },
+      // Uncomment this if you are using workers.
+      // worker: {
+      //  plugins: [ nxViteTsPaths() ],
+      // },
 
-  test: {
-    cache: {
-      dir: '../../node_modules/.vitest',
-    },
-    environment: 'happy-dom',
-    globals: true,
-    include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
-  } satisfies InlineConfig,
-}));
+      test: {
+        cache: {
+          dir: '../../node_modules/.vitest',
+        },
+        environment: 'happy-dom',
+        globals: true,
+        include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+      },
+    }) satisfies UserConfig & { test: InlineConfig },
+);
