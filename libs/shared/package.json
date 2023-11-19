@@ -4,10 +4,9 @@
     "./package.json": "./package.json",
     ".": {
       "production": {
-        "types": "./index.cjs.d.ts",
-        "module": "./index.esm.js",
-        "import": "./index.cjs.mjs",
-        "default": "./index.cjs.js"
+        "types": "./index.d.ts",
+        "import": "./index.mjs",
+        "default": "./index.js"
       },
       "default": {
         "types": "./src/index.ts",
@@ -16,9 +15,9 @@
     },
     "./react": {
       "production": {
-        "types": "./react.cjs.d.ts",
-        "require": "./react.cjs.js",
-        "import": "./react.esm.js"
+        "types": "./react/react.d.ts",
+        "require": "./react.js",
+        "import": "./react.mjs"
       },
       "default": {
         "types": "./src/react/index.ts",

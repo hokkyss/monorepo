@@ -6,18 +6,9 @@
   "tags": ["type:lib", "scope:shared"],
   "targets": {
     "build": {
-      "executor": "@nx/rollup:rollup",
+      "executor": "@nx/vite:build",
       "options": {
-        "assets": [],
-        "compiler": "swc",
-        "external": ["react", "react-dom"],
-        "format": ["cjs", "esm"],
-        "generateExportsField": true,
-        "main": "libs/shared/src/index.ts",
-        "outputPath": "dist/libs/shared",
-        "project": "libs/shared/package.json",
-        "rollupConfig": "libs/shared/rollup.config.js",
-        "tsConfig": "libs/shared/tsconfig.lib.json"
+        "outputPath": "dist/libs/shared"
       },
       "outputs": ["{options.outputPath}"]
     },
