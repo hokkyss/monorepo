@@ -1,3 +1,5 @@
+/// <reference types="./rollup" />
+
 import type { Plugin, UserConfig } from 'vite';
 import type { InlineConfig } from 'vitest';
 
@@ -6,6 +8,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import react from '@vitejs/plugin-react-swc';
 import { readFileSync } from 'fs';
 import { defineConfig, loadEnv, transformWithEsbuild } from 'vite';
+import svgr from 'vite-plugin-svgr';
 
 const mainFields = ['browser', 'module', 'main', 'jsnext:main', 'jsnext'];
 const extensions = ['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json'];
@@ -40,9 +43,7 @@ export default defineConfig(
           ],
         },
       },
-
       cacheDir: '../../node_modules/.vite/react-monorepo',
-
       define: {
         __DEV__: configEnv.mode === 'development',
         global: 'window',
@@ -51,7 +52,6 @@ export default defineConfig(
           NODE_ENV: configEnv.mode,
         })}`,
       },
-
       optimizeDeps: {
         esbuildOptions: {
           jsx: 'automatic',
@@ -59,25 +59,38 @@ export default defineConfig(
           resolveExtensions: extensions,
         },
       },
-
       plugins: [
+        svgr({
+          esbuildOptions: {
+            jsx: 'automatic',
+          },
+          include: '**/*.svg?react',
+          svgrOptions: {
+            dimensions: false,
+            expandProps: true,
+            exportType: 'default',
+            svgProps: {
+              className: '{props.className ?? props.class ?? undefined}',
+              color: "{props.color ?? 'currentColor'}",
+              fill: "{props.fill ?? 'currentColor'}",
+              role: 'img',
+            },
+          },
+        }),
         react(),
         nxViteTsPaths({
           debug: configEnv.mode === 'development',
         }),
       ],
-
       resolve: {
         conditions: [configEnv.mode, 'browser', 'import', 'module', 'default'],
         extensions,
         mainFields,
       },
-
       // Uncomment this if you are using workers.
       // worker: {
       //  plugins: [ nxViteTsPaths() ],
       // },
-
       test: {
         cache: {
           dir: '../../node_modules/.vitest',
