@@ -3,9 +3,9 @@
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
-    "lint": "nx run-many -t lint",
-    "test": "nx run-many -t test",
-    "e2e": "nx run-many -t e2e",
+    "lint": "nx affected -t lint",
+    "test": "nx affected -t test",
+    "e2e": "nx affected -t e2e",
     "postinstall": "husky install"
   },
   "private": true,

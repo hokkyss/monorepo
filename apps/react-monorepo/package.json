@@ -1,0 +1,13 @@
+{
+  "name": "@monorepo/react-monorepo",
+  "version": "0.0.1",
+  "dependencies": {
+    "date-fns": "^2.30.0",
+    "lodash": "^4.17.21",
+    "web-vitals": "^3.5.0"
+  },
+  "devDependencies": {
+    "@axe-core/react": "^4.8.1",
+    "@types/lodash": "^4.14.201"
+  }
+}
