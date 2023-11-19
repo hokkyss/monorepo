@@ -1,6 +1,6 @@
 import { useBoolean } from '@monorepo/shared/react';
 
-export function App() {
+export default function MainPage() {
   const [val, { toggle }] = useBoolean();
 
   return (
@@ -10,5 +10,3 @@ export function App() {
     </div>
   );
 }
-
-export default App;

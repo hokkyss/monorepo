@@ -3,7 +3,7 @@ import { nxE2EPreset } from '@nx/playwright/preset';
 import { defineConfig } from '@playwright/test';
 
 // For CI, you may want to set BASE_URL to the deployed application.
-const baseURL = process.env['BASE_URL'] || 'http://localhost:4200';
+const baseURL = process.env['BASE_URL'] || 'http://localhost:5173';
 
 /**
  * Read environment variables from file.
@@ -27,6 +27,6 @@ export default defineConfig({
     command: 'yarn nx serve react-monorepo',
     cwd: workspaceRoot,
     reuseExistingServer: !process.env.CI,
-    url: 'http://localhost:4200',
+    url: 'http://localhost:5173',
   },
 });

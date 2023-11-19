@@ -5,6 +5,7 @@
   "scripts": {
     "lint": "nx run-many -t lint",
     "test": "nx run-many -t test",
+    "e2e": "nx run-many -t e2e",
     "postinstall": "husky install"
   },
   "private": true,

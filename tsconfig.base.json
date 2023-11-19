@@ -9,9 +9,7 @@
     "lib": ["es2020", "dom"],
     "module": "esnext",
     "moduleResolution": "Bundler",
-    "paths": {
-      "@react-monorepo/*": ["apps/react-monorepo/src/*"]
-    },
+    "paths": {},
     "rootDir": ".",
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,
