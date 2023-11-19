@@ -1,9 +1,13 @@
 {
   "dependencies": {
     "@swc/helpers": "~0.5.2",
+    "axios": "^1.6.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-router-dom": "6.11.2"
+    "react-router-dom": "6.11.2",
+    "reflect-metadata": "^0.1.13",
+    "tsyringe": "^4.8.0",
+    "urlcat": "^3.1.0"
   },
   "devDependencies": {
     "@nx/devkit": "17.1.2",

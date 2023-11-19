@@ -1,11 +1,11 @@
-import { useBoolean } from '@monorepo/shared/react';
-import { todoService } from '@monorepo/todo/react';
+import { useBoolean } from '@monorepo/shared/react/hooks';
+import { useSuspenseTodos } from '@monorepo/todo/react';
 
 import queryClient from '../../configs/react-query/react-query.config';
 
 export default function MainPage() {
   const [val, { toggle }] = useBoolean();
-  const todos = todoService.useListTodo({}, queryClient);
+  const todos = useSuspenseTodos({ queryClient: queryClient });
 
   return (
     <div>

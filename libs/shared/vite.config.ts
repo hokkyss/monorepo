@@ -7,18 +7,22 @@ import * as path from 'path';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 
+import pkg from './package.json';
+
 export default defineConfig(() => ({
   build: {
     lib: {
       entry: {
-        index: 'src/main/index.ts',
-        react: 'src/react/index.ts',
+        'http/axios': 'src/http/axios.http-client.ts',
+        'http/fetch': 'src/http/fetch.http-client.ts',
+        'main/index': 'src/main/index.ts',
+        'react/hooks': 'src/react/hooks/index.ts',
       },
       formats: ['es', 'cjs'],
       name: 'shared',
     },
     rollupOptions: {
-      external: ['react'],
+      external: Object.keys(pkg.peerDependencies),
     },
   },
   cacheDir: '../../node_modules/.vite/shared',

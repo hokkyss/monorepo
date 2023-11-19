@@ -5,31 +5,55 @@
     ".": {
       "production": {
         "types": "./main/index.d.ts",
-        "import": "./index.mjs",
-        "default": "./index.js"
+        "import": "./main/index.mjs",
+        "default": "./main/index.js"
       },
       "default": {
         "types": "./src/main/index.ts",
         "import": "./src/main/index.ts"
       }
     },
-    "./react": {
+    "./react/hooks": {
       "production": {
-        "types": "./react/index.d.ts",
-        "require": "./react.js",
-        "import": "./react.mjs"
+        "types": "./react/hooks/index.d.ts",
+        "require": "./react/hooks.js",
+        "import": "./react/hooks.mjs"
       },
       "default": {
-        "types": "./src/react/index.ts",
-        "import": "./src/react/index.ts"
+        "types": "./src/react/hooks/index.ts",
+        "import": "./src/react/hooks/index.ts"
+      }
+    },
+    "./http-client/axios": {
+      "production": {
+        "types": "./http/axios.http-client.d.ts",
+        "require": "./http/axios.js",
+        "import": "./http/axios.mjs"
+      },
+      "default": {
+        "types": "./src/http/axios.http-client.ts",
+        "import": "./src/http/axios.http-client.ts"
+      }
+    },
+    "./http-client/fetch": {
+      "production": {
+        "types": "./http/fetch.http-client.d.ts",
+        "require": "./http/fetch.js",
+        "import": "./http/fetch.mjs"
+      },
+      "default": {
+        "types": "./src/http/fetch.http-client.ts",
+        "import": "./src/http/fetch.http-client.ts"
       }
     }
   },
   "license": "UNLICENSED",
   "name": "@monorepo/shared",
   "peerDependencies": {
-    "react": ">=18.0.0"
+    "axios": "1.6.2",
+    "react": ">=18.0.0",
+    "tsyringe": ">=4.8.0"
   },
-  "type": "module",
+  "type": "commonjs",
   "version": "0.0.1"
 }

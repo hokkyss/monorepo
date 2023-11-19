@@ -15,20 +15,24 @@
     },
     "./react": {
       "production": {
-        "types": "./react.cjs.d.ts",
-        "require": "./react.cjs.js",
-        "import": "./react.esm.js"
+        "types": "./react-hooks/index.d.ts",
+        "require": "./react.js",
+        "import": "./react.mjs"
       },
       "default": {
-        "types": "./src/react/index.ts",
-        "import": "./src/react/index.ts"
+        "types": "./src/react-hooks/index.ts",
+        "import": "./src/react-hooks/index.ts"
       }
     }
   },
   "name": "@monorepo/todo",
   "peerDependencies": {
     "@tanstack/react-query": ">=5.0.0",
-    "@monorepo/shared": "0.0.1"
+    "@monorepo/shared": "0.0.1",
+    "urlcat": "3.1.0",
+    "react": ">=18.0.0",
+    "tsyringe": ">=4.8.0",
+    "qs": "6.11.2"
   },
   "type": "commonjs",
   "version": "0.0.1"

@@ -1,3 +1,5 @@
+import 'reflect-metadata';
+import './inject-dependencies';
 import './styles.css';
 
 import noop from 'lodash/fp/noop';

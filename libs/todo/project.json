@@ -6,18 +6,9 @@
   "tags": ["type:lib", "scope:todo"],
   "targets": {
     "build": {
-      "executor": "@nx/rollup:rollup",
+      "executor": "@nx/vite:build",
       "options": {
-        "assets": [],
-        "compiler": "swc",
-        "external": ["@tanstack/react-query", "@monorepo/shared"],
-        "format": ["cjs", "esm"],
-        "generateExportsField": true,
-        "main": "libs/todo/src/vanilla/index.ts",
-        "outputPath": "dist/libs/todo",
-        "project": "libs/todo/package.json",
-        "rollupConfig": "libs/todo/rollup.config.js",
-        "tsConfig": "libs/todo/tsconfig.lib.json"
+        "outputPath": "dist/libs/todo"
       },
       "outputs": ["{options.outputPath}"]
     },

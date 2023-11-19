@@ -77,7 +77,9 @@ export default defineConfig(
             },
           },
         }),
-        react(),
+        react({
+          tsDecorators: true,
+        }),
         nxViteTsPaths({
           debug: configEnv.mode === 'development',
         }),
