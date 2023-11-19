@@ -12,7 +12,6 @@
   },
   "devDependencies": {
     "@axe-core/react": "^4.8.1",
-    "@tanstack/eslint-plugin-query": "^5.8.4",
     "@types/lodash": "^4.14.201"
   },
   "license": "UNLICENSED",
