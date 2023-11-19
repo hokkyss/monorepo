@@ -15,7 +15,7 @@
     },
     "./react": {
       "production": {
-        "types": "./react/react.d.ts",
+        "types": "./react/index.d.ts",
         "require": "./react.js",
         "import": "./react.mjs"
       },
@@ -30,6 +30,6 @@
   "peerDependencies": {
     "react": ">=18.0.0"
   },
-  "type": "commonjs",
+  "type": "module",
   "version": "0.0.1"
 }
