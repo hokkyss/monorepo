@@ -1,14 +1,4 @@
 {
-  "name": "@monorepo/source",
-  "version": "0.0.1",
-  "license": "MIT",
-  "scripts": {
-    "lint": "nx affected -t lint",
-    "test": "nx affected -t test",
-    "e2e": "nx affected -t e2e",
-    "postinstall": "husky install"
-  },
-  "private": true,
   "dependencies": {
     "@swc/helpers": "~0.5.2",
     "react": "18.2.0",
@@ -60,6 +50,7 @@
     "vite": "~4.3.9",
     "vitest": "~0.32.0"
   },
+  "license": "MIT",
   "lint-staged": {
     "*.{ts,tsx,js,jsx,json}": [
       "yarn lint"
@@ -68,6 +59,15 @@
       "yarn test"
     ]
   },
+  "name": "@monorepo/source",
+  "private": true,
+  "scripts": {
+    "lint": "nx affected -t lint",
+    "test": "nx affected -t test",
+    "e2e": "nx affected -t e2e",
+    "postinstall": "husky install"
+  },
+  "version": "0.0.1",
   "workspaces": [
     "apps/*",
     "libs/*"

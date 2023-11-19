@@ -1,11 +1,5 @@
 {
-  "name": "@monorepo/shared",
-  "version": "0.0.1",
   "dependencies": {},
-  "type": "commonjs",
-  "peerDependencies": {
-    "react": ">=18.0.0"
-  },
   "exports": {
     "./package.json": "./package.json",
     ".": {
@@ -35,5 +29,12 @@
         "import": "./src/react/index.ts"
       }
     }
-  }
+  },
+  "license": "UNLICENSED",
+  "name": "@monorepo/shared",
+  "peerDependencies": {
+    "react": ">=18.0.0"
+  },
+  "type": "commonjs",
+  "version": "0.0.1"
 }

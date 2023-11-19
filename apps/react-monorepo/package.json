@@ -1,14 +1,21 @@
 {
-  "name": "@monorepo/react-monorepo",
-  "version": "0.0.1",
   "dependencies": {
+    "@floating-ui/react": "^0.26.2",
+    "@hookform/resolvers": "^3.3.2",
     "@monorepo/shared": "./libs/shared",
+    "@tanstack/react-query": "^5.8.4",
     "date-fns": "^2.30.0",
     "lodash": "^4.17.21",
-    "web-vitals": "^3.5.0"
+    "react-hook-form": "^7.48.2",
+    "web-vitals": "^3.5.0",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@axe-core/react": "^4.8.1",
+    "@tanstack/eslint-plugin-query": "^5.8.4",
     "@types/lodash": "^4.14.201"
-  }
+  },
+  "license": "UNLICENSED",
+  "name": "@monorepo/react-monorepo",
+  "version": "0.0.1"
 }

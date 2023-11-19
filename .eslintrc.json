@@ -1,8 +1,13 @@
 {
-  "ignorePatterns": ["**/*", "!**/*.json"],
+  "ignorePatterns": ["**/*", "!/*.json"],
   "overrides": [
     {
-      "extends": ["alloy", "alloy/react", "plugin:perfectionist/recommended-natural"],
+      "extends": [
+        "alloy",
+        "alloy/react",
+        "plugin:perfectionist/recommended-natural",
+        "plugin:@tanstack/eslint-plugin-query/recommended"
+      ],
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "rules": {
         "@nx/enforce-module-boundaries": [
@@ -65,16 +70,25 @@
       "parser": "jsonc-eslint-parser",
       "rules": {
         "jsonc/comma-style": "error",
+        "jsonc/no-comments": "off",
         "jsonc/sort-keys": "error"
       }
     },
     {
       "files": ["package.json"],
       "rules": {
-        "jsonc/sort-keys": "off"
+        "jsonc/sort-keys": [
+          "error",
+          {
+            "order": {
+              "type": "asc"
+            },
+            "pathPattern": "^$" // Hits the root properties
+          }
+        ]
       }
     }
   ],
-  "plugins": ["@nx"],
+  "plugins": ["@nx", "@tanstack/query"],
   "root": true
 }
