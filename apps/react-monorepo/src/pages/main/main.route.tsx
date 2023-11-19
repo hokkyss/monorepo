@@ -1,10 +1,16 @@
 import type { Route } from '../../configs/route-map/route-map.config';
 
-import MainPage from './main.page';
+import { Suspense, lazy } from 'react';
+
+const MainPage = lazy(() => import('./main.page'));
 
 const mainRoute: Route = {
-  Component: MainPage,
   children: [],
+  element: (
+    <Suspense fallback={<h1>Loading...</h1>}>
+      <MainPage />
+    </Suspense>
+  ),
   index: false,
   name: 'main',
 };

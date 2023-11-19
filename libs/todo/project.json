@@ -1,0 +1,40 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "todo",
+  "projectType": "library",
+  "sourceRoot": "libs/todo/src",
+  "tags": ["type:lib", "scope:todo"],
+  "targets": {
+    "build": {
+      "executor": "@nx/rollup:rollup",
+      "options": {
+        "assets": [],
+        "compiler": "swc",
+        "external": ["@tanstack/react-query", "@monorepo/shared"],
+        "format": ["cjs", "esm"],
+        "generateExportsField": true,
+        "main": "libs/todo/src/vanilla/index.ts",
+        "outputPath": "dist/libs/todo",
+        "project": "libs/todo/package.json",
+        "rollupConfig": "libs/todo/rollup.config.js",
+        "tsConfig": "libs/todo/tsconfig.lib.json"
+      },
+      "outputs": ["{options.outputPath}"]
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": ["libs/todo/**/*.ts", "libs/todo/package.json"]
+      },
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../coverage/libs/todo"
+      },
+      "outputs": ["{options.reportsDirectory}"]
+    }
+  }
+}
