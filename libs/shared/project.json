@@ -3,7 +3,7 @@
   "name": "shared",
   "projectType": "library",
   "sourceRoot": "libs/shared/src",
-  "tags": ["type:lib", "name:shared"],
+  "tags": ["type:lib", "scope:shared"],
   "targets": {
     "build": {
       "executor": "@nx/rollup:rollup",
