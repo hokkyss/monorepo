@@ -2,8 +2,8 @@
   "dependencies": {
     "@floating-ui/react": "^0.26.2",
     "@hookform/resolvers": "^3.3.2",
-    "@monorepo/shared": "./libs/shared",
-    "@monorepo/todo": "./libs/todo",
+    "@monorepo/shared": "workspace:libs/shared",
+    "@monorepo/todo": "workspace:libs/todo",
     "@tanstack/react-query": "^5.8.4",
     "date-fns": "^2.30.0",
     "lodash": "^4.17.21",

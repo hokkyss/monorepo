@@ -1,7 +1,10 @@
 import type { Except } from '../main';
 
+import { injectable } from 'tsyringe';
+
 import BaseHttpClient from '../main/clients/http/http.client';
 
+@injectable()
 export default class FetchHttpClient extends BaseHttpClient {
   public override async delete<T>(url: string, config: Except<RequestInit, 'body' | 'method'>): Promise<T> {
     return fetch(url, {

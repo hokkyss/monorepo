@@ -1,5 +1,4 @@
 {
-  "dependencies": {},
   "exports": {
     "./package.json": "./package.json",
     ".": {
@@ -27,12 +26,11 @@
   },
   "name": "@monorepo/todo",
   "peerDependencies": {
-    "@tanstack/react-query": ">=5.0.0",
     "@monorepo/shared": "0.0.1",
-    "urlcat": "3.1.0",
+    "@tanstack/react-query": ">=5.0.0",
     "react": ">=18.0.0",
     "tsyringe": ">=4.8.0",
-    "qs": "6.11.2"
+    "urlcat": ">=3.0.0"
   },
   "type": "commonjs",
   "version": "0.0.1"

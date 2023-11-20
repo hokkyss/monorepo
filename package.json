@@ -7,7 +7,7 @@
     "react-router-dom": "6.11.2",
     "reflect-metadata": "^0.1.13",
     "tsyringe": "^4.8.0",
-    "urlcat": "^3.1.0"
+    "urlcat": "patch:urlcat@npm%3A3.1.0#~/.yarn/patches/urlcat-npm-3.1.0-306b3d4263.patch"
   },
   "devDependencies": {
     "@nx/devkit": "17.1.2",
@@ -66,6 +66,7 @@
     ]
   },
   "name": "@monorepo/source",
+  "packageManager": "yarn@4.0.2",
   "private": true,
   "scripts": {
     "lint": "nx affected -t lint",

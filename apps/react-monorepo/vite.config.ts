@@ -1,5 +1,3 @@
-/// <reference types="./rollup" />
-
 import type { Plugin, UserConfig } from 'vite';
 import type { InlineConfig } from 'vitest';
 
