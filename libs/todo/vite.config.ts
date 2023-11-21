@@ -1,6 +1,8 @@
+import type { Plugin } from 'vite';
 import type { InlineConfig } from 'vitest';
 
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
+import resolve from '@rollup/plugin-node-resolve';
 import path from 'path';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
@@ -18,7 +20,9 @@ export default defineConfig((configEnv) => ({
       name: 'todo',
     },
     rollupOptions: {
-      external: Object.keys(pkg.peerDependencies),
+      // match @tanstack/react-query and @tanstack/react-query/anything, but not @tanstack/react-query-devtools
+      external: Object.keys(pkg.peerDependencies).map((key) => new RegExp(`^${key}(/.+)*`)),
+      plugins: [resolve() as Plugin],
     },
   },
   cacheDir: '../../node_modules/.vite/todo',

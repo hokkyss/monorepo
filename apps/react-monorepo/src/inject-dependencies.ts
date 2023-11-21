@@ -1,4 +1,4 @@
-import { HttpClient } from '@monorepo/shared';
+import { HttpClient } from '@monorepo/shared/clients';
 import FetchHttpClient from '@monorepo/shared/http-client/fetch';
 import { container } from 'tsyringe';
 

@@ -1,25 +1,56 @@
 {
   "exports": {
     "./package.json": "./package.json",
-    ".": {
+    "./types": {
+      "production": {
+        "types": "./types/shared.type.d.ts",
+        "import": "./types.js",
+        "default": "./types.cjs"
+      },
       "default": {
-        "types": "./src/main/index.ts",
-        "default": "./src/main/index.ts"
+        "types": "./src/types/shared.type.ts",
+        "default": "./src/types/shared.type.ts"
+      }
+    },
+    "./clients": {
+      "production": {
+        "types": "./clients/index.d.ts",
+        "import": "./clients.js",
+        "default": "./clients.cjs"
+      },
+      "default": {
+        "types": "./src/clients/index.ts",
+        "import": "./src/clients/index.ts"
       }
     },
     "./react/hooks": {
+      "production": {
+        "types": "./react/hooks/index.d.ts",
+        "import": "./react/hooks.js",
+        "default": "./react/hooks.cjs"
+      },
       "default": {
         "types": "./src/react/hooks/index.ts",
         "default": "./src/react/hooks/index.ts"
       }
     },
     "./http-client/axios": {
+      "production": {
+        "types": "./http/axios.d.ts",
+        "import": "./axios.js",
+        "default": "./axios.cjs"
+      },
       "default": {
         "types": "./src/http/axios.http-client.ts",
         "default": "./src/http/axios.http-client.ts"
       }
     },
     "./http-client/fetch": {
+      "production": {
+        "types": "./http/fetch.d.ts",
+        "import": "./fetch.js",
+        "default": "./fetch.cjs"
+      },
       "default": {
         "types": "./src/http/fetch.http-client.ts",
         "default": "./src/http/fetch.http-client.ts"

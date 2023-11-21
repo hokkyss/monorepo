@@ -1,8 +1,8 @@
-import type { Except } from '../main';
+import type { Except } from '../types/shared.type';
 
 import { injectable } from 'tsyringe';
 
-import BaseHttpClient from '../main/clients/http/http.client';
+import BaseHttpClient from '../clients/http/http.client';
 
 @injectable()
 export default class FetchHttpClient extends BaseHttpClient {

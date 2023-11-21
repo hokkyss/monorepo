@@ -1,8 +1,10 @@
 /// <reference types='vitest' />
 
+import type { Plugin } from 'vite';
 import type { InlineConfig } from 'vitest';
 
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
+import resolve from '@rollup/plugin-node-resolve';
 import * as path from 'path';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
@@ -13,16 +15,19 @@ export default defineConfig((configEnv) => ({
   build: {
     lib: {
       entry: {
-        'http/axios': 'src/http/axios.http-client.ts',
-        'http/fetch': 'src/http/fetch.http-client.ts',
-        'main/index': 'src/main/index.ts',
+        axios: 'src/http/axios.http-client.ts',
+        clients: 'src/clients/index.ts',
+        fetch: 'src/http/fetch.http-client.ts',
         'react/hooks': 'src/react/hooks/index.ts',
+        types: 'src/types/shared.type.ts',
       },
       formats: ['es', 'cjs'],
       name: 'shared',
     },
     rollupOptions: {
-      external: Object.keys(pkg.peerDependencies),
+      // match @tanstack/react-query and @tanstack/react-query/anything, but not @tanstack/react-query-devtools
+      external: Object.keys(pkg.peerDependencies).map((key) => new RegExp(`^${key}(/.+)*`)),
+      plugins: [resolve() as Plugin],
     },
   },
   cacheDir: '../../node_modules/.vite/shared',

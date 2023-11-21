@@ -1,11 +1,11 @@
 import type { AxiosInstance, AxiosRequestConfig, CreateAxiosDefaults } from 'axios';
 
-import type { Except } from '../main';
+import type { Except } from '../types/shared.type';
 
 import axiosStatic from 'axios';
 import { injectable } from 'tsyringe';
 
-import BaseHttpClient from '../main/clients/http/http.client';
+import BaseHttpClient from '../clients/http/http.client';
 
 @injectable()
 export default class AxiosHttpClient extends BaseHttpClient {

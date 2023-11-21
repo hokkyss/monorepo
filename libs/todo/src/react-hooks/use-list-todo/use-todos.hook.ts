@@ -1,4 +1,4 @@
-import type { Except } from '@monorepo/shared';
+import type { Except } from '@monorepo/shared/types';
 import type { QueryClient, UseQueryOptions, UseQueryResult } from '@tanstack/react-query';
 
 import type { ListTodoRes } from '../../vanilla/models/list.model';

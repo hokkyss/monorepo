@@ -1,4 +1,4 @@
-import type { Except } from '@monorepo/shared';
+import type { Except } from '@monorepo/shared/types';
 import type { RouteObject } from 'react-router-dom';
 
 const routeMap = Object.freeze({

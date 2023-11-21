@@ -1,6 +1,6 @@
 import type { ListTodoReq, ListTodoRes } from '../models/list.model';
 
-import { HttpClient } from '@monorepo/shared';
+import { HttpClient } from '@monorepo/shared/clients';
 import { inject, injectable } from 'tsyringe';
 import urlcat from 'urlcat';
 

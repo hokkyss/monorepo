@@ -1,7 +1,7 @@
 {
   "exports": {
     "./package.json": "./package.json",
-    ".": {
+    "./vanilla": {
       "production": {
         "types": "./vanilla/index.d.ts",
         "require": "./index.cjs",
