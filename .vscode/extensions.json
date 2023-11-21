@@ -4,6 +4,11 @@
     "esbenp.prettier-vscode",
     "dbaeumer.vscode-eslint",
     "ms-playwright.playwright",
-    "arcanis.vscode-zipfs"
+    "arcanis.vscode-zipfs",
+    "ZixuanChen.vitest-explorer",
+    "kisstkondoros.vscode-codemetrics",
+    "ambar.bundle-size",
+    "VisualStudioExptTeam.vscodeintellicode",
+    "ms-vscode.vscode-typescript-next"
   ]
 }
