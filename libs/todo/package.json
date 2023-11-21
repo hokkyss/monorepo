@@ -3,24 +3,24 @@
     "./package.json": "./package.json",
     ".": {
       "production": {
-        "module": "./index.esm.js",
-        "import": "./index.cjs.mjs",
-        "default": "./index.cjs.js"
+        "types": "./vanilla/index.d.ts",
+        "require": "./index.cjs",
+        "default": "./index.js"
       },
       "default": {
         "types": "./src/vanilla/index.ts",
-        "import": "./src/vanilla/index.ts"
+        "default": "./src/vanilla/index.ts"
       }
     },
     "./react": {
       "production": {
         "types": "./react-hooks/index.d.ts",
-        "require": "./react.js",
-        "import": "./react.mjs"
+        "require": "./react.cjs",
+        "default": "./react.js"
       },
       "default": {
         "types": "./src/react-hooks/index.ts",
-        "import": "./src/react-hooks/index.ts"
+        "default": "./src/react-hooks/index.ts"
       }
     }
   },
@@ -32,6 +32,6 @@
     "tsyringe": ">=4.8.0",
     "urlcat": ">=3.0.0"
   },
-  "type": "commonjs",
+  "type": "module",
   "version": "0.0.1"
 }

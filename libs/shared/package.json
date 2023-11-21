@@ -2,47 +2,27 @@
   "exports": {
     "./package.json": "./package.json",
     ".": {
-      "production": {
-        "types": "./main/index.d.ts",
-        "import": "./main/index.mjs",
-        "default": "./main/index.js"
-      },
       "default": {
         "types": "./src/main/index.ts",
-        "import": "./src/main/index.ts"
+        "default": "./src/main/index.ts"
       }
     },
     "./react/hooks": {
-      "production": {
-        "types": "./react/hooks/index.d.ts",
-        "require": "./react/hooks.js",
-        "import": "./react/hooks.mjs"
-      },
       "default": {
         "types": "./src/react/hooks/index.ts",
-        "import": "./src/react/hooks/index.ts"
+        "default": "./src/react/hooks/index.ts"
       }
     },
     "./http-client/axios": {
-      "production": {
-        "types": "./http/axios.http-client.d.ts",
-        "require": "./http/axios.js",
-        "import": "./http/axios.mjs"
-      },
       "default": {
         "types": "./src/http/axios.http-client.ts",
-        "import": "./src/http/axios.http-client.ts"
+        "default": "./src/http/axios.http-client.ts"
       }
     },
     "./http-client/fetch": {
-      "production": {
-        "types": "./http/fetch.http-client.d.ts",
-        "require": "./http/fetch.js",
-        "import": "./http/fetch.mjs"
-      },
       "default": {
         "types": "./src/http/fetch.http-client.ts",
-        "import": "./src/http/fetch.http-client.ts"
+        "default": "./src/http/fetch.http-client.ts"
       }
     }
   },
@@ -64,6 +44,6 @@
       "optional": true
     }
   },
-  "type": "commonjs",
+  "type": "module",
   "version": "0.0.1"
 }

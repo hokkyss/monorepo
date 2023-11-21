@@ -9,7 +9,7 @@ import dts from 'vite-plugin-dts';
 
 import pkg from './package.json';
 
-export default defineConfig(() => ({
+export default defineConfig((configEnv) => ({
   build: {
     lib: {
       entry: {
@@ -33,7 +33,9 @@ export default defineConfig(() => ({
   // },
   // Configuration for building your library.
   plugins: [
-    nxViteTsPaths(),
+    nxViteTsPaths({
+      debug: configEnv.mode === 'development',
+    }),
     dts({ entryRoot: 'src', skipDiagnostics: true, tsConfigFilePath: path.join(__dirname, 'tsconfig.lib.json') }),
   ],
   test: {
