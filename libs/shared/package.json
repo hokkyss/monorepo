@@ -14,13 +14,68 @@
     },
     "./clients": {
       "production": {
-        "types": "./clients/index.d.ts",
-        "import": "./clients.js",
-        "default": "./clients.cjs"
+        "types": "./clients/abstract/index.d.ts",
+        "import": "./clients/abstract.js",
+        "default": "./clients/abstract.cjs"
       },
       "default": {
-        "types": "./src/clients/index.ts",
-        "import": "./src/clients/index.ts"
+        "types": "./src/clients/abstract/index.ts",
+        "import": "./src/clients/abstract/index.ts"
+      }
+    },
+    "./clients/http/axios": {
+      "production": {
+        "types": "./clients/implementation/http/axios.http-client.d.ts",
+        "import": "./clients/http/axios.js",
+        "default": "./clients/http/axios.cjs"
+      },
+      "default": {
+        "types": "./src/clients/implementation/http/axios.http-client.ts",
+        "default": "./src/clients/implementation/http/axios.http-client.ts"
+      }
+    },
+    "./clients/http/fetch": {
+      "production": {
+        "types": "./clients/implementation/http/fetch.http-client.d.ts",
+        "import": "./clients/http/fetch.js",
+        "default": "./clients/http/fetch.cjs"
+      },
+      "default": {
+        "types": "./src/clients/implementation/http/fetch.http-client.ts",
+        "default": "./src/clients/implementation/http/fetch.http-client.ts"
+      }
+    },
+    "./clients/storage/local": {
+      "production": {
+        "types": "./clients/implementation/storage/local.storage-client.d.ts",
+        "import": "./clients/storage/local.js",
+        "default": "./clients/storage/local.cjs"
+      },
+      "default": {
+        "types": "./src/clients/implementation/storage/local.storage-client.ts",
+        "default": "./src/clients/implementation/storage/local.storage-client.ts"
+      }
+    },
+    "./clients/storage/indexed-db": {
+      "production": {
+        "types": "./clients/implementation/storage/indexed-db.storage-client.d.ts",
+        "import": "./clients/storage/indexed-db.js",
+        "default": "./clients/storage/indexed-db.cjs"
+      },
+      "default": {
+        "types": "./src/clients/implementation/storage/indexed-db.storage-client.ts",
+        "default": "./src/clients/implementation/storage/indexed-db.storage-client.ts"
+      }
+    },
+    "./clients/storage/session": {
+      "production": {
+        "types": "./clients/implementation/storage/session.storage-client.d.ts",
+        "import": "./clients/storage/session.js",
+        "default": "./clients/storage/session.cjs"
+      },
+      "default": {
+        "types": "./src/clients/implementation/storage/session.storage-client.ts",
+        "default": "./src/clients/implementation/storage/session.storage-client.ts"
       }
     },
     "./react/hooks": {
@@ -32,28 +87,6 @@
       "default": {
         "types": "./src/react/hooks/index.ts",
         "default": "./src/react/hooks/index.ts"
-      }
-    },
-    "./http-client/axios": {
-      "production": {
-        "types": "./http/axios.d.ts",
-        "import": "./axios.js",
-        "default": "./axios.cjs"
-      },
-      "default": {
-        "types": "./src/http/axios.http-client.ts",
-        "default": "./src/http/axios.http-client.ts"
-      }
-    },
-    "./http-client/fetch": {
-      "production": {
-        "types": "./http/fetch.d.ts",
-        "import": "./fetch.js",
-        "default": "./fetch.cjs"
-      },
-      "default": {
-        "types": "./src/http/fetch.http-client.ts",
-        "default": "./src/http/fetch.http-client.ts"
       }
     }
   },

@@ -15,9 +15,12 @@ export default defineConfig((configEnv) => ({
   build: {
     lib: {
       entry: {
-        axios: 'src/http/axios.http-client.ts',
-        clients: 'src/clients/index.ts',
-        fetch: 'src/http/fetch.http-client.ts',
+        'clients/abstract': 'src/clients/abstract/index.ts',
+        'clients/http/axios': 'src/clients/implementation/http/axios.http-client.ts',
+        'clients/http/fetch': 'src/clients/implementation/http/fetch.http-client.ts',
+        'clients/storage/indexed-db': 'src/clients/implementation/storage/indexed-db.storage-client.ts',
+        'clients/storage/local': 'src/clients/implementation/storage/local.storage-client.ts',
+        'clients/storage/session': 'src/clients/implementation/storage/session.storage-client.ts',
         'react/hooks': 'src/react/hooks/index.ts',
         types: 'src/types/shared.type.ts',
       },

@@ -1,9 +1,10 @@
-import type { Except } from '../types/shared.type';
+import type { Except } from '../../../types/shared.type';
 
-import { injectable } from 'tsyringe';
+import { injectable, singleton } from 'tsyringe';
 
-import BaseHttpClient from '../clients/http/http.client';
+import BaseHttpClient from '../../abstract/http/http.client';
 
+@singleton()
 @injectable()
 export default class FetchHttpClient extends BaseHttpClient {
   public override async delete<T>(url: string, config: Except<RequestInit, 'body' | 'method'>): Promise<T> {
