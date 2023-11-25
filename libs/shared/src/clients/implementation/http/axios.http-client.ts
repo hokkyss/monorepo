@@ -1,9 +1,10 @@
-import type { AxiosInstance, AxiosRequestConfig, CreateAxiosDefaults } from 'axios';
+import type { AxiosInstance, CreateAxiosDefaults } from 'axios';
 
-import type { Except } from '../../../types/shared.type';
+import type { RequestOptions } from '../../abstract/http/http.client';
 
 import axiosStatic from 'axios';
 import { injectable, singleton } from 'tsyringe';
+import urlcat from 'urlcat';
 
 import BaseHttpClient from '../../abstract/http/http.client';
 
@@ -17,101 +18,97 @@ export default class AxiosHttpClient extends BaseHttpClient {
     this.axios = axiosStatic.create(config);
   }
 
-  public override async delete<T>(
-    url: string,
-    config?: Except<AxiosRequestConfig<never>, 'data' | 'method' | 'url'>,
-  ): Promise<T> {
+  public override async delete<T>(url: string, config: RequestOptions = {}): Promise<T> {
+    const { headers = {}, searchParams = {}, signal } = config;
+
+    headers['Content-Type'] = headers['Content-Type'] || 'application/json';
+
     return this.axios
-      .delete<T>(url, {
-        ...config,
-        headers: {
-          ...config?.headers,
-          'Content-Type': 'application/json',
-        },
+      .delete<T>(urlcat(url, searchParams), {
+        headers: headers,
+        signal,
       })
       .then((resp) => resp.data);
   }
 
-  public override async get<T>(
-    url: string,
-    config?: Except<AxiosRequestConfig<never>, 'data' | 'method' | 'url'>,
-  ): Promise<T> {
+  public override async get<T>(url: string, config: RequestOptions = {}): Promise<T> {
+    const { headers = {}, searchParams = {}, signal } = config;
+
+    headers['Content-Type'] = headers['Content-Type'] || 'application/json';
+
     return this.axios
-      .get<T>(url, {
-        ...config,
-        headers: {
-          ...config?.headers,
-          'Content-Type': 'application/json',
-        },
+      .get<T>(urlcat(url, searchParams), {
+        headers,
+        signal,
       })
       .then((resp) => resp.data);
   }
 
-  public override async patch<T>(
-    url: string,
-    data?: unknown,
-    config?: Except<AxiosRequestConfig<never>, 'data' | 'method' | 'url'>,
-  ): Promise<T> {
-    if (data instanceof FormData) {
-      delete config?.headers?.['Content-Type'];
+  public override async patch<T>(url: string, config: RequestOptions = {}): Promise<T> {
+    const { headers = {}, searchParams = {}, signal } = config;
 
-      return (await this.axios.patchForm(url, data, config)).data;
+    if ('body' in config && config.body) {
+      headers['Content-Type'] = headers['Content-Type'] || 'multipart/form-data';
+
+      return (
+        await this.axios.patchForm(urlcat(url, searchParams), config.body, {
+          headers,
+          signal,
+        })
+      ).data;
     }
 
+    headers['Content-Type'] = headers['Content-Type'] || 'application/json';
+
     return (
-      await this.axios.patch(url, data, {
-        ...config,
+      await this.axios.patch(urlcat(url, searchParams), 'json' in config && config.json ? config.json : undefined, {
         // NOTE: if 'Content-Type' header is provided, use it. If not, use default application/json
-        headers: {
-          'Content-Type': 'application/json',
-          ...config?.headers,
-        },
+        headers,
+        signal,
       })
     ).data;
   }
 
-  public override async post<T>(
-    url: string,
-    data?: unknown,
-    config?: Except<AxiosRequestConfig<never>, 'data' | 'method' | 'url'>,
-  ): Promise<T> {
-    if (data instanceof FormData) {
-      delete config?.headers?.['Content-Type'];
+  public override async post<T>(url: string, config: RequestOptions = {}): Promise<T> {
+    const { headers = {}, searchParams = {}, signal } = config;
 
-      return (await this.axios.postForm(url, data, config)).data;
+    if ('body' in config && config.body) {
+      headers['Content-Type'] = headers['Content-Type'] || 'multipart/form-data';
+
+      return await this.axios.postForm(urlcat(url, searchParams), config.body, {
+        headers,
+        signal,
+      });
     }
 
+    headers['Content-Type'] = headers['Content-Type'] || 'application/json';
+
     return (
-      await this.axios.post(url, data, {
-        ...config,
-        // NOTE: if 'Content-Type' header is provided, use it. If not, use default application/json
-        headers: {
-          'Content-Type': 'application/json',
-          ...config?.headers,
-        },
+      await this.axios.post(urlcat(url, searchParams), 'json' in config && config.json ? config.json : undefined, {
+        headers,
+        signal,
       })
     ).data;
   }
 
-  public override async put<T>(
-    url: string,
-    data?: unknown,
-    config?: Except<AxiosRequestConfig<never>, 'data' | 'method' | 'url'>,
-  ): Promise<T> {
-    if (data instanceof FormData) {
-      delete config?.headers?.['Content-Type'];
+  public override async put<T>(url: string, config: RequestOptions = {}): Promise<T> {
+    const { headers = {}, searchParams = {}, signal } = config;
 
-      return (await this.axios.putForm(url, data, config)).data;
+    if ('body' in config && config.body) {
+      headers['Content-Type'] = headers['Content-Type'] || 'multipart/form-data';
+
+      return await this.axios.putForm(urlcat(url, searchParams), config.body, {
+        headers,
+        signal,
+      });
     }
 
+    headers['Content-Type'] = headers['Content-Type'] || 'application/json';
+
     return (
-      await this.axios.put(url, data, {
-        ...config,
-        // NOTE: if 'Content-Type' header is provided, use it. If not, use default application/json
-        headers: {
-          'Content-Type': 'application/json',
-          ...config?.headers,
-        },
+      await this.axios.put(urlcat(url, searchParams), 'json' in config && config.json ? config.json : undefined, {
+        headers,
+        signal,
       })
     ).data;
   }
