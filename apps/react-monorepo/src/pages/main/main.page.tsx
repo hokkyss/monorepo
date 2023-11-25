@@ -9,13 +9,15 @@ export default function MainPage() {
 
   return (
     <div>
-      <h1>Welcome. Toggled: {val.toString()}</h1>
+      <h1>Show TODOs: {val.toString()}</h1>
       <button onClick={toggle}>Toggle</button>
-      <ol>
-        {todos.data.map((todo) => (
-          <li key={todo.id}>{todo.title}</li>
-        ))}
-      </ol>
+      {val && (
+        <ol>
+          {todos.data.map((todo) => (
+            <li key={todo.id}>{todo.title}</li>
+          ))}
+        </ol>
+      )}
     </div>
   );
 }

@@ -23,7 +23,7 @@ export default class FetchHttpClient extends BaseHttpClient {
 
     return fetch(urlcat(url, searchParams), {
       headers,
-      method: 'DELETE',
+      method: 'GET',
       signal,
     }).then((resp) => resp.json());
   }
