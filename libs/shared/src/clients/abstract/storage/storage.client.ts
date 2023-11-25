@@ -13,7 +13,7 @@ export default abstract class StorageClient {
     throw new Error(`No implementation of StorageClient.${this.deleteItem.name} available`);
   }
 
-  public getItem<T>(key: string, deserialize: (value: string) => T): Promise<T | undefined>;
+  public getItem<T>(key: string, deserialize?: (value: string) => T): Promise<T | undefined>;
   public getItem<T>(key: string, deserialize: (value: string) => T, defaultValue: T): Promise<T>;
   public getItem<T>(): Promise<T> {
     throw new Error(`No implementation of StorageClient.${this.getItem.name} available`);
