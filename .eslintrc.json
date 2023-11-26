@@ -32,6 +32,7 @@
           }
         ],
         "no-console": "error",
+        "perfectionist/sort-classes": "off",
         "perfectionist/sort-imports": [
           "error",
           {

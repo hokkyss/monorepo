@@ -9,33 +9,6 @@ export default class IndexedDBClient extends StorageClient {
     super();
   }
 
-  private async getDb() {
-    return new Promise<IDBDatabase>((resolve, reject) => {
-      const request = indexedDB.open(this.name);
-
-      request.onupgradeneeded = () => {
-        const db = request.result;
-
-        db.onerror = () => {
-          reject(new Error('Failed to create object store'));
-        };
-
-        if (!db.objectStoreNames.contains(this.name)) {
-          db.createObjectStore(this.name);
-        }
-        resolve(db);
-      };
-
-      request.onsuccess = () => {
-        resolve(request.result);
-      };
-
-      request.onerror = request.onblocked = () => {
-        reject(request.error ?? request.transaction?.error ?? new Error('Something happened'));
-      };
-    });
-  }
-
   public override async clear() {
     const db = await this.getDb();
 
@@ -138,6 +111,33 @@ export default class IndexedDBClient extends StorageClient {
         reject(request.error ?? request.transaction?.error ?? new Error('Something happened'));
       };
       transaction.commit();
+    });
+  }
+
+  private async getDb() {
+    return new Promise<IDBDatabase>((resolve, reject) => {
+      const request = indexedDB.open(this.name);
+
+      request.onupgradeneeded = () => {
+        const db = request.result;
+
+        db.onerror = () => {
+          reject(new Error('Failed to create object store'));
+        };
+
+        if (!db.objectStoreNames.contains(this.name)) {
+          db.createObjectStore(this.name);
+        }
+        resolve(db);
+      };
+
+      request.onsuccess = () => {
+        resolve(request.result);
+      };
+
+      request.onerror = request.onblocked = () => {
+        reject(request.error ?? request.transaction?.error ?? new Error('Something happened'));
+      };
     });
   }
 }

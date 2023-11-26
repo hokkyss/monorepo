@@ -4,9 +4,7 @@
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
-      "rules": {
-        "@typescript-eslint/member-ordering": "off"
-      }
+      "rules": {}
     },
     {
       "files": ["*.ts", "*.tsx"],
