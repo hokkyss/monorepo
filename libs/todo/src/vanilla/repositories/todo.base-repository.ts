@@ -2,7 +2,6 @@ import type { ListTodoReq, ListTodoRes } from '../models/list.model';
 
 import { HttpClient } from '@monorepo/shared/clients';
 import { inject, injectable } from 'tsyringe';
-import urlcat from 'urlcat';
 
 import AbstractTodoRepository from './todo.repository';
 
@@ -13,6 +12,8 @@ export default class TodoRepository extends AbstractTodoRepository {
   }
 
   public override list(params: ListTodoReq): Promise<ListTodoRes> {
-    return this.httpClient.get<ListTodoRes>(urlcat('https://jsonplaceholder.typicode.com/todos', params));
+    return this.httpClient.get<ListTodoRes>('https://jsonplaceholder.typicode.com/todos', {
+      searchParams: params,
+    });
   }
 }
