@@ -9,9 +9,7 @@ declare namespace NodeJS {
   declare interface ProcessEnv extends EnvironmentVariable {}
 }
 
-declare interface ImportMetaEnv extends EnvironmentVariable {
-  MODE: EnvironmentVariable['NODE_ENV'];
-}
+declare interface ImportMetaEnv extends EnvironmentVariable {}
 
 declare interface ImportMeta {
   readonly env: ImportMetaEnv;

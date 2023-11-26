@@ -1,4 +1,4 @@
-import { useBoolean } from '@monorepo/shared/react/hooks';
+import { useBoolean } from '@monorepo/shared/hooks';
 import { useSuspenseTodos } from '@monorepo/todo/react';
 
 import queryClient from '../../configs/react-query/react-query.config';

@@ -1,3 +1,5 @@
+import 'reflect-metadata';
+
 import { HttpClient, StorageClient } from '@monorepo/shared/clients';
 import AxiosHttpClient from '@monorepo/shared/clients/http/axios';
 import IndexedDBClient from '@monorepo/shared/clients/storage/indexed-db';

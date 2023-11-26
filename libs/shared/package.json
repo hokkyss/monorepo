@@ -78,15 +78,15 @@
         "default": "./src/clients/implementation/storage/session.storage-client.ts"
       }
     },
-    "./react/hooks": {
+    "./hooks": {
       "production": {
-        "types": "./react/hooks/index.d.ts",
-        "import": "./react/hooks.js",
-        "default": "./react/hooks.cjs"
+        "types": "./hooks/index.d.ts",
+        "import": "./hooks.js",
+        "default": "./hooks.cjs"
       },
       "default": {
-        "types": "./src/react/hooks/index.ts",
-        "default": "./src/react/hooks/index.ts"
+        "types": "./src/hooks/index.ts",
+        "default": "./src/hooks/index.ts"
       }
     }
   },

@@ -21,7 +21,7 @@ export default defineConfig((configEnv) => ({
         'clients/storage/indexed-db': 'src/clients/implementation/storage/indexed-db.storage-client.ts',
         'clients/storage/local': 'src/clients/implementation/storage/local.storage-client.ts',
         'clients/storage/session': 'src/clients/implementation/storage/session.storage-client.ts',
-        'react/hooks': 'src/react/hooks/index.ts',
+        hooks: 'src/hooks/index.ts',
         types: 'src/types/shared.type.ts',
       },
       formats: ['es', 'cjs'],

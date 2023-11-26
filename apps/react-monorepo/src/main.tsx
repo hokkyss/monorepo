@@ -1,4 +1,3 @@
-import 'reflect-metadata';
 import './inject-dependencies';
 import './styles.css';
 
