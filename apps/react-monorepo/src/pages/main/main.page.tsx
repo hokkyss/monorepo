@@ -1,15 +1,22 @@
 import { useBoolean } from '@monorepo/shared/hooks';
 import { useSuspenseTodos } from '@monorepo/todo/react';
+import { useTranslation } from 'react-i18next';
 
+import initInternationalization from '../../configs/locale/locale.config';
 import queryClient from '../../configs/react-query/react-query.config';
+
+initInternationalization();
 
 export default function MainPage() {
   const [val, { toggle }] = useBoolean();
   const todos = useSuspenseTodos({ queryClient: queryClient });
+  const [t] = useTranslation('main');
 
   return (
     <div>
-      <h1>Show TODOs: {val.toString()}</h1>
+      <h1>
+        {t('show-todo')}: {val.toString()}
+      </h1>
       <button onClick={toggle}>Toggle</button>
       {val && (
         <ol>
