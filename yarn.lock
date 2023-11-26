@@ -2116,6 +2116,7 @@ __metadata:
     "@hookform/resolvers": "npm:^3.3.2"
     "@monorepo/shared": "portal:../../libs/shared"
     "@monorepo/todo": "portal:../../libs/todo"
+    "@monorepo/ui": "portal:../../libs/ui"
     "@tanstack/react-query": "npm:^5.8.4"
     "@types/lodash": "npm:^4.14.201"
     date-fns: "npm:^2.30.0"
@@ -2134,6 +2135,7 @@ __metadata:
     axios: 1.6.2
     react: ">=18.0.0"
     tsyringe: ">=4.8.0"
+    urlcat: ">=3.0.0"
   peerDependenciesMeta:
     axios:
       optional: true
@@ -2151,6 +2153,7 @@ __metadata:
     axios: 1.6.2
     react: ">=18.0.0"
     tsyringe: ">=4.8.0"
+    urlcat: ">=3.0.0"
   peerDependenciesMeta:
     axios:
       optional: true
@@ -2229,7 +2232,6 @@ __metadata:
     "@tanstack/react-query": ">=5.0.0"
     react: ">=18.0.0"
     tsyringe: ">=4.8.0"
-    urlcat: ">=3.0.0"
   languageName: node
   linkType: soft
 
@@ -2241,7 +2243,22 @@ __metadata:
     "@tanstack/react-query": ">=5.0.0"
     react: ">=18.0.0"
     tsyringe: ">=4.8.0"
-    urlcat: ">=3.0.0"
+  languageName: unknown
+  linkType: soft
+
+"@monorepo/ui@portal:../../libs/ui::locator=%40monorepo%2Freact-monorepo%40workspace%3Aapps%2Freact-monorepo":
+  version: 0.0.0-use.local
+  resolution: "@monorepo/ui@portal:../../libs/ui::locator=%40monorepo%2Freact-monorepo%40workspace%3Aapps%2Freact-monorepo"
+  peerDependencies:
+    react: ^18.0.0
+  languageName: node
+  linkType: soft
+
+"@monorepo/ui@workspace:libs/ui":
+  version: 0.0.0-use.local
+  resolution: "@monorepo/ui@workspace:libs/ui"
+  peerDependencies:
+    react: ^18.0.0
   languageName: unknown
   linkType: soft
 

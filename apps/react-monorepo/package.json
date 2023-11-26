@@ -4,6 +4,7 @@
     "@hookform/resolvers": "^3.3.2",
     "@monorepo/shared": "portal:../../libs/shared",
     "@monorepo/todo": "portal:../../libs/todo",
+    "@monorepo/ui": "portal:../../libs/ui",
     "@tanstack/react-query": "^5.8.4",
     "date-fns": "^2.30.0",
     "lodash": "^4.17.21",

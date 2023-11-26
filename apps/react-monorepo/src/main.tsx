@@ -1,6 +1,7 @@
 import './inject-dependencies';
 import './styles.css';
 
+import { ErrorBoundary } from '@monorepo/ui/templates';
 import noop from 'lodash/fp/noop';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
@@ -21,7 +22,9 @@ if (rootElement) {
 
   root.render(
     <StrictMode>
-      <RouterProvider router={router} />
+      <ErrorBoundary fallback="An error happened!" onError={noop}>
+        <RouterProvider router={router} />
+      </ErrorBoundary>
     </StrictMode>,
   );
 

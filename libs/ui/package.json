@@ -1,0 +1,54 @@
+{
+  "exports": {
+    "./package.json": "./package.json",
+    "./atoms": {
+      "production": {
+        "types": "./atoms/index.d.ts",
+        "import": "./atoms/index.mjs",
+        "default": "./atoms/index.js"
+      },
+      "default": {
+        "types": "./src/atoms/index.ts",
+        "import": "./src/atoms/index.ts"
+      }
+    },
+    "./molecules": {
+      "production": {
+        "types": "./molecules/index.d.ts",
+        "import": "./molecules/index.mjs",
+        "default": "./molecules/index.js"
+      },
+      "default": {
+        "types": "./src/molecules/index.ts",
+        "import": "./src/molecules/index.ts"
+      }
+    },
+    "./organisms": {
+      "production": {
+        "types": "./organisms/index.d.ts",
+        "import": "./organisms/index.mjs",
+        "default": "./organisms/index.js"
+      },
+      "default": {
+        "types": "./src/organisms/index.ts",
+        "import": "./src/organisms/index.ts"
+      }
+    },
+    "./templates": {
+      "production": {
+        "types": "./templates/index.d.ts",
+        "import": "./templates/index.mjs",
+        "default": "./templates/index.js"
+      },
+      "default": {
+        "types": "./src/templates/index.ts",
+        "import": "./src/templates/index.ts"
+      }
+    }
+  },
+  "name": "@monorepo/ui",
+  "peerDependencies": {
+    "react": "^18.0.0"
+  },
+  "version": "0.0.1"
+}
