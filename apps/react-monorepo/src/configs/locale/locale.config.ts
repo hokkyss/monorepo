@@ -1,4 +1,4 @@
-import { use } from 'i18next';
+import { createInstance } from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
 import mainEnTranslation from '../../pages/main/translations/en.translation.json';
@@ -19,14 +19,13 @@ const resources = {
  */
 export type LanguageResource = (typeof resources)[Languages.EN];
 
-export default function initInternationalization() {
-  use(initReactI18next).init({
-    debug: __DEV__,
-    fallbackLng: Languages.EN,
-    fallbackNS: false,
-    lng: Languages.EN,
-    ns: Object.keys(routeMap),
-    resources,
-    returnNull: false,
-  });
-}
+export const i18n = createInstance({
+  debug: __DEV__,
+  fallbackLng: Languages.EN,
+  fallbackNS: false,
+  lng: Languages.EN,
+  ns: Object.keys(routeMap),
+  returnNull: false,
+});
+
+i18n.use(initReactI18next).init();

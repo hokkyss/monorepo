@@ -2,10 +2,13 @@ import { useBoolean } from '@monorepo/shared/hooks';
 import { useSuspenseTodos } from '@monorepo/todo/react';
 import { useTranslation } from 'react-i18next';
 
-import initInternationalization from '../../configs/locale/locale.config';
+import { Languages, i18n } from '../../configs/locale/locale.config';
 import queryClient from '../../configs/react-query/react-query.config';
 
-initInternationalization();
+import mainRoute from './main.route';
+import enTranslations from './translations/en.translation.json';
+
+i18n.addResources(Languages.EN, mainRoute.name, enTranslations);
 
 export default function MainPage() {
   const [val, { toggle }] = useBoolean();
