@@ -25,6 +25,7 @@ export const i18n = createInstance({
   fallbackNS: false,
   lng: Languages.EN,
   ns: Object.keys(routeMap),
+  resources,
   returnNull: false,
 });
 
