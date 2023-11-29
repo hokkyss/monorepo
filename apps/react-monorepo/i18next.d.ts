@@ -1,7 +1,6 @@
 import 'i18next';
 
-import type { LanguageResource } from './src/configs/locale/locale.config';
-import type { RouteName } from './src/configs/route-map/route-map.config';
+import type { LanguageResource, RouteName } from './src/configs/locale/locale.config';
 
 declare module 'i18next' {
   interface CustomTypeOptions {
