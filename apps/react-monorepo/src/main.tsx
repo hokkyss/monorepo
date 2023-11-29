@@ -8,6 +8,7 @@ import { createRoot } from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import routeMap from './configs/route-map/route-map.config';
+import loginRoute from './pages/login/login.route';
 import mainRoute from './pages/main/main.route';
 import reportAccessibility from './reports/accessibility/accessibility.report';
 import reportWebVitals from './reports/web-vitals/web-vitals.report';
@@ -15,7 +16,7 @@ import { resolveRoute } from './utils/router/router.util';
 
 const rootElement = document.getElementById('root');
 
-const router = createBrowserRouter([mainRoute].map((route) => resolveRoute(route, routeMap)));
+const router = createBrowserRouter([mainRoute, loginRoute].map((route) => resolveRoute(route, routeMap)));
 
 if (rootElement) {
   const root = createRoot(rootElement);

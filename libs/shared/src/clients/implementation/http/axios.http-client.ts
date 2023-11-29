@@ -25,7 +25,7 @@ export default class AxiosHttpClient extends BaseHttpClient {
 
     return this.axios
       .delete<T>(urlcat(url, searchParams), {
-        headers: headers,
+        headers,
         signal,
       })
       .then((resp) => resp.data);

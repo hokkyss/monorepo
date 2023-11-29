@@ -32,6 +32,7 @@
           }
         ],
         "no-console": "error",
+        "object-shorthand": "error",
         "perfectionist/sort-classes": "off",
         "perfectionist/sort-imports": [
           "error",
@@ -52,6 +53,11 @@
         ]
       }
     },
+    {
+      "extends": ["plugin:@nx/react-base", "plugin:@nx/react-jsx"],
+      "files": ["*.tsx", "*.jsx"]
+    },
+    { "extends": ["plugin:@nx/react-typescript"], "files": ["*.tsx"] },
     {
       "extends": ["plugin:@nx/typescript", "alloy/typescript"],
       "files": ["*.ts", "*.tsx"],
