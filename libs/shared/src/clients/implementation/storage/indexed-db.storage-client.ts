@@ -60,7 +60,7 @@ export default class IndexedDBClient extends StorageClient {
   public override getItem<T>(options: GetOptionsWithDefaultValue<T>): Promise<T>;
   public override async getItem<T>({
     defaultValue,
-    deserialize = JSON.parse,
+    deserialize = (val) => val,
     key,
   }: GetOptions<T> | GetOptionsWithDefaultValue<T>): Promise<T | undefined> {
     const db = await this.getDb();
@@ -107,7 +107,7 @@ export default class IndexedDBClient extends StorageClient {
 
   public override setItem<T>(options: SetOptions<T>): Promise<boolean>;
 
-  public override async setItem<T>({ key, serialize = JSON.stringify, value }: SetOptions<T>) {
+  public override async setItem<T>({ key, serialize = (val) => val, value }: SetOptions<T>) {
     const db = await this.getDb();
 
     return new Promise<boolean>((resolve, reject) => {

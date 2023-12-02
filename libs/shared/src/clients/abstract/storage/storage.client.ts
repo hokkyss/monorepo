@@ -4,16 +4,16 @@ export type DefaultOptions = {
 
 export type GetOptions<T> = DefaultOptions & {
   defaultValue?: never;
-  deserialize?: (value: string) => T;
+  deserialize?: (value: any) => T;
 };
 
 export type GetOptionsWithDefaultValue<T> = DefaultOptions & {
   defaultValue: T;
-  deserialize?: (value: string) => T;
+  deserialize?: (value: any) => T;
 };
 
 export type SetOptions<T> = DefaultOptions & {
-  serialize?: (value: T) => string;
+  serialize?: (value: T) => any;
   value: T;
 };
 
