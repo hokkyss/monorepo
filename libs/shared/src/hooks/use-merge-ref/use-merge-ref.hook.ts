@@ -21,7 +21,5 @@ export default function useMergeRef<T>(...refs: (ForwardedRef<T> | RefCallback<T
     [refs],
   );
 
-  const mergedRef = useMemo(() => (refs.every((ref) => !ref) ? null : applyRef), [applyRef, refs]);
-
-  return mergedRef;
+  return useMemo(() => (refs.every((ref) => !ref) ? null : applyRef), [applyRef, refs]);
 }

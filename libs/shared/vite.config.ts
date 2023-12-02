@@ -10,8 +10,9 @@ import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 
 import pkg from './package.json';
+import { getSetupFiles } from './tests/utils/get-setup-files.util';
 
-export default defineConfig((configEnv) => ({
+export default defineConfig(async (configEnv) => ({
   build: {
     lib: {
       entry: {
@@ -50,8 +51,14 @@ export default defineConfig((configEnv) => ({
     cache: {
       dir: '../../node_modules/.vitest',
     },
-    environment: 'node',
+    clearMocks: true,
+    coverage: {
+      provider: 'v8',
+    },
+    environment: 'happy-dom',
     globals: true,
     include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+    mockReset: true,
+    setupFiles: await getSetupFiles(),
   } satisfies InlineConfig,
 }));

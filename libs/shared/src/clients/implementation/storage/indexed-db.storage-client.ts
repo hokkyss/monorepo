@@ -1,3 +1,10 @@
+import type {
+  DefaultOptions,
+  GetOptions,
+  GetOptionsWithDefaultValue,
+  SetOptions,
+} from '../../abstract/storage/storage.client';
+
 import { injectable, singleton } from 'tsyringe';
 
 import StorageClient from '../../abstract/storage/storage.client';
@@ -29,7 +36,7 @@ export default class IndexedDBClient extends StorageClient {
     });
   }
 
-  public override async deleteItem(key: string) {
+  public override async deleteItem({ key }: DefaultOptions) {
     const db = await this.getDb();
 
     return new Promise<boolean>((resolve, reject) => {
@@ -48,10 +55,14 @@ export default class IndexedDBClient extends StorageClient {
       transaction.commit();
     });
   }
-  public override getItem<T>(key: string, deserialize?: (value: string) => T): Promise<T | undefined>;
-  public override getItem<T>(key: string, deserialize: (value: string) => T, defaultValue: T): Promise<T>;
 
-  public override async getItem<T>(key: string, deserialize: (value: string) => T = JSON.parse, defaultValue?: T) {
+  public override getItem<T>(options: GetOptions<T>): Promise<T | undefined>;
+  public override getItem<T>(options: GetOptionsWithDefaultValue<T>): Promise<T>;
+  public override async getItem<T>({
+    defaultValue,
+    deserialize = JSON.parse,
+    key,
+  }: GetOptions<T> | GetOptionsWithDefaultValue<T>): Promise<T | undefined> {
     const db = await this.getDb();
 
     return new Promise<T | undefined>((resolve, reject) => {
@@ -74,7 +85,7 @@ export default class IndexedDBClient extends StorageClient {
     });
   }
 
-  public override async has(key: string) {
+  public override async has({ key }: DefaultOptions) {
     const db = await this.getDb();
 
     return new Promise<boolean>((resolve, reject) => {
@@ -94,7 +105,9 @@ export default class IndexedDBClient extends StorageClient {
     });
   }
 
-  public override async setItem<T>(key: string, value: T, serialize: (value: T) => string = JSON.stringify) {
+  public override setItem<T>(options: SetOptions<T>): Promise<boolean>;
+
+  public override async setItem<T>({ key, serialize = JSON.stringify, value }: SetOptions<T>) {
     const db = await this.getDb();
 
     return new Promise<boolean>((resolve, reject) => {
@@ -113,7 +126,6 @@ export default class IndexedDBClient extends StorageClient {
       transaction.commit();
     });
   }
-
   private async getDb() {
     return new Promise<IDBDatabase>((resolve, reject) => {
       const request = indexedDB.open(this.name);

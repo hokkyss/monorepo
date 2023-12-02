@@ -6,7 +6,9 @@
         "alloy",
         "alloy/react",
         "plugin:perfectionist/recommended-natural",
-        "plugin:@tanstack/eslint-plugin-query/recommended"
+        "plugin:@tanstack/eslint-plugin-query/recommended",
+        "plugin:@nx/react-base",
+        "plugin:@nx/react-jsx"
       ],
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "rules": {
@@ -54,12 +56,7 @@
       }
     },
     {
-      "extends": ["plugin:@nx/react-base", "plugin:@nx/react-jsx"],
-      "files": ["*.tsx", "*.jsx"]
-    },
-    { "extends": ["plugin:@nx/react-typescript"], "files": ["*.tsx"] },
-    {
-      "extends": ["plugin:@nx/typescript", "alloy/typescript"],
+      "extends": ["plugin:@nx/typescript", "alloy/typescript", "plugin:@nx/react-typescript"],
       "files": ["*.ts", "*.tsx"],
       "rules": {
         "@typescript-eslint/consistent-type-definitions": "off",

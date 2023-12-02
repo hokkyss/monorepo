@@ -1,4 +1,7 @@
 {
+  "devDependencies": {
+    "msw": "^2.0.9"
+  },
   "exports": {
     "./package.json": "./package.json",
     "./types": {
@@ -96,7 +99,9 @@
     "axios": "1.6.2",
     "react": ">=18.0.0",
     "tsyringe": ">=4.8.0",
-    "urlcat": ">=3.0.0"
+    "urlcat": ">=3.0.0",
+    "reflect-metadata": "^0.1.13",
+    "@testing-library/react": "14.0.0"
   },
   "peerDependenciesMeta": {
     "axios": {

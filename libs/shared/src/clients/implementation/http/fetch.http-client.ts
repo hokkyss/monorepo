@@ -85,7 +85,7 @@ export default class FetchHttpClient extends BaseHttpClient {
       return fetch(urlcat(url, searchParams), {
         body: config.body,
         headers,
-        method: 'POST',
+        method: 'PUT',
         signal,
       }).then((resp) => resp.json());
     }
@@ -95,7 +95,7 @@ export default class FetchHttpClient extends BaseHttpClient {
     return fetch(urlcat(url, searchParams), {
       body: JSON.stringify('json' in config ? config.json : undefined),
       headers,
-      method: 'POST',
+      method: 'PUT',
       signal,
     }).then((resp) => resp.json());
   }

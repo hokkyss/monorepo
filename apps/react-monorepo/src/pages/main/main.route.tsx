@@ -5,13 +5,12 @@ import { Suspense, lazy } from 'react';
 const MainPage = lazy(() => import('./main.page'));
 
 const mainRoute: Route = {
-  children: [],
   element: (
     <Suspense fallback={<h1>Loading...</h1>}>
       <MainPage />
     </Suspense>
   ),
-  index: false,
+  index: true,
   name: 'main',
 };
 
