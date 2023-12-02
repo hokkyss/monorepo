@@ -53,7 +53,7 @@ export const i18n = createInstance({
 
 // i18n.init();
 
-const getT = <NS extends Namespace>(language: string, ns: NS) => i18n.getFixedT(language, ns as NS);
+const getT = <NS extends Namespace>(language: string, ns: NS) => i18n.getFixedT(language, ns);
 
 // #region UTILITY HOOKS
 export function useTranslation<NS extends Namespace>(ns: NS) {

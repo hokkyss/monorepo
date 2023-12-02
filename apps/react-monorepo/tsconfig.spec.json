@@ -1,7 +1,15 @@
 {
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
-    "types": ["vitest/globals", "vitest/importMeta", "vite/client", "node", "vitest"]
+    "types": [
+      "vitest/globals",
+      "vitest/importMeta",
+      "vite/client",
+      "node",
+      "vitest",
+      "@nx/react/typings/cssmodule.d.ts",
+      "@nx/react/typings/image.d.ts"
+    ]
   },
   "extends": "./tsconfig.json",
   "include": [
@@ -15,6 +23,5 @@
     "src/**/*.test.jsx",
     "src/**/*.spec.jsx",
     "src/**/*.d.ts"
-  ],
-  "types": ["@nx/react/typings/cssmodule.d.ts", "@nx/react/typings/image.d.ts"]
+  ]
 }
