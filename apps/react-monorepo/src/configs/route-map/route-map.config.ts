@@ -3,10 +3,10 @@ import type { RouteObject } from 'react-router-dom';
 
 import type { RouteName } from '../locale/locale.config';
 
-const routeMap = Object.freeze({
+const routeMap = {
   login: '/login',
   main: '/',
-} satisfies Record<RouteName, string>);
+} as const satisfies Record<RouteName, string>;
 
 export type Route = Except<RouteObject, 'children' | 'index' | 'path'> & {
   name: RouteName;
