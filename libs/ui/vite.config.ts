@@ -8,17 +8,13 @@ import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 
 import pkg from './package.json';
+import { createEntries } from './tests/utils/create-entries.util';
 import { getSetupFiles } from './tests/utils/get-setup-files.util';
 
 export default defineConfig(async (configEnv) => ({
   build: {
     lib: {
-      entry: {
-        'atoms/index': 'src/atoms',
-        'molecules/index': 'src/molecules',
-        'organisms/index': 'src/organisms',
-        'templates/index': 'src/templates',
-      },
+      entry: await createEntries(),
       formats: ['es', 'cjs'],
       name: 'shared',
     },
