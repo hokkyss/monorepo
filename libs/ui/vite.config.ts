@@ -8,8 +8,9 @@ import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 
 import pkg from './package.json';
+import { getSetupFiles } from './tests/utils/get-setup-files.util';
 
-export default defineConfig((configEnv) => ({
+export default defineConfig(async (configEnv) => ({
   build: {
     lib: {
       entry: {
@@ -42,5 +43,6 @@ export default defineConfig((configEnv) => ({
     environment: 'happy-dom',
     globals: true,
     include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+    setupFiles: await getSetupFiles(),
   } satisfies InlineConfig,
 }));

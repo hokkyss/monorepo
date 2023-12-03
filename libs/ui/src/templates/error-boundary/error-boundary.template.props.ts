@@ -11,8 +11,10 @@ export type ErrorBoundaryProps = {
 } & (
   | {
       Fallback: FunctionComponent<ErrorBoundaryFallbackProps>;
+      fallback?: never;
     }
   | {
+      Fallback?: never;
       fallback: ReactNode;
     }
 );

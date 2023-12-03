@@ -30,19 +30,15 @@ export default class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBo
 
   public render() {
     const { error } = this.state;
-    const { children } = this.props;
+    const { Fallback, children, fallback } = this.props;
 
     if (!error) {
       return children;
     }
 
-    if ('Fallback' in this.props) {
-      const { Fallback } = this.props;
-
+    if (Fallback) {
       return <Fallback error={error} reset={this.reset} />;
     }
-
-    const { fallback } = this.props;
 
     return fallback;
   }
