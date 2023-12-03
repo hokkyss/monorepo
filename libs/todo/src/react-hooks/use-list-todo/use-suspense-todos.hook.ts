@@ -33,4 +33,4 @@ export default function useSuspenseTodos(props: UseSuspenseTodosProps): UseSuspe
   );
 }
 
-useTodos.queryKey = 'todos';
+useSuspenseTodos.queryKey = useTodos.queryKey;
