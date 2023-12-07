@@ -25,7 +25,7 @@ export default function useSuspenseTodos(props: UseSuspenseTodosProps): UseSuspe
 
   return useSuspenseQuery(
     {
-      queryFn: () => todoService.list(),
+      queryFn: ({ signal }) => todoService.list(signal),
       queryKey: [useTodos.queryKey],
       ...options,
     },

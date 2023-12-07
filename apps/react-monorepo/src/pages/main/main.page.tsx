@@ -17,9 +17,11 @@ export default function MainPage() {
         </button>
       ))}
       <h1>{t('show-todo', { shown: val })}</h1>
-      <button onClick={toggle}>Toggle</button>
+      <button data-testid="main:toggle-todo-list" onClick={toggle}>
+        Toggle
+      </button>
       {val && (
-        <ol>
+        <ol data-testid="main:todo-list">
           {todos.data.map((todo) => (
             <li key={todo.id}>{todo.title}</li>
           ))}

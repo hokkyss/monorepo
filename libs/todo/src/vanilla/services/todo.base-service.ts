@@ -12,7 +12,7 @@ export default class TodoService extends AbstractTodoService {
     super();
   }
 
-  public override list(): Promise<ListTodoRes> {
-    return this.todoRepository.list({});
+  public override list(signal?: AbortSignal): Promise<ListTodoRes> {
+    return this.todoRepository.list({}, signal);
   }
 }

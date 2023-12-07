@@ -29,13 +29,13 @@ export default class FetchHttpClient extends BaseHttpClient {
   }
 
   public override async patch<T>(url: string, config: RequestOptions = {}): Promise<T> {
-    const { headers = {}, searchParams = {}, signal } = config;
+    const { body, headers = {}, json, searchParams = {}, signal } = config;
 
-    if ('body' in config && config.body) {
+    if (body) {
       headers['Content-Type'] = headers['Content-Type'] || 'multipart/form-data';
 
       return fetch(urlcat(url, searchParams), {
-        body: config.body,
+        body,
         headers,
         method: 'PATCH',
         signal,
@@ -45,7 +45,7 @@ export default class FetchHttpClient extends BaseHttpClient {
     headers['Content-Type'] = headers['Content-Type'] || 'application/json';
 
     return fetch(urlcat(url, searchParams), {
-      body: JSON.stringify('json' in config ? config.json : undefined),
+      body: JSON.stringify(json),
       headers,
       method: 'PATCH',
       signal,
@@ -53,13 +53,13 @@ export default class FetchHttpClient extends BaseHttpClient {
   }
 
   public override async post<T>(url: string, config: RequestOptions = {}): Promise<T> {
-    const { headers = {}, searchParams = {}, signal } = config;
+    const { body, headers = {}, json, searchParams = {}, signal } = config;
 
-    if ('body' in config && config.body) {
+    if (body) {
       headers['Content-Type'] = headers['Content-Type'] || 'multipart/form-data';
 
       return fetch(urlcat(url, searchParams), {
-        body: config.body,
+        body,
         headers,
         method: 'POST',
         signal,
@@ -69,7 +69,7 @@ export default class FetchHttpClient extends BaseHttpClient {
     headers['Content-Type'] = headers['Content-Type'] || 'application/json';
 
     return fetch(urlcat(url, searchParams), {
-      body: JSON.stringify('json' in config ? config.json : undefined),
+      body: JSON.stringify(json),
       headers,
       method: 'POST',
       signal,
@@ -77,13 +77,13 @@ export default class FetchHttpClient extends BaseHttpClient {
   }
 
   public override async put<T>(url: string, config: RequestOptions = {}): Promise<T> {
-    const { headers = {}, searchParams = {}, signal } = config;
+    const { body, headers = {}, json, searchParams = {}, signal } = config;
 
-    if ('body' in config && config.body) {
+    if (body) {
       headers['Content-Type'] = headers['Content-Type'] || 'multipart/form-data';
 
       return fetch(urlcat(url, searchParams), {
-        body: config.body,
+        body,
         headers,
         method: 'PUT',
         signal,
@@ -93,7 +93,7 @@ export default class FetchHttpClient extends BaseHttpClient {
     headers['Content-Type'] = headers['Content-Type'] || 'application/json';
 
     return fetch(urlcat(url, searchParams), {
-      body: JSON.stringify('json' in config ? config.json : undefined),
+      body: JSON.stringify(json),
       headers,
       method: 'PUT',
       signal,

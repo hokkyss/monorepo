@@ -45,13 +45,13 @@ export default class AxiosHttpClient extends BaseHttpClient {
   }
 
   public override async patch<T>(url: string, config: RequestOptions = {}): Promise<T> {
-    const { headers = {}, searchParams = {}, signal } = config;
+    const { body, headers = {}, json, searchParams = {}, signal } = config;
 
-    if ('body' in config && config.body) {
+    if (body) {
       headers['Content-Type'] = headers['Content-Type'] || 'multipart/form-data';
 
       return (
-        await this.axios.patchForm(urlcat(url, searchParams), config.body, {
+        await this.axios.patchForm(urlcat(url, searchParams), body, {
           headers,
           signal,
         })
@@ -61,7 +61,7 @@ export default class AxiosHttpClient extends BaseHttpClient {
     headers['Content-Type'] = headers['Content-Type'] || 'application/json';
 
     return (
-      await this.axios.patch(urlcat(url, searchParams), 'json' in config && config.json ? config.json : undefined, {
+      await this.axios.patch(urlcat(url, searchParams), json, {
         // NOTE: if 'Content-Type' header is provided, use it. If not, use default application/json
         headers,
         signal,
@@ -70,12 +70,12 @@ export default class AxiosHttpClient extends BaseHttpClient {
   }
 
   public override async post<T>(url: string, config: RequestOptions = {}): Promise<T> {
-    const { headers = {}, searchParams = {}, signal } = config;
+    const { body, headers = {}, json, searchParams = {}, signal } = config;
 
-    if ('body' in config && config.body) {
+    if (body) {
       headers['Content-Type'] = headers['Content-Type'] || 'multipart/form-data';
 
-      return await this.axios.postForm(urlcat(url, searchParams), config.body, {
+      return await this.axios.postForm(urlcat(url, searchParams), body, {
         headers,
         signal,
       });
@@ -84,7 +84,7 @@ export default class AxiosHttpClient extends BaseHttpClient {
     headers['Content-Type'] = headers['Content-Type'] || 'application/json';
 
     return (
-      await this.axios.post(urlcat(url, searchParams), 'json' in config && config.json ? config.json : undefined, {
+      await this.axios.post(urlcat(url, searchParams), json, {
         headers,
         signal,
       })
@@ -92,12 +92,12 @@ export default class AxiosHttpClient extends BaseHttpClient {
   }
 
   public override async put<T>(url: string, config: RequestOptions = {}): Promise<T> {
-    const { headers = {}, searchParams = {}, signal } = config;
+    const { body, headers = {}, json, searchParams = {}, signal } = config;
 
-    if ('body' in config && config.body) {
+    if (body) {
       headers['Content-Type'] = headers['Content-Type'] || 'multipart/form-data';
 
-      return await this.axios.putForm(urlcat(url, searchParams), config.body, {
+      return await this.axios.putForm(urlcat(url, searchParams), body, {
         headers,
         signal,
       });
@@ -106,7 +106,7 @@ export default class AxiosHttpClient extends BaseHttpClient {
     headers['Content-Type'] = headers['Content-Type'] || 'application/json';
 
     return (
-      await this.axios.put(urlcat(url, searchParams), 'json' in config && config.json ? config.json : undefined, {
+      await this.axios.put(urlcat(url, searchParams), json, {
         headers,
         signal,
       })

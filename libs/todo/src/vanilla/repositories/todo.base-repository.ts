@@ -11,9 +11,10 @@ export default class TodoRepository extends AbstractTodoRepository {
     super();
   }
 
-  public override list(params: ListTodoReq): Promise<ListTodoRes> {
+  public override list(params: ListTodoReq, signal?: AbortSignal): Promise<ListTodoRes> {
     return this.httpClient.get<ListTodoRes>('https://jsonplaceholder.typicode.com/todos', {
       searchParams: params,
+      signal,
     });
   }
 }

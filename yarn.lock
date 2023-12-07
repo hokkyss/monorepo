@@ -2160,8 +2160,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@monorepo/shared@portal:../../libs/shared::locator=%40monorepo%2Freact-monorepo%40workspace%3Aapps%2Freact-monorepo"
   peerDependencies:
+    "@testing-library/react": 14.0.0
     axios: 1.6.2
     react: ">=18.0.0"
+    reflect-metadata: ^0.1.13
     tsyringe: ">=4.8.0"
     urlcat: ">=3.0.0"
   peerDependenciesMeta:
@@ -2180,8 +2182,10 @@ __metadata:
   dependencies:
     msw: "npm:^2.0.9"
   peerDependencies:
+    "@testing-library/react": 14.0.0
     axios: 1.6.2
     react: ">=18.0.0"
+    reflect-metadata: ^0.1.13
     tsyringe: ">=4.8.0"
     urlcat: ">=3.0.0"
   peerDependenciesMeta:

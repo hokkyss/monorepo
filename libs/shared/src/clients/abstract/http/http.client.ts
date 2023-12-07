@@ -4,13 +4,15 @@ export type RequestOptions = {
   signal?: AbortSignal;
 } & (
   | {
+      body?: FormData;
+      json?: never;
+    }
+  | {
+      body?: never;
       /**
        * Any value accepted by `JSON.stringify`
        */
       json?: unknown;
-    }
-  | {
-      body?: FormData;
     }
 );
 

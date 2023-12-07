@@ -20,7 +20,7 @@ export default function useTodos(props: UseTodosProps): UseQueryResult<ListTodoR
 
   return useQuery(
     {
-      queryFn: () => todoService.list(),
+      queryFn: ({ signal }) => todoService.list(signal),
       queryKey: [useTodos.queryKey],
       ...options,
     },
