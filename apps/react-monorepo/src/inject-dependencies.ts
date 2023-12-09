@@ -8,5 +8,5 @@ import { container } from 'tsyringe';
 
 container.register(HttpClient.token, { useFactory: () => new AxiosHttpClient() });
 container.register(StorageClient.token, { useFactory: () => new IndexedDBClient('indexedDB') });
-container.register(AbstractTodoRepository.token, TodoRepository);
-container.register(AbstractTodoService.token, TodoService);
+container.register(AbstractTodoRepository.token, { useClass: TodoRepository });
+container.register(AbstractTodoService.token, { useClass: TodoService });
