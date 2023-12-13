@@ -1,8 +1,8 @@
-import type { AxiosInstance, CreateAxiosDefaults } from 'axios';
+import type { AxiosInstance } from 'axios';
 
 import type { RequestOptions } from '../../abstract/http/http.client';
 
-import axiosStatic from 'axios';
+import axiosStatic, { CreateAxiosDefaults } from 'axios';
 import { injectable, singleton } from 'tsyringe';
 import urlcat from 'urlcat';
 

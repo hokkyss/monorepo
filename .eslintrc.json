@@ -60,6 +60,7 @@
       "files": ["*.ts", "*.tsx"],
       "rules": {
         "@typescript-eslint/consistent-type-definitions": "off",
+        "@typescript-eslint/consistent-type-exports": "error",
         "@typescript-eslint/no-empty-interface": "off"
       }
     },

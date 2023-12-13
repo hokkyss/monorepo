@@ -4,6 +4,7 @@
     "@nx/js:library": {
       "includeBabelRc": false,
       "js": false,
+      "setParserOptionsProject": true,
       "testEnvironment": "node",
       "unitTestRunner": "vitest"
     },
@@ -15,6 +16,7 @@
         "js": false,
         "linter": "eslint",
         "routing": true,
+        "setParserOptionsProject": true,
         "style": "css",
         "unitTestRunner": "vitest"
       },
@@ -28,6 +30,7 @@
         "component": false,
         "js": "false",
         "linter": "eslint",
+        "setParserOptionsProject": true,
         "style": "css",
         "unitTestRunner": "vitest"
       }

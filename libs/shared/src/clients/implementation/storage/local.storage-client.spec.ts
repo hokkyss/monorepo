@@ -6,8 +6,10 @@ describe('LocalStorageClient', () => {
   const client = new LocalStorageClient();
 
   it('should call `localStorage` getItem', () => {
+    const mockGetItem = vi.spyOn(mockLocalStorage, 'getItem');
+
     client.getItem({ key: 'key' });
 
-    expect(mockLocalStorage.getItem).toBeCalledWith('key');
+    expect(mockGetItem).toBeCalledWith('key');
   });
 });

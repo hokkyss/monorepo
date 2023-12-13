@@ -82,15 +82,16 @@
       }
     },
     "./hooks": {
+      "react": {
+        "types": "./src/hooks/index.ts",
+        "default": "./src/hooks/index.ts"
+      },
       "production": {
         "types": "./hooks/index.d.ts",
         "import": "./hooks.js",
         "default": "./hooks.cjs"
       },
-      "default": {
-        "types": "./src/hooks/index.ts",
-        "default": "./src/hooks/index.ts"
-      }
+      "default": null
     }
   },
   "license": "UNLICENSED",

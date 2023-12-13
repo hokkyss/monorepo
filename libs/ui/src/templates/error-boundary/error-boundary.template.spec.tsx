@@ -30,10 +30,10 @@ describe('ErrorBoundary', () => {
     expect(onError).not.toBeCalled();
   });
 
-  it('should render fallback element if an error was thrown', () => {
+  it('should render fallback element if an error was thrown', (ctx) => {
     const onError = vi.fn();
     const Component: FunctionComponent = () => {
-      throw new Error('dummy error');
+      throw new Error(`error on ${ctx.task.name}`);
     };
 
     const screen = render(
@@ -48,9 +48,9 @@ describe('ErrorBoundary', () => {
     expect(screen.queryByTestId('children')).toBeNull();
   });
 
-  it('should call onError with the thrown error', () => {
+  it('should call onError with the thrown error', (ctx) => {
     const onError = vi.fn();
-    const thrownError = new Error('dummy error');
+    const thrownError = new Error(`error on ${ctx.task.name}`);
     const Component: FunctionComponent = () => {
       throw thrownError;
     };
@@ -67,9 +67,9 @@ describe('ErrorBoundary', () => {
     expect(onError).toBeCalledWithNArguments(2);
   });
 
-  it('should render fallback element with the thrown error', () => {
+  it('should render fallback element with the thrown error', (ctx) => {
     const onError = vi.fn();
-    const thrownError = new Error('dummy error');
+    const thrownError = new Error(`error on ${ctx.task.name}`);
     const Component: FunctionComponent = () => {
       throw thrownError;
     };
