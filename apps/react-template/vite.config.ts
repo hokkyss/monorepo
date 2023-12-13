@@ -41,7 +41,7 @@ export default defineConfig((configEnv) => {
         ],
       },
     },
-    cacheDir: '../../node_modules/.vite/react-monorepo',
+    cacheDir: '../../node_modules/.vite/react-template',
     define: {
       __DEV__: configEnv.mode === 'development',
       global: 'window',

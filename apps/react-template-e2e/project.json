@@ -1,0 +1,24 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "implicitDependencies": ["react-template"],
+  "name": "react-template-e2e",
+  "projectType": "application",
+  "sourceRoot": "apps/react-template-e2e/src",
+  "tags": ["type:app", "name:react-template"],
+  "targets": {
+    "e2e": {
+      "executor": "@nx/playwright:playwright",
+      "options": {
+        "config": "apps/react-template-e2e/playwright.config.ts"
+      },
+      "outputs": ["{workspaceRoot}/dist/.playwright/apps/react-template-e2e"]
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": ["apps/react-template-e2e/**/*.{js,ts}"]
+      },
+      "outputs": ["{options.outputFile}"]
+    }
+  }
+}

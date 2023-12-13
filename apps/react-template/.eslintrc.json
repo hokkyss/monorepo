@@ -5,7 +5,7 @@
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "parserOptions": {
-        "project": ["apps/react-monorepo/tsconfig.*?.json"]
+        "project": ["apps/react-template/tsconfig.*?.json"]
       },
       "rules": {}
     },

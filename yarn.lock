@@ -2134,9 +2134,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@monorepo/react-monorepo@workspace:apps/react-monorepo":
+"@monorepo/react-template@workspace:apps/react-template":
   version: 0.0.0-use.local
-  resolution: "@monorepo/react-monorepo@workspace:apps/react-monorepo"
+  resolution: "@monorepo/react-template@workspace:apps/react-template"
   dependencies:
     "@axe-core/react": "npm:^4.8.1"
     "@floating-ui/react": "npm:^0.26.2"
@@ -2156,9 +2156,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@monorepo/shared@portal:../../libs/shared::locator=%40monorepo%2Freact-monorepo%40workspace%3Aapps%2Freact-monorepo":
+"@monorepo/shared@portal:../../libs/shared::locator=%40monorepo%2Freact-template%40workspace%3Aapps%2Freact-template":
   version: 0.0.0-use.local
-  resolution: "@monorepo/shared@portal:../../libs/shared::locator=%40monorepo%2Freact-monorepo%40workspace%3Aapps%2Freact-monorepo"
+  resolution: "@monorepo/shared@portal:../../libs/shared::locator=%40monorepo%2Freact-template%40workspace%3Aapps%2Freact-template"
   peerDependencies:
     "@testing-library/react": 14.0.0
     axios: 1.6.2
@@ -2258,9 +2258,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@monorepo/todo@portal:../../libs/todo::locator=%40monorepo%2Freact-monorepo%40workspace%3Aapps%2Freact-monorepo":
+"@monorepo/todo@portal:../../libs/todo::locator=%40monorepo%2Freact-template%40workspace%3Aapps%2Freact-template":
   version: 0.0.0-use.local
-  resolution: "@monorepo/todo@portal:../../libs/todo::locator=%40monorepo%2Freact-monorepo%40workspace%3Aapps%2Freact-monorepo"
+  resolution: "@monorepo/todo@portal:../../libs/todo::locator=%40monorepo%2Freact-template%40workspace%3Aapps%2Freact-template"
   peerDependencies:
     "@monorepo/shared": 0.0.1
     "@tanstack/react-query": ">=5.0.0"
@@ -2280,9 +2280,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@monorepo/ui@portal:../../libs/ui::locator=%40monorepo%2Freact-monorepo%40workspace%3Aapps%2Freact-monorepo":
+"@monorepo/ui@portal:../../libs/ui::locator=%40monorepo%2Freact-template%40workspace%3Aapps%2Freact-template":
   version: 0.0.0-use.local
-  resolution: "@monorepo/ui@portal:../../libs/ui::locator=%40monorepo%2Freact-monorepo%40workspace%3Aapps%2Freact-monorepo"
+  resolution: "@monorepo/ui@portal:../../libs/ui::locator=%40monorepo%2Freact-template%40workspace%3Aapps%2Freact-template"
   peerDependencies:
     react: ^18.0.0
   languageName: node

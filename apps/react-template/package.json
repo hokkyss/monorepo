@@ -19,6 +19,6 @@
     "vite-plugin-svgr": "^4.2.0"
   },
   "license": "UNLICENSED",
-  "name": "@monorepo/react-monorepo",
+  "name": "@monorepo/react-template",
   "version": "0.0.1"
 }

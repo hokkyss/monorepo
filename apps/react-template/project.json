@@ -1,9 +1,9 @@
 {
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "name": "react-monorepo",
+  "name": "react-template",
   "projectType": "application",
-  "sourceRoot": "apps/react-monorepo/src",
-  "tags": ["type:app", "name:react-monorepo"],
+  "sourceRoot": "apps/react-template/src",
+  "tags": ["type:app", "name:react-template"],
   "targets": {
     "build": {
       "configurations": {
@@ -17,54 +17,54 @@
       "defaultConfiguration": "production",
       "executor": "@nx/vite:build",
       "options": {
-        "outputPath": "dist/apps/react-monorepo"
+        "outputPath": "dist/apps/react-template"
       },
       "outputs": ["{options.outputPath}"]
     },
     "lint": {
       "executor": "@nx/eslint:lint",
       "options": {
-        "lintFilePatterns": ["apps/react-monorepo/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["apps/react-template/**/*.{ts,tsx,js,jsx}"]
       },
       "outputs": ["{options.outputFile}"]
     },
     "preview": {
       "configurations": {
         "development": {
-          "buildTarget": "react-monorepo:build:development"
+          "buildTarget": "react-template:build:development"
         },
         "production": {
-          "buildTarget": "react-monorepo:build:production"
+          "buildTarget": "react-template:build:production"
         }
       },
       "defaultConfiguration": "development",
       "executor": "@nx/vite:preview-server",
       "options": {
-        "buildTarget": "react-monorepo:build"
+        "buildTarget": "react-template:build"
       }
     },
     "serve": {
       "configurations": {
         "development": {
-          "buildTarget": "react-monorepo:build:development",
+          "buildTarget": "react-template:build:development",
           "hmr": true
         },
         "production": {
-          "buildTarget": "react-monorepo:build:production",
+          "buildTarget": "react-template:build:production",
           "hmr": false
         }
       },
       "defaultConfiguration": "development",
       "executor": "@nx/vite:dev-server",
       "options": {
-        "buildTarget": "react-monorepo:build"
+        "buildTarget": "react-template:build"
       }
     },
     "test": {
       "executor": "@nx/vite:test",
       "options": {
         "passWithNoTests": true,
-        "reportsDirectory": "../../coverage/apps/react-monorepo"
+        "reportsDirectory": "../../coverage/apps/react-template"
       },
       "outputs": ["{options.reportsDirectory}"]
     }
