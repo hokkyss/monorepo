@@ -49,7 +49,11 @@ export default defineConfig(async (configEnv) => ({
     nxViteTsPaths({
       debug: configEnv.mode === 'development',
     }),
-    dts({ entryRoot: 'src', skipDiagnostics: true, tsConfigFilePath: path.join(__dirname, 'tsconfig.lib.json') }),
+    dts({
+      entryRoot: 'src',
+      skipDiagnostics: true,
+      tsConfigFilePath: path.join(__dirname, 'tsconfig.lib.json'),
+    }),
   ],
   test: {
     cache: {

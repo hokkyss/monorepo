@@ -28,7 +28,11 @@ export default defineConfig(async (configEnv) => ({
   plugins: [
     react({ tsDecorators: true }),
     nxViteTsPaths({ debug: configEnv.mode === 'development' }),
-    dts({ entryRoot: 'src', skipDiagnostics: true, tsConfigFilePath: path.join(__dirname, 'tsconfig.lib.json') }),
+    dts({
+      entryRoot: 'src',
+      skipDiagnostics: true,
+      tsConfigFilePath: path.join(__dirname, 'tsconfig.lib.json'),
+    }),
   ],
   // Uncomment this if you are using workers.
   // worker: {
@@ -36,9 +40,14 @@ export default defineConfig(async (configEnv) => ({
   // },
   test: {
     cache: { dir: '../../node_modules/.vitest' },
+    clearMocks: true,
+    coverage: {
+      provider: 'v8',
+    },
     environment: 'happy-dom',
     globals: true,
     include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+    mockReset: true,
     setupFiles: await getSetupFiles(),
   } satisfies InlineConfig,
 }));

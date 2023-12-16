@@ -30,16 +30,27 @@ export default defineConfig((configEnv) => ({
     nxViteTsPaths({
       debug: configEnv.mode === 'development',
     }),
-    dts({ entryRoot: 'src', skipDiagnostics: true, tsConfigFilePath: path.join(__dirname, 'tsconfig.lib.json') }),
+    dts({
+      entryRoot: 'src',
+      skipDiagnostics: true,
+      tsConfigFilePath: path.join(__dirname, 'tsconfig.lib.json'),
+    }),
   ],
   // Uncomment this if you are using workers.
   // worker: {
   //  plugins: [ nxViteTsPaths() ],
   // },
   test: {
-    cache: { dir: '../../node_modules/.vitest' },
+    cache: {
+      dir: '../../node_modules/.vitest',
+    },
+    clearMocks: true,
+    coverage: {
+      provider: 'v8',
+    },
     environment: 'node',
     globals: true,
     include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+    mockReset: true,
   } satisfies InlineConfig,
 }));
