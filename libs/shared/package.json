@@ -101,6 +101,10 @@
       "default": "./src/react/hooks/use-previous.hook.ts"
     }
   },
+  "files": [
+    "./dist",
+    "./package.json"
+  ],
   "license": "UNLICENSED",
   "name": "@monorepo/shared",
   "peerDependencies": {

@@ -18,6 +18,10 @@
       "default": "./src/react/index.ts"
     }
   },
+  "files": [
+    "./dist",
+    "./package.json"
+  ],
   "name": "@monorepo/todo",
   "peerDependencies": {
     "@monorepo/shared": "0.0.1",
