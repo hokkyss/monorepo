@@ -6,92 +6,99 @@
     "./package.json": "./package.json",
     "./types": {
       "production": {
-        "types": "./types/shared.type.d.ts",
-        "import": "./types.js",
-        "default": "./types.cjs"
+        "types": "./dist/types/shared.type.d.ts",
+        "import": "./dist/types/shared.js",
+        "default": "./dist/types/shared.cjs"
       },
-      "default": {
-        "types": "./src/types/shared.type.ts",
-        "default": "./src/types/shared.type.ts"
-      }
+      "default": "./src/types/shared.type.ts"
     },
-    "./clients": {
+    "./clients/abstract": {
       "production": {
-        "types": "./clients/abstract/index.d.ts",
-        "import": "./clients/abstract.js",
-        "default": "./clients/abstract.cjs"
+        "types": "./dist/clients/abstract/index.d.ts",
+        "import": "./dist/clients/abstract/index.js",
+        "default": "./dist/clients/abstract/index.cjs"
       },
-      "default": {
-        "types": "./src/clients/abstract/index.ts",
-        "import": "./src/clients/abstract/index.ts"
-      }
+      "default": "./src/clients/abstract/index.ts"
     },
-    "./clients/http/axios": {
+    "./clients/implementation/http/axios": {
       "production": {
-        "types": "./clients/implementation/http/axios.http-client.d.ts",
-        "import": "./clients/http/axios.js",
-        "default": "./clients/http/axios.cjs"
+        "types": "./dist/clients/implementation/http/axios.http-client.d.ts",
+        "import": "./dist/clients/implementation/http/axios.js",
+        "default": "./dist/clients/implementation/http/axios.cjs"
       },
-      "default": {
-        "types": "./src/clients/implementation/http/axios.http-client.ts",
-        "default": "./src/clients/implementation/http/axios.http-client.ts"
-      }
+      "default": "./src/clients/implementation/http/axios.http-client.ts"
     },
-    "./clients/http/fetch": {
+    "./clients/implementation/http/fetch": {
       "production": {
-        "types": "./clients/implementation/http/fetch.http-client.d.ts",
-        "import": "./clients/http/fetch.js",
-        "default": "./clients/http/fetch.cjs"
+        "types": "./dist/clients/implementation/http/fetch.http-client.d.ts",
+        "import": "./dist/clients/implementation/http/fetch.js",
+        "default": "./dist/clients/implementation/http/fetch.cjs"
       },
-      "default": {
-        "types": "./src/clients/implementation/http/fetch.http-client.ts",
-        "default": "./src/clients/implementation/http/fetch.http-client.ts"
-      }
+      "default": "./src/clients/implementation/http/fetch.http-client.ts"
     },
-    "./clients/storage/local": {
+    "./clients/implementation/storage/local": {
       "production": {
-        "types": "./clients/implementation/storage/local.storage-client.d.ts",
-        "import": "./clients/storage/local.js",
-        "default": "./clients/storage/local.cjs"
+        "types": "./dist/clients/implementation/storage/local.storage-client.d.ts",
+        "import": "./dist/clients/implementation/storage/local.js",
+        "default": "./dist/clients/implementation/storage/local.cjs"
       },
-      "default": {
-        "types": "./src/clients/implementation/storage/local.storage-client.ts",
-        "default": "./src/clients/implementation/storage/local.storage-client.ts"
-      }
+      "default": "./src/clients/implementation/storage/local.storage-client.ts"
     },
-    "./clients/storage/indexed-db": {
+    "./clients/implementation/storage/indexed-db": {
       "production": {
-        "types": "./clients/implementation/storage/indexed-db.storage-client.d.ts",
-        "import": "./clients/storage/indexed-db.js",
-        "default": "./clients/storage/indexed-db.cjs"
+        "types": "./dist/clients/implementation/storage/indexed-db.storage-client.d.ts",
+        "import": "./dist/clients/implementation/storage/indexed-db.js",
+        "default": "./dist/clients/implementation/storage/indexed-db.cjs"
       },
-      "default": {
-        "types": "./src/clients/implementation/storage/indexed-db.storage-client.ts",
-        "default": "./src/clients/implementation/storage/indexed-db.storage-client.ts"
-      }
+      "default": "./src/clients/implementation/storage/indexed-db.storage-client.ts"
     },
-    "./clients/storage/session": {
+    "./clients/implementation/storage/session": {
       "production": {
-        "types": "./clients/implementation/storage/session.storage-client.d.ts",
-        "import": "./clients/storage/session.js",
-        "default": "./clients/storage/session.cjs"
+        "types": "./dist/clients/implementation/storage/session.storage-client.d.ts",
+        "import": "./dist/clients/implementation/storage/session.js",
+        "default": "./dist/clients/implementation/storage/session.cjs"
       },
-      "default": {
-        "types": "./src/clients/implementation/storage/session.storage-client.ts",
-        "default": "./src/clients/implementation/storage/session.storage-client.ts"
-      }
+      "default": "./src/clients/implementation/storage/session.storage-client.ts"
     },
-    "./hooks": {
-      "react": {
-        "types": "./src/hooks/index.ts",
-        "default": "./src/hooks/index.ts"
-      },
+    "./react": {
       "production": {
-        "types": "./hooks/index.d.ts",
-        "import": "./hooks.js",
-        "default": "./hooks.cjs"
+        "types": "./dist/react/index.d.ts",
+        "import": "./dist/react/index.js",
+        "default": "./dist/react/index.cjs"
       },
-      "default": null
+      "default": "./src/react/index.ts"
+    },
+    "./react/hooks": {
+      "production": {
+        "types": "./dist/react/hooks/index.d.ts",
+        "import": "./dist/react/hooks/index.js",
+        "default": "./dist/react/hooks/index.cjs"
+      },
+      "default": "./src/react/hooks/index.ts"
+    },
+    "./react/hooks/use-boolean": {
+      "production": {
+        "types": "./dist/react/hooks/use-boolean.hook.d.ts",
+        "import": "./dist/react/hooks/use-boolean.js",
+        "default": "./dist/react/hooks/use-boolean.cjs"
+      },
+      "default": "./src/react/hooks/use-boolean.hook.ts"
+    },
+    "./react/hooks/use-merge-ref": {
+      "production": {
+        "types": "./dist/react/hooks/use-merge-ref.hook.d.ts",
+        "import": "./dist/react/hooks/use-merge-ref.js",
+        "default": "./dist/react/hooks/use-merge-ref.cjs"
+      },
+      "default": "./src/react/hooks/use-merge-ref.hook.ts"
+    },
+    "./react/hooks/use-previous": {
+      "production": {
+        "types": "./dist/react/hooks/use-previous.hook.d.ts",
+        "import": "./dist/react/hooks/use-previous.js",
+        "default": "./dist/react/hooks/use-previous.cjs"
+      },
+      "default": "./src/react/hooks/use-previous.hook.ts"
     }
   },
   "license": "UNLICENSED",

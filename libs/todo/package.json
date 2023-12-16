@@ -3,25 +3,19 @@
     "./package.json": "./package.json",
     "./vanilla": {
       "production": {
-        "types": "./vanilla/index.d.ts",
-        "require": "./index.cjs",
-        "default": "./index.js"
+        "types": "./dist/vanilla/index.d.ts",
+        "require": "./dist/index.cjs",
+        "default": "./dist/index.js"
       },
-      "default": {
-        "types": "./src/vanilla/index.ts",
-        "default": "./src/vanilla/index.ts"
-      }
+      "default": "./src/vanilla/index.ts"
     },
     "./react": {
       "production": {
-        "types": "./react-hooks/index.d.ts",
-        "require": "./react.cjs",
-        "default": "./react.js"
+        "types": "./dist/react/index.d.ts",
+        "require": "./dist/react/index.cjs",
+        "default": "./dist/react/index.js"
       },
-      "default": {
-        "types": "./src/react-hooks/index.ts",
-        "default": "./src/react-hooks/index.ts"
-      }
+      "default": "./src/react/index.ts"
     }
   },
   "name": "@monorepo/todo",

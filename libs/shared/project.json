@@ -8,7 +8,7 @@
     "build": {
       "executor": "@nx/vite:build",
       "options": {
-        "outputPath": "dist/libs/shared"
+        "outputPath": "libs/shared/dist"
       },
       "outputs": ["{options.outputPath}"]
     },

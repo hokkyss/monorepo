@@ -1,8 +1,8 @@
 import 'reflect-metadata';
 
-import { HttpClient, StorageClient } from '@monorepo/shared/clients';
-import AxiosHttpClient from '@monorepo/shared/clients/http/axios';
-import IndexedDBClient from '@monorepo/shared/clients/storage/indexed-db';
+import { HttpClient, StorageClient } from '@monorepo/shared/clients/abstract';
+import AxiosHttpClient from '@monorepo/shared/clients/implementation/http/axios';
+import IndexedDBClient from '@monorepo/shared/clients/implementation/storage/indexed-db';
 import { AbstractTodoRepository, AbstractTodoService, TodoRepository, TodoService } from '@monorepo/todo/vanilla';
 import { container } from 'tsyringe';
 

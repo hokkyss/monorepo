@@ -3,6 +3,7 @@ import type { QueryClient, UseSuspenseQueryOptions, UseSuspenseQueryResult } fro
 
 import type { ListTodoRes } from '../../vanilla/models/list.model';
 
+import { useMergeRef } from '@monorepo/shared/react';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { useState } from 'react';
 import { container } from 'tsyringe';
@@ -21,6 +22,7 @@ type UseSuspenseTodosProps = Except<
 export default function useSuspenseTodos(props: UseSuspenseTodosProps): UseSuspenseQueryResult<ListTodoRes, Error> {
   const { queryClient, ...options } = props;
 
+  useMergeRef();
   const [todoService] = useState(() => container.resolve<TodoService>(TodoService.token));
 
   return useSuspenseQuery(

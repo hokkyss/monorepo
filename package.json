@@ -73,7 +73,9 @@
     "lint": "nx affected -t lint",
     "test": "nx affected -t test",
     "e2e": "nx affected -t e2e",
-    "postinstall": "husky install"
+    "postinstall": "husky install",
+    "migrate": "nx migrate latest",
+    "migrate:run": "nx migrate run"
   },
   "version": "0.0.1",
   "workspaces": [

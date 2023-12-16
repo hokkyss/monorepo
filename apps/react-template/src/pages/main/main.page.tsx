@@ -1,4 +1,4 @@
-import { useBoolean } from '@monorepo/shared/hooks';
+import { useBoolean } from '@monorepo/shared/react/hooks';
 import { useSuspenseTodos } from '@monorepo/todo/react';
 
 import { Languages, i18n, useTranslation } from '../../configs/locale/locale.config';

@@ -3,47 +3,35 @@
     "./package.json": "./package.json",
     "./atoms": {
       "production": {
-        "types": "./atoms/index.d.ts",
-        "import": "./atoms/index.mjs",
-        "default": "./atoms/index.js"
+        "types": "./dist/atoms/index.d.ts",
+        "import": "./dist/atoms/index.mjs",
+        "default": "./dist/atoms/index.js"
       },
-      "default": {
-        "types": "./src/atoms/index.ts",
-        "import": "./src/atoms/index.ts"
-      }
+      "default": "./src/atoms/index.ts"
     },
     "./molecules": {
       "production": {
-        "types": "./molecules/index.d.ts",
-        "import": "./molecules/index.mjs",
-        "default": "./molecules/index.js"
+        "types": "./dist/molecules/index.d.ts",
+        "import": "./dist/molecules/index.mjs",
+        "default": "./dist/molecules/index.js"
       },
-      "default": {
-        "types": "./src/molecules/index.ts",
-        "import": "./src/molecules/index.ts"
-      }
+      "default": "./src/molecules/index.ts"
     },
     "./organisms": {
       "production": {
-        "types": "./organisms/index.d.ts",
-        "import": "./organisms/index.mjs",
-        "default": "./organisms/index.js"
+        "types": "./dist/organisms/index.d.ts",
+        "import": "./dist/organisms/index.mjs",
+        "default": "./dist/organisms/index.js"
       },
-      "default": {
-        "types": "./src/organisms/index.ts",
-        "import": "./src/organisms/index.ts"
-      }
+      "default": "./src/organisms/index.ts"
     },
     "./templates": {
       "production": {
-        "types": "./templates/index.d.ts",
-        "import": "./templates/index.mjs",
-        "default": "./templates/index.js"
+        "types": "./dist/templates/index.d.ts",
+        "import": "./dist/templates/index.mjs",
+        "default": "./dist/templates/index.js"
       },
-      "default": {
-        "types": "./src/templates/index.ts",
-        "import": "./src/templates/index.ts"
-      }
+      "default": "./src/templates/index.ts"
     }
   },
   "name": "@monorepo/ui",

@@ -14,7 +14,7 @@ export default defineConfig((configEnv) => ({
     lib: {
       entry: {
         index: 'src/vanilla/index.ts',
-        react: 'src/react-hooks/index.ts',
+        'react/index': 'src/react/index.ts',
       },
       formats: ['es', 'cjs'],
       name: 'todo',
