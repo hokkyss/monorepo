@@ -1,3 +1,5 @@
+import type { Observable } from 'rxjs';
+
 export type RequestOptions = {
   headers?: Record<string, string>;
   searchParams?: Record<string, string | string[]> | URLSearchParams;
@@ -21,28 +23,28 @@ export type RequestOptions = {
 export default abstract class HttpClient {
   public static readonly token = Symbol.for(this.name);
 
-  public delete<T>(url: string, config?: RequestOptions): Promise<T>;
-  public delete<T>(): Promise<T> {
+  public delete<T>(url: string, config?: RequestOptions): Observable<T>;
+  public delete<T>(): Observable<T> {
     throw new Error(`No implementation of HttpClient.${this.delete.name} available`);
   }
 
-  public get<T>(url: string, config?: RequestOptions): Promise<T>;
-  public get<T>(): Promise<T> {
+  public get<T>(url: string, config?: RequestOptions): Observable<T>;
+  public get<T>(): Observable<T> {
     throw new Error(`No implementation of HttpClient.${this.get.name} available`);
   }
 
-  public patch<T>(url: string, config?: RequestOptions): Promise<T>;
-  public patch<T>(): Promise<T> {
+  public patch<T>(url: string, config?: RequestOptions): Observable<T>;
+  public patch<T>(): Observable<T> {
     throw new Error(`No implementation of HttpClient.${this.patch.name} available`);
   }
 
-  public post<T>(url: string, config?: RequestOptions): Promise<T>;
-  public post<T>(): Promise<T> {
+  public post<T>(url: string, config?: RequestOptions): Observable<T>;
+  public post<T>(): Observable<T> {
     throw new Error(`No implementation of HttpClient.${this.post.name} available`);
   }
 
-  public put<T>(url: string, config?: RequestOptions): Promise<T>;
-  public put<T>(): Promise<T> {
+  public put<T>(url: string, config?: RequestOptions): Observable<T>;
+  public put<T>(): Observable<T> {
     throw new Error(`No implementation of HttpClient.${this.put.name} available`);
   }
 }

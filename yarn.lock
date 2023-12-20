@@ -2249,6 +2249,7 @@ __metadata:
     react-router-dom: "npm:6.11.2"
     reflect-metadata: "npm:^0.1.13"
     rollup: "npm:^4.5.0"
+    rxjs: "npm:^7.8.1"
     tsyringe: "npm:^4.8.0"
     typescript: "npm:~5.2.2"
     urlcat: "patch:urlcat@npm%3A3.1.0#~/.yarn/patches/urlcat-npm-3.1.0-306b3d4263.patch"
@@ -10924,7 +10925,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rxjs@npm:^7.5.5, rxjs@npm:^7.8.0":
+"rxjs@npm:^7.5.5, rxjs@npm:^7.8.0, rxjs@npm:^7.8.1":
   version: 7.8.1
   resolution: "rxjs@npm:7.8.1"
   dependencies:

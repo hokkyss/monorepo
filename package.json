@@ -6,6 +6,7 @@
     "react-dom": "18.2.0",
     "react-router-dom": "6.11.2",
     "reflect-metadata": "^0.1.13",
+    "rxjs": "^7.8.1",
     "tsyringe": "^4.8.0",
     "urlcat": "patch:urlcat@npm%3A3.1.0#~/.yarn/patches/urlcat-npm-3.1.0-306b3d4263.patch"
   },

@@ -1,5 +1,6 @@
 import { HttpResponse, http } from 'msw';
 import { setupServer } from 'msw/node';
+import { lastValueFrom } from 'rxjs';
 
 import AxiosHttpClient from './axios.http-client';
 
@@ -23,31 +24,31 @@ describe('AxiosHttpClient', () => {
   const axiosClient = new AxiosHttpClient();
 
   it('should call axios with correct response', async () => {
-    const response = await axiosClient.get('https://example.com');
+    const response = await lastValueFrom(axiosClient.get('https://example.com'));
 
     expect(response).toEqual({ method: 'GET' });
   });
 
   it('should call axios with Pcorrect response', async () => {
-    const response = await axiosClient.post('https://example.com');
+    const response = await lastValueFrom(axiosClient.post('https://example.com'));
 
     expect(response).toEqual({ method: 'POST' });
   });
 
   it('should call axios with PAcorrect response', async () => {
-    const response = await axiosClient.patch('https://example.com');
+    const response = await lastValueFrom(axiosClient.patch('https://example.com'));
 
     expect(response).toEqual({ method: 'PATCH' });
   });
 
   it('should call axios with correct response', async () => {
-    const response = await axiosClient.put('https://example.com');
+    const response = await lastValueFrom(axiosClient.put('https://example.com'));
 
     expect(response).toEqual({ method: 'PUT' });
   });
 
   it('should call axios with DELcorrect response', async () => {
-    const response = await axiosClient.delete('https://example.com');
+    const response = await lastValueFrom(axiosClient.delete('https://example.com'));
 
     expect(response).toEqual({ method: 'DELETE' });
   });

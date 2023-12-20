@@ -1,5 +1,6 @@
 import { HttpResponse, http } from 'msw';
 import { setupServer } from 'msw/node';
+import { lastValueFrom } from 'rxjs';
 
 import FetchHttpClient from './fetch.http-client';
 
@@ -23,31 +24,31 @@ describe('FetchHttpClient', () => {
   const fetchClient = new FetchHttpClient();
 
   it('should call fetch with GET method', async () => {
-    const response = await fetchClient.get('https://example.com');
+    const response = await lastValueFrom(fetchClient.get('https://example.com'));
 
     expect(response).toEqual({ method: 'GET' });
   });
 
   it('should call fetch with POST method', async () => {
-    const response = await fetchClient.post('https://example.com');
+    const response = await lastValueFrom(fetchClient.post('https://example.com'));
 
     expect(response).toEqual({ method: 'POST' });
   });
 
   it('should call fetch with PATCH method', async () => {
-    const response = await fetchClient.patch('https://example.com');
+    const response = await lastValueFrom(fetchClient.patch('https://example.com'));
 
     expect(response).toEqual({ method: 'PATCH' });
   });
 
   it('should call fetch with PUT method', async () => {
-    const response = await fetchClient.put('https://example.com');
+    const response = await lastValueFrom(fetchClient.put('https://example.com'));
 
     expect(response).toEqual({ method: 'PUT' });
   });
 
   it('should call fetch with DELETE method', async () => {
-    const response = await fetchClient.delete('https://example.com');
+    const response = await lastValueFrom(fetchClient.delete('https://example.com'));
 
     expect(response).toEqual({ method: 'DELETE' });
   });
