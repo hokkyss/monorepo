@@ -29,9 +29,9 @@ export default defineConfig((configEnv) => {
 
   return {
     build: {
-      // commonjsOptions: {
-      //   transformMixedEsModules: true,
-      // },
+      commonjsOptions: {
+        transformMixedEsModules: true,
+      },
       emptyOutDir: true,
       outDir: '../../dist/apps/react-template',
       reportCompressedSize: true,
