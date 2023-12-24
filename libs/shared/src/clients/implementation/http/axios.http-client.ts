@@ -1,17 +1,15 @@
-import type { AxiosInstance } from 'axios';
+import type { AxiosInstance, CreateAxiosDefaults } from 'axios';
 import type { Observable } from 'rxjs';
 
 import type { RequestOptions } from '../../abstract/http/http.client';
 
-import axiosStatic, { CreateAxiosDefaults } from 'axios';
+import axiosStatic from 'axios';
 import { defer, map } from 'rxjs';
 import { injectable, singleton } from 'tsyringe';
 import urlcat from 'urlcat';
 
 import BaseHttpClient from '../../abstract/http/http.client';
 
-@singleton()
-@injectable()
 export default class AxiosHttpClient extends BaseHttpClient {
   private axios: AxiosInstance;
 
@@ -119,3 +117,7 @@ export default class AxiosHttpClient extends BaseHttpClient {
     ).pipe(map((resp) => resp.data));
   }
 }
+
+// FIXME: temporary workaround to fix rollup errors
+singleton()(AxiosHttpClient);
+injectable()(AxiosHttpClient);

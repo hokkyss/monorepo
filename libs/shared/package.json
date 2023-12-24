@@ -111,7 +111,7 @@
     "@testing-library/react": "14.0.0",
     "axios": "1.6.2",
     "react": "^18.0.0",
-    "reflect-metadata": "^0.1.13",
+    "reflect-metadata": "^0.2.1",
     "rxjs": "^7.8.1",
     "tsyringe": "^4.8.0",
     "urlcat": "^3.0.0"

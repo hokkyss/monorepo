@@ -1,4 +1,4 @@
-import 'reflect-metadata';
+import 'reflect-metadata/lite';
 
 import { HttpClient, StorageClient } from '@monorepo/shared/clients/abstract';
 import AxiosHttpClient from '@monorepo/shared/clients/implementation/http/axios';

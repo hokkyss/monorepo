@@ -23,9 +23,6 @@
     },
     "lint": {
       "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": ["apps/react-template/**/*.{ts,tsx,js,jsx}"]
-      },
       "outputs": ["{options.outputFile}"]
     },
     "preview": {

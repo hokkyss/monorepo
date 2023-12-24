@@ -29,13 +29,13 @@ describe('AxiosHttpClient', () => {
     expect(response).toEqual({ method: 'GET' });
   });
 
-  it('should call axios with Pcorrect response', async () => {
+  it('should call axios with correct response', async () => {
     const response = await lastValueFrom(axiosClient.post('https://example.com'));
 
     expect(response).toEqual({ method: 'POST' });
   });
 
-  it('should call axios with PAcorrect response', async () => {
+  it('should call axios with correct response', async () => {
     const response = await lastValueFrom(axiosClient.patch('https://example.com'));
 
     expect(response).toEqual({ method: 'PATCH' });
@@ -47,7 +47,7 @@ describe('AxiosHttpClient', () => {
     expect(response).toEqual({ method: 'PUT' });
   });
 
-  it('should call axios with DELcorrect response', async () => {
+  it('should call axios with correct response', async () => {
     const response = await lastValueFrom(axiosClient.delete('https://example.com'));
 
     expect(response).toEqual({ method: 'DELETE' });

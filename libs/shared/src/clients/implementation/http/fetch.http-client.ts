@@ -8,8 +8,6 @@ import urlcat from 'urlcat';
 
 import BaseHttpClient from '../../abstract/http/http.client';
 
-@singleton()
-@injectable()
 export default class FetchHttpClient extends BaseHttpClient {
   public override delete<T>(url: string, config: RequestOptions = {}): Observable<T> {
     const { headers = {}, searchParams = {}, signal } = config;
@@ -111,3 +109,7 @@ export default class FetchHttpClient extends BaseHttpClient {
     });
   }
 }
+
+// FIXME: temporary workaround to fix rollup errors
+singleton()(FetchHttpClient);
+injectable()(FetchHttpClient);

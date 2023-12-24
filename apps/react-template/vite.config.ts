@@ -1,10 +1,10 @@
-import type { Plugin, UserConfig } from 'vite';
-import type { InlineConfig } from 'vitest';
+import type { Plugin } from 'vite';
 
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import resolve from '@rollup/plugin-node-resolve';
 import react from '@vitejs/plugin-react-swc';
 import { readFileSync } from 'fs';
+import path from 'path';
 import { defineConfig, loadEnv, transformWithEsbuild } from 'vite';
 import svgr from 'vite-plugin-svgr';
 
@@ -23,20 +23,25 @@ const jsxInJs = (matchers: RegExp[]): Plugin => ({
 });
 
 export default defineConfig((configEnv) => {
-  const exportsConditions = ['react', configEnv.mode, 'browser', 'module', 'import', 'default', 'require'];
+  const exportsConditions = [configEnv.mode, 'browser', 'module', 'import', 'default', 'require'];
   const mainFields = ['exports', 'import', 'browser', 'module', 'main', 'jsnext:main', 'jsnext'];
   const extensions = ['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json', '.cjs', '.cts'];
 
   return {
     build: {
+      // commonjsOptions: {
+      //   transformMixedEsModules: true,
+      // },
+      emptyOutDir: true,
+      outDir: '../../dist/apps/react-template',
+      reportCompressedSize: true,
       rollupOptions: {
         plugins: [
           resolve({
-            browser: true,
             exportConditions: exportsConditions,
             extensions,
             mainFields,
-          }) as Plugin,
+          }),
           jsxInJs([]),
         ],
       },
@@ -52,9 +57,12 @@ export default defineConfig((configEnv) => {
     },
     optimizeDeps: {
       esbuildOptions: {
+        conditions: exportsConditions,
         jsx: 'automatic',
         loader: { '.js': 'jsx' },
+        mainFields,
         resolveExtensions: extensions,
+        tsconfig: path.resolve(__dirname, 'tsconfig.json'),
       },
     },
     plugins: [
@@ -89,6 +97,7 @@ export default defineConfig((configEnv) => {
       extensions,
       mainFields,
     },
+    root: __dirname,
     // Uncomment this if you are using workers.
     // worker: {
     //  plugins: [ nxViteTsPaths() ],
@@ -97,9 +106,16 @@ export default defineConfig((configEnv) => {
       cache: {
         dir: '../../node_modules/.vitest',
       },
+      clearMocks: true,
+      coverage: {
+        provider: 'v8',
+        reportsDirectory: '../../coverage/libs/shared',
+      },
       environment: 'happy-dom',
       globals: true,
       include: [`src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}`],
+      mockReset: true,
+      reporters: ['default'],
     },
-  } satisfies UserConfig & { test: InlineConfig };
+  };
 });

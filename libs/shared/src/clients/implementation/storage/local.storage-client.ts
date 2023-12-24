@@ -9,8 +9,6 @@ import { injectable, singleton } from 'tsyringe';
 
 import StorageClient from '../../abstract/storage/storage.client';
 
-@injectable()
-@singleton()
 export default class LocalStorageClient extends StorageClient {
   public override async clear() {
     try {
@@ -60,3 +58,7 @@ export default class LocalStorageClient extends StorageClient {
     }
   }
 }
+
+// FIXME: temporary workaround to fix rollup errors
+singleton()(LocalStorageClient);
+injectable()(LocalStorageClient);

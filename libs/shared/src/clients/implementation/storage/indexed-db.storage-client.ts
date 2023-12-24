@@ -9,8 +9,6 @@ import { injectable, singleton } from 'tsyringe';
 
 import StorageClient from '../../abstract/storage/storage.client';
 
-@injectable()
-@singleton()
 export default class IndexedDBClient extends StorageClient {
   public constructor(private readonly name: string) {
     super();
@@ -153,3 +151,7 @@ export default class IndexedDBClient extends StorageClient {
     });
   }
 }
+
+// FIXME: temporary workaround to fix rollup errors
+singleton()(IndexedDBClient);
+injectable()(IndexedDBClient);
