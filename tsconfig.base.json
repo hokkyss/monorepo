@@ -3,8 +3,10 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
+    "customConditions": ["browser", "module"],
     "declaration": false,
     "emitDecoratorMetadata": true,
+    "exactOptionalPropertyTypes": true,
     "experimentalDecorators": true,
     "importHelpers": true,
     "lib": ["es2020", "dom"],

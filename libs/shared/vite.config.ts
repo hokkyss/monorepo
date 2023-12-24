@@ -66,6 +66,8 @@ export default defineConfig(async (configEnv) => {
     plugins: [
       nxViteTsPaths({
         debug: configEnv.mode === 'development',
+        extensions,
+        mainFields,
       }),
       dts({
         entryRoot: 'src',

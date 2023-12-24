@@ -52,7 +52,11 @@ export default defineConfig(async (configEnv) => {
     },
     plugins: [
       react({ tsDecorators: true }),
-      nxViteTsPaths({ debug: configEnv.mode === 'development' }),
+      nxViteTsPaths({
+        debug: configEnv.mode === 'development',
+        extensions,
+        mainFields,
+      }),
       dts({
         entryRoot: 'src',
         skipDiagnostics: true,

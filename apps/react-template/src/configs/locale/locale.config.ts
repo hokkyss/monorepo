@@ -1,7 +1,7 @@
 import type { Namespace } from 'i18next';
 
 import { createInstance } from 'i18next';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import loginEnTranslation from '../../pages/login/translations/en.translation.json';
 import loginIdTranslation from '../../pages/login/translations/id.translation.json';
@@ -57,8 +57,10 @@ const getT = <NS extends Namespace>(language: string, ns: NS) => i18n.getFixedT(
 
 // #region UTILITY HOOKS
 export function useTranslation<NS extends Namespace>(ns: NS) {
-  const [t, setT] = useState(() => getT<NS>(i18n.language, ns));
+  const [lang, setLang] = useState(i18n.language);
   const [ready, setReady] = useState(i18n.isInitialized);
+
+  const tFunc = useMemo(() => getT(lang, ns), [lang, ns]);
 
   useEffect(() => {
     const changeReady = () => setReady(true);
@@ -68,13 +70,10 @@ export function useTranslation<NS extends Namespace>(ns: NS) {
     return () => i18n.off('initialized', changeReady);
   }, []);
 
-  useEffect(() => {
-    const changeTFunction = (lng: string) => setT(() => getT(lng, ns));
-
-    i18n.on('languageChanged', changeTFunction);
-
-    return () => i18n.off('languageChanged', changeTFunction);
-  }, [ns]);
+  const handleLanguageChange = useCallback((lng: string) => {
+    i18n.changeLanguage(lng);
+    setLang(lng);
+  }, []);
 
   if (!ready) {
     throw new Promise<void>((resolve) => {
@@ -82,6 +81,6 @@ export function useTranslation<NS extends Namespace>(ns: NS) {
     });
   }
 
-  return t;
+  return [tFunc, handleLanguageChange] as const;
 }
 // #endregion
