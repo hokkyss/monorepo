@@ -2164,6 +2164,7 @@ __metadata:
     axios: 1.6.2
     react: ^18.0.0
     reflect-metadata: ^0.1.13
+    rxjs: ^7.8.1
     tsyringe: ^4.8.0
     urlcat: ^3.0.0
   peerDependenciesMeta:
@@ -2186,6 +2187,7 @@ __metadata:
     axios: 1.6.2
     react: ^18.0.0
     reflect-metadata: ^0.1.13
+    rxjs: ^7.8.1
     tsyringe: ^4.8.0
     urlcat: ^3.0.0
   peerDependenciesMeta:
@@ -2266,6 +2268,7 @@ __metadata:
     "@monorepo/shared": 0.0.1
     "@tanstack/react-query": ">=5.0.0"
     react: ">=18.0.0"
+    rxjs: ^7.8.1
     tsyringe: ">=4.8.0"
   languageName: node
   linkType: soft
@@ -2277,6 +2280,7 @@ __metadata:
     "@monorepo/shared": 0.0.1
     "@tanstack/react-query": ">=5.0.0"
     react: ">=18.0.0"
+    rxjs: ^7.8.1
     tsyringe: ">=4.8.0"
   languageName: unknown
   linkType: soft

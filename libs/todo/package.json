@@ -27,8 +27,8 @@
     "@monorepo/shared": "0.0.1",
     "@tanstack/react-query": ">=5.0.0",
     "react": ">=18.0.0",
-    "tsyringe": ">=4.8.0",
-    "rxjs": "^7.8.1"
+    "rxjs": "^7.8.1",
+    "tsyringe": ">=4.8.0"
   },
   "type": "module",
   "version": "0.0.1"

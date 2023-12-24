@@ -23,28 +23,9 @@ export type RequestOptions = {
 export default abstract class HttpClient {
   public static readonly token = Symbol.for(this.name);
 
-  public delete<T>(url: string, config?: RequestOptions): Observable<T>;
-  public delete<T>(): Observable<T> {
-    throw new Error(`No implementation of HttpClient.${this.delete.name} available`);
-  }
-
-  public get<T>(url: string, config?: RequestOptions): Observable<T>;
-  public get<T>(): Observable<T> {
-    throw new Error(`No implementation of HttpClient.${this.get.name} available`);
-  }
-
-  public patch<T>(url: string, config?: RequestOptions): Observable<T>;
-  public patch<T>(): Observable<T> {
-    throw new Error(`No implementation of HttpClient.${this.patch.name} available`);
-  }
-
-  public post<T>(url: string, config?: RequestOptions): Observable<T>;
-  public post<T>(): Observable<T> {
-    throw new Error(`No implementation of HttpClient.${this.post.name} available`);
-  }
-
-  public put<T>(url: string, config?: RequestOptions): Observable<T>;
-  public put<T>(): Observable<T> {
-    throw new Error(`No implementation of HttpClient.${this.put.name} available`);
-  }
+  public abstract delete<T>(url: string, config?: RequestOptions): Observable<T>;
+  public abstract get<T>(url: string, config?: RequestOptions): Observable<T>;
+  public abstract patch<T>(url: string, config?: RequestOptions): Observable<T>;
+  public abstract post<T>(url: string, config?: RequestOptions): Observable<T>;
+  public abstract put<T>(url: string, config?: RequestOptions): Observable<T>;
 }
