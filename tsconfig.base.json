@@ -3,22 +3,24 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
-    "customConditions": ["browser", "module"],
+    "customConditions": ["browser", "module", "import", "default", "require"],
     "declaration": false,
     "emitDecoratorMetadata": true,
     "exactOptionalPropertyTypes": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "lib": ["es2020", "dom"],
-    "module": "esnext",
+    "lib": ["ES2020", "DOM"],
+    "module": "ESNext",
     "moduleResolution": "Bundler",
     "paths": {},
+    "resolveJsonModule": true,
+    "resolvePackageJsonExports": true,
     "rootDir": ".",
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
-    "target": "es2015"
+    "target": "ES2015"
   },
   "exclude": ["node_modules", "tmp"]
 }

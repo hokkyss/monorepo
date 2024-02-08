@@ -25,7 +25,7 @@ export default class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBo
   }
 
   public reset() {
-    this.setState({ error: undefined });
+    this.setState({});
   }
 
   public render() {

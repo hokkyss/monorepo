@@ -1,7 +1,7 @@
 import type { Mock } from 'vitest';
 
 expect.extend({
-  toBeCalledWithNArguments(received: Mock, expected: number) {
+  toHaveBeenCalledWithNArguments(received: Mock, expected: number) {
     const isCalled = received.mock.calls.some((callArgs) => this.equals(callArgs.length, expected));
 
     return {
@@ -10,7 +10,7 @@ expect.extend({
       pass: isCalled,
     };
   },
-  toBeCalledWithNthArgument(received: Mock, expected: unknown, n: number) {
+  toHaveBeenCalledWithNthArgument(received: Mock, expected: unknown, n: number) {
     const isCalled = received.mock.calls.some((callArgs) => this.equals(expected, callArgs[n]));
 
     return {

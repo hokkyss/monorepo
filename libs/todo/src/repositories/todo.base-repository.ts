@@ -1,6 +1,6 @@
 import type { ListTodoReq, ListTodoRes } from '../models/list.model';
 
-import { HttpClient } from '@monorepo/shared/clients/abstract';
+import { HttpClient } from '@monorepo/shared/clients/abstract/http';
 import { lastValueFrom } from 'rxjs';
 import { inject, injectable } from 'tsyringe';
 
@@ -16,7 +16,7 @@ export default class TodoRepository extends AbstractTodoRepository {
     return lastValueFrom(
       this.httpClient.get<ListTodoRes>('https://jsonplaceholder.typicode.com/todos', {
         searchParams: params,
-        signal,
+        ...(signal ? { signal } : {}),
       }),
     );
   }

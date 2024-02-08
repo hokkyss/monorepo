@@ -18,8 +18,7 @@ export default defineConfig((configEnv) => {
       emptyOutDir: true,
       lib: {
         entry: {
-          index: 'src/vanilla/index.ts',
-          'react/index': 'src/react/index.ts',
+          index: 'src/index.ts',
         },
         formats: ['es', 'cjs'],
         name: 'todo',

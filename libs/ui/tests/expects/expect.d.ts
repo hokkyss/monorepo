@@ -1,8 +1,8 @@
 import 'vitest';
 
 interface CustomMatchers<R = unknown> {
-  toBeCalledWithNArguments: (n: number) => R;
-  toBeCalledWithNthArgument: (arg: any, n: number) => R;
+  toHaveBeenCalledWithNArguments: (n: number) => R;
+  toHaveBeenCalledWithNthArgument: (arg: any, n: number) => R;
 }
 
 declare module 'vitest' {

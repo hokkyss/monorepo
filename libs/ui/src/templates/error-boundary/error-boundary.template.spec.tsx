@@ -63,8 +63,8 @@ describe('ErrorBoundary', () => {
       </ErrorBoundary>,
     );
 
-    expect(onError).toBeCalledWithNthArgument(thrownError, 0);
-    expect(onError).toBeCalledWithNArguments(2);
+    expect(onError).toHaveBeenCalledWithNthArgument(thrownError, 0);
+    expect(onError).toHaveBeenCalledWithNArguments(2);
   });
 
   it('should render fallback element with the thrown error', (ctx) => {

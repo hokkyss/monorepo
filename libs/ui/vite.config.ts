@@ -1,3 +1,5 @@
+/// <reference types="vitest" />
+
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import resolve from '@rollup/plugin-node-resolve';
 import react from '@vitejs/plugin-react-swc';
@@ -6,21 +8,27 @@ import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 
 import pkg from './package.json';
-import { createEntries } from './tests/utils/create-entries.util';
 import { getSetupFiles } from './tests/utils/get-setup-files.util';
 
 export default defineConfig(async (configEnv) => {
   const exportsConditions = [configEnv.mode, 'browser', 'module', 'import', 'default', 'require'];
   const mainFields = ['exports', 'import', 'browser', 'module', 'main', 'jsnext:main', 'jsnext'];
   const extensions = ['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json', '.cjs', '.cts'];
-  const tsconfig = path.join(__dirname, 'tsconfig.lib.json');
+  const tsconfig = path.resolve(__dirname, 'tsconfig.lib.json');
 
   return {
     build: {
       commonjsOptions: { transformMixedEsModules: true },
       emptyOutDir: true,
       lib: {
-        entry: await createEntries(),
+        entry: {
+          'atoms/index': path.resolve(__dirname, 'src', 'atoms'),
+          'hooks/index': path.resolve(__dirname, 'src', 'hooks'),
+          index: path.resolve(__dirname, 'src'),
+          'molecules/index': path.resolve(__dirname, 'src', 'molecules'),
+          'organisms/index': path.resolve(__dirname, 'src', 'organisms'),
+          'templates/index': path.resolve(__dirname, 'src', 'templates'),
+        },
         formats: ['es', 'cjs'],
         name: 'shared',
       },

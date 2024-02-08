@@ -17,22 +17,21 @@ export default defineConfig(async (configEnv) => {
 
   return {
     build: {
-      commonjsOptions: { transformMixedEsModules: true },
+      commonjsOptions: {
+        transformMixedEsModules: true,
+      },
       emptyOutDir: true,
       lib: {
         entry: {
-          'clients/abstract/index': 'src/clients/abstract/index.ts',
+          'clients/abstract/http/index': 'src/clients/abstract/http/index.ts',
+          'clients/abstract/storage/index': 'src/clients/abstract/storage/index.ts',
           'clients/implementation/http/axios': 'src/clients/implementation/http/axios.http-client.ts',
           'clients/implementation/http/fetch': 'src/clients/implementation/http/fetch.http-client.ts',
           'clients/implementation/storage/indexed-db':
             'src/clients/implementation/storage/indexed-db.storage-client.ts',
           'clients/implementation/storage/local': 'src/clients/implementation/storage/local.storage-client.ts',
           'clients/implementation/storage/session': 'src/clients/implementation/storage/session.storage-client.ts',
-          'react/hooks/index': 'src/react/hooks/index.ts',
-          'react/hooks/use-boolean': 'src/react/hooks/use-boolean.hook.ts',
-          'react/hooks/use-merge-ref': 'src/react/hooks/use-merge-ref.hook.ts',
-          'react/hooks/use-previous': 'src/react/hooks/use-previous.hook.ts',
-          'react/index': 'src/react/index.ts',
+          index: 'src/index.ts',
           'types/shared': 'src/types/shared.type.ts',
         },
         formats: ['es', 'cjs'],

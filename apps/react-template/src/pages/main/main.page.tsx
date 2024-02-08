@@ -1,13 +1,10 @@
-import { useBoolean } from '@monorepo/shared/react/hooks';
-import { useSuspenseTodos } from '@monorepo/todo/react';
-
 import { Languages, useTranslation } from '../../configs/locale/locale.config';
-import queryClient from '../../configs/react-query/react-query.config';
+
+import useTodos from './hooks/use-todos.hook';
 
 export default function MainPage() {
-  const [val, { toggle }] = useBoolean();
-  const todos = useSuspenseTodos({ queryClient });
-  const [t, setLang] = useTranslation('main');
+  const todos = useTodos();
+  const [, setLang] = useTranslation('main');
 
   return (
     <div>
@@ -16,11 +13,7 @@ export default function MainPage() {
           Change Language to: {lang}
         </button>
       ))}
-      <h1>{t('show-todo', { shown: val })}</h1>
-      <button data-testid="main:toggle-todo-list" onClick={toggle}>
-        Toggle
-      </button>
-      {val && (
+      {todos.data && (
         <ol data-testid="main:todo-list">
           {todos.data.map((todo) => (
             <li key={todo.id}>{todo.title}</li>

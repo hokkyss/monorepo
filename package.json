@@ -61,8 +61,7 @@
       "yarn lint"
     ],
     "*.{ts,tsx,js,jsx}": [
-      "yarn test",
-      "yarn e2e"
+      "yarn test"
     ]
   },
   "name": "@monorepo/source",

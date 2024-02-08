@@ -16,7 +16,7 @@ export default class FetchHttpClient extends BaseHttpClient {
       headers,
       method: 'DELETE',
       selector: (resp) => resp.json(),
-      signal,
+      ...(signal ? { signal } : {}),
     });
   }
 
@@ -27,7 +27,7 @@ export default class FetchHttpClient extends BaseHttpClient {
       headers,
       method: 'GET',
       selector: (resp) => resp.json(),
-      signal,
+      ...(signal ? { signal } : {}),
     });
   }
 
@@ -42,7 +42,7 @@ export default class FetchHttpClient extends BaseHttpClient {
         headers,
         method: 'PATCH',
         selector: (resp) => resp.json(),
-        signal,
+        ...(signal ? { signal } : {}),
       });
     }
 
@@ -53,7 +53,7 @@ export default class FetchHttpClient extends BaseHttpClient {
       headers,
       method: 'PATCH',
       selector: (resp) => resp.json(),
-      signal,
+      ...(signal ? { signal } : {}),
     });
   }
 
@@ -68,7 +68,7 @@ export default class FetchHttpClient extends BaseHttpClient {
         headers,
         method: 'POST',
         selector: (resp) => resp.json(),
-        signal,
+        ...(signal ? { signal } : {}),
       });
     }
 
@@ -79,7 +79,7 @@ export default class FetchHttpClient extends BaseHttpClient {
       headers,
       method: 'POST',
       selector: (resp) => resp.json(),
-      signal,
+      ...(signal ? { signal } : {}),
     });
   }
 
@@ -94,7 +94,7 @@ export default class FetchHttpClient extends BaseHttpClient {
         headers,
         method: 'PUT',
         selector: (resp) => resp.json(),
-        signal,
+        ...(signal ? { signal } : {}),
       });
     }
 
@@ -105,7 +105,7 @@ export default class FetchHttpClient extends BaseHttpClient {
       headers,
       method: 'PUT',
       selector: (resp) => resp.json(),
-      signal,
+      ...(signal ? { signal } : {}),
     });
   }
 }

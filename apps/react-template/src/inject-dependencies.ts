@@ -1,9 +1,10 @@
 import 'reflect-metadata/lite';
 
-import { HttpClient, StorageClient } from '@monorepo/shared/clients/abstract';
+import { HttpClient } from '@monorepo/shared/clients/abstract/http';
+import { StorageClient } from '@monorepo/shared/clients/abstract/storage';
 import AxiosHttpClient from '@monorepo/shared/clients/implementation/http/axios';
 import IndexedDBClient from '@monorepo/shared/clients/implementation/storage/indexed-db';
-import { AbstractTodoRepository, AbstractTodoService, TodoRepository, TodoService } from '@monorepo/todo/vanilla';
+import { AbstractTodoRepository, AbstractTodoService, TodoRepository, TodoService } from '@monorepo/todo';
 import { container } from 'tsyringe';
 
 container.register(HttpClient.token, { useFactory: () => new AxiosHttpClient() });

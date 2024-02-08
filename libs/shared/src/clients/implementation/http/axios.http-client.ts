@@ -26,7 +26,7 @@ export default class AxiosHttpClient extends BaseHttpClient {
     return defer(() =>
       this.axios.delete<T>(urlcat(url, searchParams), {
         headers,
-        signal,
+        ...(signal ? { signal } : {}),
       }),
     ).pipe(map((resp) => resp.data));
   }
@@ -39,7 +39,7 @@ export default class AxiosHttpClient extends BaseHttpClient {
     return defer(() =>
       this.axios.get<T>(urlcat(url, searchParams), {
         headers,
-        signal,
+        ...(signal ? { signal } : {}),
       }),
     ).pipe(map((resp) => resp.data));
   }
@@ -53,7 +53,7 @@ export default class AxiosHttpClient extends BaseHttpClient {
       return defer(() =>
         this.axios.patchForm<T>(urlcat(url, searchParams), body, {
           headers,
-          signal,
+          ...(signal ? { signal } : {}),
         }),
       ).pipe(map((resp) => resp.data));
     }
@@ -64,7 +64,7 @@ export default class AxiosHttpClient extends BaseHttpClient {
       this.axios.patch<T>(urlcat(url, searchParams), json, {
         // NOTE: if 'Content-Type' header is provided, use it. If not, use default application/json
         headers,
-        signal,
+        ...(signal ? { signal } : {}),
       }),
     ).pipe(map((resp) => resp.data));
   }
@@ -78,7 +78,7 @@ export default class AxiosHttpClient extends BaseHttpClient {
       return defer(() =>
         this.axios.postForm<T>(urlcat(url, searchParams), body, {
           headers,
-          signal,
+          ...(signal ? { signal } : {}),
         }),
       ).pipe(map((resp) => resp.data));
     }
@@ -88,7 +88,7 @@ export default class AxiosHttpClient extends BaseHttpClient {
     return defer(() =>
       this.axios.post<T>(urlcat(url, searchParams), json, {
         headers,
-        signal,
+        ...(signal ? { signal } : {}),
       }),
     ).pipe(map((resp) => resp.data));
   }
@@ -102,7 +102,7 @@ export default class AxiosHttpClient extends BaseHttpClient {
       return defer(() =>
         this.axios.putForm<T>(urlcat(url, searchParams), body, {
           headers,
-          signal,
+          ...(signal ? { signal } : {}),
         }),
       ).pipe(map((resp) => resp.data));
     }
@@ -112,7 +112,7 @@ export default class AxiosHttpClient extends BaseHttpClient {
     return defer(() =>
       this.axios.put<T>(urlcat(url, searchParams), json, {
         headers,
-        signal,
+        ...(signal ? { signal } : {}),
       }),
     ).pipe(map((resp) => resp.data));
   }

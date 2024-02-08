@@ -7,98 +7,74 @@
     "./types": {
       "production": {
         "types": "./dist/types/shared.type.d.ts",
-        "import": "./dist/types/shared.js",
-        "default": "./dist/types/shared.cjs"
+        "import": "./dist/types/shared.mjs",
+        "default": "./dist/types/shared.js"
       },
       "default": "./src/types/shared.type.ts"
     },
-    "./clients/abstract": {
+    "./clients/abstract/http": {
       "production": {
-        "types": "./dist/clients/abstract/index.d.ts",
-        "import": "./dist/clients/abstract/index.js",
-        "default": "./dist/clients/abstract/index.cjs"
+        "types": "./dist/clients/abstract/http/index.d.ts",
+        "import": "./dist/clients/abstract/http/index.mjs",
+        "default": "./dist/clients/abstract/http/index.js"
       },
-      "default": "./src/clients/abstract/index.ts"
+      "default": "./src/clients/abstract/http/index.ts"
+    },
+    "./clients/abstract/storage": {
+      "production": {
+        "types": "./dist/clients/abstract/storage/index.d.ts",
+        "import": "./dist/clients/abstract/storage/index.mjs",
+        "default": "./dist/clients/abstract/storage/index.js"
+      },
+      "default": "./src/clients/abstract/storage/index.ts"
     },
     "./clients/implementation/http/axios": {
       "production": {
         "types": "./dist/clients/implementation/http/axios.http-client.d.ts",
-        "import": "./dist/clients/implementation/http/axios.js",
-        "default": "./dist/clients/implementation/http/axios.cjs"
+        "import": "./dist/clients/implementation/http/axios.mjs",
+        "default": "./dist/clients/implementation/http/axios.js"
       },
       "default": "./src/clients/implementation/http/axios.http-client.ts"
     },
     "./clients/implementation/http/fetch": {
       "production": {
         "types": "./dist/clients/implementation/http/fetch.http-client.d.ts",
-        "import": "./dist/clients/implementation/http/fetch.js",
-        "default": "./dist/clients/implementation/http/fetch.cjs"
+        "import": "./dist/clients/implementation/http/fetch.mjs",
+        "default": "./dist/clients/implementation/http/fetch.js"
       },
       "default": "./src/clients/implementation/http/fetch.http-client.ts"
     },
     "./clients/implementation/storage/local": {
       "production": {
         "types": "./dist/clients/implementation/storage/local.storage-client.d.ts",
-        "import": "./dist/clients/implementation/storage/local.js",
-        "default": "./dist/clients/implementation/storage/local.cjs"
+        "import": "./dist/clients/implementation/storage/local.mjs",
+        "default": "./dist/clients/implementation/storage/local.js"
       },
       "default": "./src/clients/implementation/storage/local.storage-client.ts"
     },
     "./clients/implementation/storage/indexed-db": {
       "production": {
         "types": "./dist/clients/implementation/storage/indexed-db.storage-client.d.ts",
-        "import": "./dist/clients/implementation/storage/indexed-db.js",
-        "default": "./dist/clients/implementation/storage/indexed-db.cjs"
+        "import": "./dist/clients/implementation/storage/indexed-db.mjs",
+        "default": "./dist/clients/implementation/storage/indexed-db.js"
       },
       "default": "./src/clients/implementation/storage/indexed-db.storage-client.ts"
     },
     "./clients/implementation/storage/session": {
       "production": {
         "types": "./dist/clients/implementation/storage/session.storage-client.d.ts",
-        "import": "./dist/clients/implementation/storage/session.js",
-        "default": "./dist/clients/implementation/storage/session.cjs"
+        "import": "./dist/clients/implementation/storage/session.mjs",
+        "default": "./dist/clients/implementation/storage/session.js"
       },
       "default": "./src/clients/implementation/storage/session.storage-client.ts"
     },
-    "./react": {
+    ".": {
       "production": {
-        "types": "./dist/react/index.d.ts",
-        "import": "./dist/react/index.js",
-        "default": "./dist/react/index.cjs"
+        "types": "./dist/index.d.ts",
+        "import": "./dist/index.mjs",
+        "default": "./dist/index.js"
       },
-      "default": "./src/react/index.ts"
-    },
-    "./react/hooks": {
-      "production": {
-        "types": "./dist/react/hooks/index.d.ts",
-        "import": "./dist/react/hooks/index.js",
-        "default": "./dist/react/hooks/index.cjs"
-      },
-      "default": "./src/react/hooks/index.ts"
-    },
-    "./react/hooks/use-boolean": {
-      "production": {
-        "types": "./dist/react/hooks/use-boolean.hook.d.ts",
-        "import": "./dist/react/hooks/use-boolean.js",
-        "default": "./dist/react/hooks/use-boolean.cjs"
-      },
-      "default": "./src/react/hooks/use-boolean.hook.ts"
-    },
-    "./react/hooks/use-merge-ref": {
-      "production": {
-        "types": "./dist/react/hooks/use-merge-ref.hook.d.ts",
-        "import": "./dist/react/hooks/use-merge-ref.js",
-        "default": "./dist/react/hooks/use-merge-ref.cjs"
-      },
-      "default": "./src/react/hooks/use-merge-ref.hook.ts"
-    },
-    "./react/hooks/use-previous": {
-      "production": {
-        "types": "./dist/react/hooks/use-previous.hook.d.ts",
-        "import": "./dist/react/hooks/use-previous.js",
-        "default": "./dist/react/hooks/use-previous.cjs"
-      },
-      "default": "./src/react/hooks/use-previous.hook.ts"
+      "default": "./src/index.ts"
     }
   },
   "files": [
@@ -106,11 +82,12 @@
     "./package.json"
   ],
   "license": "UNLICENSED",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "name": "@monorepo/shared",
   "peerDependencies": {
     "@testing-library/react": "14.0.0",
     "axios": "1.6.2",
-    "react": "^18.0.0",
     "reflect-metadata": "^0.2.1",
     "rxjs": "^7.8.1",
     "tsyringe": "^4.8.0",
@@ -120,13 +97,11 @@
     "axios": {
       "optional": true
     },
-    "react": {
-      "optional": true
-    },
     "tsyringe": {
       "optional": true
     }
   },
-  "type": "module",
+  "types": "./dist/index.d.ts",
+  "typings": "./dist/index.d.ts",
   "version": "0.0.1"
 }

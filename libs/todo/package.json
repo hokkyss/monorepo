@@ -1,35 +1,28 @@
 {
   "exports": {
     "./package.json": "./package.json",
-    "./vanilla": {
+    ".": {
       "production": {
-        "types": "./dist/vanilla/index.d.ts",
-        "require": "./dist/index.cjs",
+        "types": "./dist/index.d.ts",
+        "import": "./dist/index.mjs",
         "default": "./dist/index.js"
       },
-      "default": "./src/vanilla/index.ts"
-    },
-    "./react": {
-      "production": {
-        "types": "./dist/react/index.d.ts",
-        "require": "./dist/react/index.cjs",
-        "default": "./dist/react/index.js"
-      },
-      "default": "./src/react/index.ts"
+      "default": "./src/index.ts"
     }
   },
   "files": [
     "./dist",
     "./package.json"
   ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "name": "@monorepo/todo",
   "peerDependencies": {
-    "@monorepo/shared": "0.0.1",
-    "@tanstack/react-query": ">=5.0.0",
-    "react": ">=18.0.0",
+    "@monorepo/shared": "portal:../shared",
     "rxjs": "^7.8.1",
     "tsyringe": ">=4.8.0"
   },
-  "type": "module",
+  "types": "./dist/index.d.ts",
+  "typings": "./dist/index.d.ts",
   "version": "0.0.1"
 }

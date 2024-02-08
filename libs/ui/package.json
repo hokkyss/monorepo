@@ -1,6 +1,14 @@
 {
   "exports": {
     "./package.json": "./package.json",
+    ".": {
+      "production": {
+        "types": "./dist/index.d.ts",
+        "import": "./dist/index.mjs",
+        "default": "./dist/index.js"
+      },
+      "default": "./src/index.ts"
+    },
     "./atoms": {
       "production": {
         "types": "./dist/atoms/index.d.ts",
@@ -32,15 +40,27 @@
         "default": "./dist/templates/index.js"
       },
       "default": "./src/templates/index.ts"
+    },
+    "./hooks": {
+      "production": {
+        "types": "./dist/hooks/index.d.ts",
+        "import": "./dist/hooks/index.mjs",
+        "default": "./dist/hooks/index.js"
+      },
+      "default": "./src/hooks/index.ts"
     }
   },
   "files": [
     "./dist",
     "./package.json"
   ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "name": "@monorepo/ui",
   "peerDependencies": {
     "react": "^18.0.0"
   },
+  "types": "./dist/index.d.ts",
+  "typings": "./index.dist/d.ts",
   "version": "0.0.1"
 }
