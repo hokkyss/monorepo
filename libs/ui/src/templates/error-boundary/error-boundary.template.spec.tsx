@@ -5,6 +5,8 @@ import { render } from '@testing-library/react';
 import ErrorBoundary from './error-boundary.template';
 
 describe('ErrorBoundary', () => {
+  vi.spyOn(console, 'error').mockImplementation(() => {});
+
   it('should not render fallback element', () => {
     const onError = vi.fn();
 
