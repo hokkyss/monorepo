@@ -9,7 +9,9 @@ import pkg from './package.json';
 
 export default defineConfig((configEnv) => ({
   build: {
-    commonjsOptions: { transformMixedEsModules: true },
+    commonjsOptions: {
+      transformMixedEsModules: true,
+    },
     emptyOutDir: true,
     lib: {
       entry: {
