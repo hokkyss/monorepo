@@ -2,7 +2,6 @@
   "compilerOptions": {
     "forceConsistentCasingInFileNames": true,
     "jsx": "react-jsx",
-    "module": "commonjs",
     "noFallthroughCasesInSwitch": true,
     "noImplicitOverride": true,
     "noImplicitReturns": true,
