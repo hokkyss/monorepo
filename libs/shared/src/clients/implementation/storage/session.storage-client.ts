@@ -9,6 +9,8 @@ import { injectable, singleton } from 'tsyringe';
 
 import StorageClient from '../../abstract/storage/storage.client';
 
+@injectable()
+@singleton()
 export default class SessionStorageClient extends StorageClient {
   public override async clear() {
     try {
@@ -58,7 +60,3 @@ export default class SessionStorageClient extends StorageClient {
     }
   }
 }
-
-// FIXME: temporary workaround to fix rollup errors
-singleton()(SessionStorageClient);
-injectable()(SessionStorageClient);

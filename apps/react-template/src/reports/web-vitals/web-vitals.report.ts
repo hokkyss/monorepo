@@ -8,7 +8,8 @@ import type {
 } from 'web-vitals';
 
 import isFunction from 'lodash/isFunction';
-import { onCLS, onFCP, onFID, onLCP, onTTFB } from 'web-vitals';
+
+import envConfig from '../../configs/env/env.config';
 
 type ReportCallback =
   | ((metric: MetricType) => void)
@@ -20,7 +21,13 @@ type ReportCallback =
       onTTFB: TTFBReportCallback;
     };
 
-const reportWebVitals = (onEntry: ReportCallback) => {
+const reportWebVitals = async (onEntry: ReportCallback) => {
+  if (envConfig.env !== 'development') {
+    return;
+  }
+
+  const { onCLS, onFCP, onFID, onLCP, onTTFB } = await import('web-vitals');
+
   if (isFunction(onEntry)) {
     onCLS(onEntry);
     onFID(onEntry);

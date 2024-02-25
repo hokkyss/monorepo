@@ -1,5 +1,3 @@
-import type { Observable } from 'rxjs';
-
 export type RequestOptions = {
   headers?: Record<string, string>;
   searchParams?: Record<string, string | string[]> | URLSearchParams;
@@ -23,9 +21,9 @@ export type RequestOptions = {
 export default abstract class HttpClient {
   public static readonly token = Symbol.for(this.name);
 
-  public abstract delete<T>(url: string, config?: RequestOptions): Observable<T>;
-  public abstract get<T>(url: string, config?: RequestOptions): Observable<T>;
-  public abstract patch<T>(url: string, config?: RequestOptions): Observable<T>;
-  public abstract post<T>(url: string, config?: RequestOptions): Observable<T>;
-  public abstract put<T>(url: string, config?: RequestOptions): Observable<T>;
+  public abstract delete<T>(url: string, config?: RequestOptions): Promise<T>;
+  public abstract get<T>(url: string, config?: RequestOptions): Promise<T>;
+  public abstract patch<T>(url: string, config?: RequestOptions): Promise<T>;
+  public abstract post<T>(url: string, config?: RequestOptions): Promise<T>;
+  public abstract put<T>(url: string, config?: RequestOptions): Promise<T>;
 }

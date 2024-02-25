@@ -54,6 +54,24 @@
     ],
     "sharedGlobals": []
   },
+  "plugins": [
+    {
+      "options": {
+        "buildTargetName": "build",
+        "previewTargetName": "preview",
+        "serveStaticTargetName": "serve-static",
+        "serveTargetName": "serve",
+        "testTargetName": "test"
+      },
+      "plugin": "@nx/vite/plugin"
+    },
+    {
+      "options": {
+        "targetName": "lint"
+      },
+      "plugin": "@nx/eslint/plugin"
+    }
+  ],
   "targetDefaults": {
     "@nx/eslint:lint": {
       "cache": true,
@@ -64,9 +82,17 @@
         "{workspaceRoot}/eslint.config.js"
       ]
     },
+    "@nx/vite:build": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
+    },
     "@nx/vite:test": {
       "cache": true,
-      "inputs": ["default", "^production"]
+      "inputs": ["default", "^production"],
+      "options": {
+        "passWithNoTests": true
+      }
     },
     "build": {
       "cache": true,

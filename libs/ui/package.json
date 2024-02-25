@@ -1,66 +1,14 @@
 {
-  "exports": {
-    "./package.json": "./package.json",
-    ".": {
-      "production": {
-        "types": "./dist/index.d.ts",
-        "import": "./dist/index.mjs",
-        "default": "./dist/index.js"
-      },
-      "default": "./src/index.ts"
-    },
-    "./atoms": {
-      "production": {
-        "types": "./dist/atoms/index.d.ts",
-        "import": "./dist/atoms/index.mjs",
-        "default": "./dist/atoms/index.js"
-      },
-      "default": "./src/atoms/index.ts"
-    },
-    "./molecules": {
-      "production": {
-        "types": "./dist/molecules/index.d.ts",
-        "import": "./dist/molecules/index.mjs",
-        "default": "./dist/molecules/index.js"
-      },
-      "default": "./src/molecules/index.ts"
-    },
-    "./organisms": {
-      "production": {
-        "types": "./dist/organisms/index.d.ts",
-        "import": "./dist/organisms/index.mjs",
-        "default": "./dist/organisms/index.js"
-      },
-      "default": "./src/organisms/index.ts"
-    },
-    "./templates": {
-      "production": {
-        "types": "./dist/templates/index.d.ts",
-        "import": "./dist/templates/index.mjs",
-        "default": "./dist/templates/index.js"
-      },
-      "default": "./src/templates/index.ts"
-    },
-    "./hooks": {
-      "production": {
-        "types": "./dist/hooks/index.d.ts",
-        "import": "./dist/hooks/index.mjs",
-        "default": "./dist/hooks/index.js"
-      },
-      "default": "./src/hooks/index.ts"
-    }
-  },
-  "files": [
-    "./dist",
-    "./package.json"
-  ],
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
+  "devDependencies": {},
+  "main": "./index.js",
+  "module": "./index.mjs",
   "name": "@monorepo/ui",
   "peerDependencies": {
-    "react": "^18.0.0"
+    "@testing-library/react": "14.0.0",
+    "react": "^18.0.0",
+    "vitest": "1.2.2"
   },
-  "types": "./dist/index.d.ts",
-  "typings": "./index.dist/d.ts",
+  "types": "./index.d.ts",
+  "typings": "./index.d.ts",
   "version": "0.0.1"
 }

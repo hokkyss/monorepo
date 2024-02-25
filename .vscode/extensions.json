@@ -4,7 +4,6 @@
     "esbenp.prettier-vscode",
     "dbaeumer.vscode-eslint",
     "ms-playwright.playwright",
-    "arcanis.vscode-zipfs",
     "ZixuanChen.vitest-explorer",
     "kisstkondoros.vscode-codemetrics",
     "ambar.bundle-size",

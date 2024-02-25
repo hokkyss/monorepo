@@ -1,100 +1,63 @@
-/// <reference types='vitest' />
+import type { InlineConfig } from 'vitest';
 
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
-import resolve from '@rollup/plugin-node-resolve';
-import * as path from 'path';
+import path from 'path';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 
 import pkg from './package.json';
-import { getSetupFiles } from './tests/utils/get-setup-files.util';
 
-export default defineConfig(async (configEnv) => {
-  const exportsConditions = [configEnv.mode, 'browser', 'module', 'import', 'default', 'require'];
-  const mainFields = ['exports', 'import', 'browser', 'module', 'main', 'jsnext:main', 'jsnext'];
-  const extensions = ['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json', '.cjs', '.cts'];
-  const tsconfig = path.join(__dirname, 'tsconfig.lib.json');
-
-  return {
-    build: {
-      commonjsOptions: {
-        transformMixedEsModules: true,
+export default defineConfig((configEnv) => ({
+  build: {
+    commonjsOptions: { transformMixedEsModules: true },
+    emptyOutDir: true,
+    lib: {
+      entry: {
+        index: 'src/index.ts',
       },
-      emptyOutDir: true,
-      lib: {
-        entry: {
-          'clients/abstract/http/index': 'src/clients/abstract/http/index.ts',
-          'clients/abstract/storage/index': 'src/clients/abstract/storage/index.ts',
-          'clients/implementation/http/axios': 'src/clients/implementation/http/axios.http-client.ts',
-          'clients/implementation/http/fetch': 'src/clients/implementation/http/fetch.http-client.ts',
-          'clients/implementation/storage/indexed-db':
-            'src/clients/implementation/storage/indexed-db.storage-client.ts',
-          'clients/implementation/storage/local': 'src/clients/implementation/storage/local.storage-client.ts',
-          'clients/implementation/storage/session': 'src/clients/implementation/storage/session.storage-client.ts',
-          index: 'src/index.ts',
-          'types/shared': 'src/types/shared.type.ts',
-        },
-        formats: ['es', 'cjs'],
-        name: 'shared',
-      },
-      outDir: '../../libs/shared/dist',
-      reportCompressedSize: true,
-      rollupOptions: {
-        // match @tanstack/react-query and @tanstack/react-query/anything, but not @tanstack/react-query-devtools
-        external: Object.keys(pkg.peerDependencies).map((key) => new RegExp(`^${key}(/.+)*`)),
-        plugins: [
-          resolve({
-            exportConditions: exportsConditions,
-            extensions,
-            mainFields,
-          }),
-        ],
-      },
+      formats: ['es', 'cjs'],
+      name: 'shared',
     },
-    cacheDir: '../../node_modules/.vite/shared',
-    optimizeDeps: {
-      esbuildOptions: {
-        conditions: exportsConditions,
-        mainFields,
-        resolveExtensions: extensions,
-        tsconfig,
-      },
-      extensions,
+    outDir: '../../dist/libs/shared',
+    reportCompressedSize: true,
+    rollupOptions: {
+      // match @tanstack/react-query and @tanstack/react-query/anything, but not @tanstack/react-query-devtools
+      external: Object.keys(pkg.peerDependencies).map((key) => new RegExp(`^${key}(/.+)*`)),
     },
-    // Configuration for building your library.
-    plugins: [
-      nxViteTsPaths({
-        debug: configEnv.mode === 'development',
-        extensions,
-        mainFields,
-      }),
-      dts({
-        entryRoot: 'src',
-        skipDiagnostics: true,
-        tsConfigFilePath: tsconfig,
-      }),
+  },
+  cacheDir: '../../node_modules/.vite/libs/shared',
+  plugins: [
+    nxViteTsPaths({
+      debug: configEnv.mode === 'development',
+    }),
+    dts({
+      entryRoot: 'src',
+      skipDiagnostics: true,
+      tsConfigFilePath: path.join(__dirname, 'tsconfig.lib.json'),
+    }),
+  ],
+  root: __dirname,
+  // Uncomment this if you are using workers.
+  // worker: {
+  //  plugins: [ nxViteTsPaths() ],
+  // },
+  test: {
+    cache: {
+      dir: '../../node_modules/.vitest',
+    },
+    clearMocks: true,
+    coverage: {
+      provider: 'v8',
+      reportsDirectory: '../../coverage/libs/shared',
+    },
+    environment: 'happy-dom',
+    globals: true,
+    include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+    mockReset: true,
+    reporters: ['default'],
+    setupFiles: [
+      path.join(__dirname, 'tests/setup/inject-dependencies.setup.ts'),
+      path.join(__dirname, 'tests/setup/mocks.setup.ts'),
     ],
-
-    // Uncomment this if you are using workers.
-    // worker: {
-    //  plugins: [ nxViteTsPaths() ],
-    // },
-    root: __dirname,
-    test: {
-      cache: {
-        dir: '../../node_modules/.vitest',
-      },
-      clearMocks: true,
-      coverage: {
-        provider: 'v8',
-        reportsDirectory: '../../coverage/libs/shared',
-      },
-      environment: 'happy-dom',
-      globals: true,
-      include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
-      mockReset: true,
-      reporters: ['default'],
-      setupFiles: await getSetupFiles(),
-    },
-  };
-});
+  } satisfies InlineConfig,
+}));

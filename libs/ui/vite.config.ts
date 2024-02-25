@@ -1,94 +1,65 @@
-/// <reference types="vitest" />
+import type { InlineConfig } from 'vitest';
 
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
-import resolve from '@rollup/plugin-node-resolve';
-import react from '@vitejs/plugin-react-swc';
 import path from 'path';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 
 import pkg from './package.json';
-import { getSetupFiles } from './tests/utils/get-setup-files.util';
 
-export default defineConfig(async (configEnv) => {
-  const exportsConditions = [configEnv.mode, 'browser', 'module', 'import', 'default', 'require'];
-  const mainFields = ['exports', 'import', 'browser', 'module', 'main', 'jsnext:main', 'jsnext'];
-  const extensions = ['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json', '.cjs', '.cts'];
-  const tsconfig = path.resolve(__dirname, 'tsconfig.lib.json');
-
-  return {
-    build: {
-      commonjsOptions: { transformMixedEsModules: true },
-      emptyOutDir: true,
-      lib: {
-        entry: {
-          'atoms/index': path.resolve(__dirname, 'src', 'atoms'),
-          'hooks/index': path.resolve(__dirname, 'src', 'hooks'),
-          index: path.resolve(__dirname, 'src'),
-          'molecules/index': path.resolve(__dirname, 'src', 'molecules'),
-          'organisms/index': path.resolve(__dirname, 'src', 'organisms'),
-          'templates/index': path.resolve(__dirname, 'src', 'templates'),
-        },
-        formats: ['es', 'cjs'],
-        name: 'shared',
-      },
-      outDir: '../../libs/ui/dist',
-      reportCompressedSize: true,
-      rollupOptions: {
-        // match @tanstack/react-query and @tanstack/react-query/anything, but not @tanstack/react-query-devtools
-        external: Object.keys(pkg.peerDependencies).map((key) => new RegExp(`^${key}(/.+)*`)),
-        plugins: [
-          resolve({
-            exportConditions: exportsConditions,
-            extensions,
-            mainFields,
-          }),
-        ],
-      },
+export default defineConfig((configEnv) => ({
+  build: {
+    commonjsOptions: {
+      transformMixedEsModules: true,
     },
-    cacheDir: '../../node_modules/.vite/ui',
-    optimizeDeps: {
-      esbuildOptions: {
-        conditions: exportsConditions,
-        jsx: 'automatic',
-        loader: { '.js': 'jsx' },
-        mainFields,
-        resolveExtensions: extensions,
-        tsconfig,
+    emptyOutDir: true,
+    lib: {
+      entry: {
+        index: 'src/index.ts',
       },
-      extensions,
+      formats: ['es', 'cjs'],
+      name: 'ui',
     },
-    plugins: [
-      react({ tsDecorators: true }),
-      nxViteTsPaths({
-        debug: configEnv.mode === 'development',
-        extensions,
-        mainFields,
-      }),
-      dts({
-        entryRoot: 'src',
-        skipDiagnostics: true,
-        tsConfigFilePath: tsconfig,
-      }),
+    outDir: '../../dist/libs/ui',
+    reportCompressedSize: true,
+    rollupOptions: {
+      // match @tanstack/react-query and @tanstack/react-query/anything, but not @tanstack/react-query-devtools
+      external: Object.keys(pkg.peerDependencies).map((key) => new RegExp(`^${key}(/.+)*`)),
+    },
+  },
+  cacheDir: '../../node_modules/.vite/libs/ui',
+  plugins: [
+    nxViteTsPaths({
+      debug: configEnv.mode === 'development',
+    }),
+    dts({
+      entryRoot: 'src',
+      skipDiagnostics: true,
+      tsConfigFilePath: path.join(__dirname, 'tsconfig.lib.json'),
+    }),
+  ],
+  root: __dirname,
+  // Uncomment this if you are using workers.
+  // worker: {
+  //  plugins: [ nxViteTsPaths() ],
+  // },
+  test: {
+    cache: {
+      dir: '../../node_modules/.vitest',
+    },
+    clearMocks: true,
+    coverage: {
+      provider: 'v8',
+      reportsDirectory: '../../coverage/libs/ui',
+    },
+    environment: 'happy-dom',
+    globals: true,
+    include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+    mockReset: true,
+    reporters: ['default'],
+    setupFiles: [
+      path.join(__dirname, 'tests/setup/expect.setup.ts'),
+      path.join(__dirname, 'tests/setup/react.setup.ts'),
     ],
-    root: __dirname,
-    // Uncomment this if you are using workers.
-    // worker: {
-    //  plugins: [ nxViteTsPaths() ],
-    // },
-    test: {
-      cache: { dir: '../../node_modules/.vitest' },
-      clearMocks: true,
-      coverage: {
-        provider: 'v8',
-        reportsDirectory: '../../coverage/libs/ui',
-      },
-      environment: 'happy-dom',
-      globals: true,
-      include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
-      mockReset: true,
-      reporters: ['default'],
-      setupFiles: await getSetupFiles(),
-    },
-  };
-});
+  } satisfies InlineConfig,
+}));

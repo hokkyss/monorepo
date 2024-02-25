@@ -20,7 +20,7 @@ export default class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBo
     this.reset.bind(this);
   }
 
-  public componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
+  public override componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
     this.props.onError(error, errorInfo);
   }
 
@@ -28,7 +28,7 @@ export default class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBo
     this.setState({});
   }
 
-  public render() {
+  public override render() {
     const { error } = this.state;
     const { Fallback, children, fallback } = this.props;
 

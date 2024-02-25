@@ -1,9 +1,12 @@
 {
   "compilerOptions": {
-    "allowJs": false,
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": false,
+    "forceConsistentCasingInFileNames": true,
     "jsx": "react-jsx",
+    "module": "commonjs",
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
     "strict": true
   },
   "extends": "../../tsconfig.base.json",

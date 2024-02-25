@@ -1,7 +1,7 @@
 import './inject-dependencies';
 import './styles.css';
 
-import { ErrorBoundary } from '@monorepo/ui/templates';
+import { ErrorBoundary } from '@monorepo/ui';
 import noop from 'lodash/fp/noop';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
@@ -30,7 +30,7 @@ if (rootElement) {
   );
 
   reportAccessibility();
-  // NOTE: printing into console is DEV only
+  // NOTE: report web vitals is DEV only
   // eslint-disable-next-line no-console
-  reportWebVitals(__DEV__ ? console.debug : noop);
+  reportWebVitals(console.debug);
 }

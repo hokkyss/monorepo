@@ -1,15 +1,8 @@
 {
-  "ignorePatterns": ["**/*", "!/*.json"],
+  "extends": ["./.eslintrc.base.json"],
+  "ignorePatterns": ["**/*"],
   "overrides": [
     {
-      "extends": [
-        "alloy",
-        "alloy/react",
-        "plugin:perfectionist/recommended-natural",
-        "plugin:@tanstack/eslint-plugin-query/recommended",
-        "plugin:@nx/react-base",
-        "plugin:@nx/react-jsx"
-      ],
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "rules": {
         "@nx/enforce-module-boundaries": [
@@ -18,100 +11,22 @@
             "allow": [],
             "depConstraints": [
               {
-                "onlyDependOnLibsWithTags": ["type:lib"],
-                "sourceTag": "type:app"
-              },
-              {
-                "onlyDependOnLibsWithTags": ["type:lib"],
-                "sourceTag": "type:lib"
-              },
-              {
-                "onlyDependOnLibsWithTags": ["scope:shared"],
-                "sourceTag": "scope:shared"
+                "onlyDependOnLibsWithTags": ["*"],
+                "sourceTag": "*"
               }
             ],
             "enforceBuildableLibDependency": true
           }
-        ],
-        "no-console": "error",
-        "object-shorthand": "error",
-        "perfectionist/sort-classes": "off",
-        "perfectionist/sort-imports": [
-          "error",
-          {
-            "groups": [
-              "side-effect",
-              ["type", "builtin-type", "external-type"],
-              "internal-type",
-              "parent-type",
-              "sibling-type",
-              ["builtin", "external"],
-              "internal",
-              "parent",
-              "sibling",
-              "unknown"
-            ]
-          }
         ]
       }
     },
     {
-      "extends": ["plugin:@nx/typescript", "alloy/typescript", "plugin:@nx/react-typescript"],
       "files": ["*.ts", "*.tsx"],
-      "rules": {
-        "@typescript-eslint/consistent-type-definitions": "off",
-        "@typescript-eslint/consistent-type-exports": "error",
-        "@typescript-eslint/no-empty-interface": "off"
-      }
-    },
-    {
-      "extends": ["plugin:@nx/javascript"],
-      "files": ["*.js", "*.jsx"],
       "rules": {}
     },
     {
-      "extends": ["plugin:jsonc/recommended-with-json", "plugin:jsonc/prettier"],
-      "files": ["*.json"],
-      "parser": "jsonc-eslint-parser",
-      "rules": {
-        "jsonc/comma-style": "error",
-        "jsonc/no-comments": "off",
-        "jsonc/sort-keys": "error"
-      }
-    },
-    {
-      "files": ["package.json"],
-      "rules": {
-        "jsonc/sort-keys": [
-          "error",
-          {
-            "order": {
-              "type": "asc"
-            },
-            "pathPattern": "^$" // Hits the root properties
-          }
-        ]
-      }
-    },
-    {
-      "extends": ["prettier"],
-      "files": [
-        "**/*.ts",
-        "**/*.tsx",
-        "**/*.js",
-        "**/*.jsx",
-        "**/*.mjs",
-        "**/*.mts",
-        "**/*.cjs",
-        "**/*.cts",
-        "**/*.json"
-      ],
-      "plugins": ["prettier"],
-      "rules": {
-        "prettier/prettier": "error"
-      }
+      "files": ["*.js", "*.jsx"],
+      "rules": {}
     }
-  ],
-  "plugins": ["@nx", "@tanstack/query"],
-  "root": true
+  ]
 }

@@ -5,62 +5,9 @@
   "sourceRoot": "apps/react-template/src",
   "tags": ["type:app", "name:react-template"],
   "targets": {
-    "build": {
-      "configurations": {
-        "development": {
-          "mode": "development"
-        },
-        "production": {
-          "mode": "production"
-        }
-      },
-      "defaultConfiguration": "production",
-      "executor": "@nx/vite:build",
-      "options": {
-        "outputPath": "dist/apps/react-template"
-      },
-      "outputs": ["{options.outputPath}"]
-    },
-    "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
-    },
-    "preview": {
-      "configurations": {
-        "development": {
-          "buildTarget": "react-template:build:development"
-        },
-        "production": {
-          "buildTarget": "react-template:build:production"
-        }
-      },
-      "defaultConfiguration": "development",
-      "executor": "@nx/vite:preview-server",
-      "options": {
-        "buildTarget": "react-template:build"
-      }
-    },
-    "serve": {
-      "configurations": {
-        "development": {
-          "buildTarget": "react-template:build:development",
-          "hmr": true
-        },
-        "production": {
-          "buildTarget": "react-template:build:production",
-          "hmr": false
-        }
-      },
-      "defaultConfiguration": "development",
-      "executor": "@nx/vite:dev-server",
-      "options": {
-        "buildTarget": "react-template:build"
-      }
-    },
     "test": {
       "executor": "@nx/vite:test",
       "options": {
-        "passWithNoTests": true,
         "reportsDirectory": "../../coverage/apps/react-template"
       },
       "outputs": ["{options.reportsDirectory}"]

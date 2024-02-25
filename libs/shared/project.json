@@ -8,18 +8,20 @@
     "build": {
       "executor": "@nx/vite:build",
       "options": {
-        "outputPath": "libs/shared/dist"
+        "assets": ["libs/shared/*.md"],
+        "main": "libs/shared/src/index.ts",
+        "outputPath": "dist/libs/shared",
+        "tsConfig": "libs/shared/tsconfig.lib.json"
       },
       "outputs": ["{options.outputPath}"]
     },
-    "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
+    "publish": {
+      "command": "node tools/scripts/publish.mjs shared {args.ver} {args.tag}",
+      "dependsOn": ["build"]
     },
     "test": {
       "executor": "@nx/vite:test",
       "options": {
-        "passWithNoTests": true,
         "reportsDirectory": "../../coverage/libs/shared"
       },
       "outputs": ["{options.reportsDirectory}"]

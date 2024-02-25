@@ -12,10 +12,6 @@
         "config": "apps/react-template-e2e/playwright.config.ts"
       },
       "outputs": ["{workspaceRoot}/dist/.playwright/apps/react-template-e2e"]
-    },
-    "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
     }
   }
 }

@@ -1,7 +1,7 @@
 import type { Plugin } from 'vite';
+import type { InlineConfig } from 'vitest';
 
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
-import resolve from '@rollup/plugin-node-resolve';
 import react from '@vitejs/plugin-react-swc';
 import { readFileSync } from 'fs';
 import path from 'path';
@@ -23,10 +23,6 @@ const jsxInJs = (matchers: RegExp[]): Plugin => ({
 });
 
 export default defineConfig((configEnv) => {
-  const exportsConditions = [configEnv.mode, 'browser', 'module', 'import', 'default', 'require'];
-  const mainFields = ['exports', 'import', 'browser', 'module', 'main', 'jsnext:main', 'jsnext'];
-  const extensions = ['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json', '.cjs', '.cts'];
-
   return {
     build: {
       commonjsOptions: {
@@ -36,20 +32,11 @@ export default defineConfig((configEnv) => {
       outDir: '../../dist/apps/react-template',
       reportCompressedSize: true,
       rollupOptions: {
-        plugins: [
-          resolve({
-            exportConditions: exportsConditions,
-            extensions,
-            mainFields,
-          }),
-          jsxInJs([]),
-        ],
+        plugins: [jsxInJs([])],
       },
     },
     cacheDir: '../../node_modules/.vite/react-template',
     define: {
-      __DEV__: configEnv.mode === 'development',
-      global: 'window',
       'process.env': `${JSON.stringify({
         ...loadEnv(configEnv.mode, __dirname, 'VITE_'),
         NODE_ENV: configEnv.mode,
@@ -57,12 +44,8 @@ export default defineConfig((configEnv) => {
     },
     optimizeDeps: {
       esbuildOptions: {
-        conditions: exportsConditions,
         jsx: 'automatic',
         loader: { '.js': 'jsx' },
-        mainFields,
-        resolveExtensions: extensions,
-        tsconfig: path.resolve(__dirname, 'tsconfig.json'),
       },
     },
     plugins: [
@@ -88,15 +71,8 @@ export default defineConfig((configEnv) => {
       }),
       nxViteTsPaths({
         debug: configEnv.mode === 'development',
-        extensions,
-        mainFields,
       }),
     ],
-    resolve: {
-      conditions: exportsConditions,
-      extensions,
-      mainFields,
-    },
     root: __dirname,
     // Uncomment this if you are using workers.
     // worker: {
@@ -109,13 +85,14 @@ export default defineConfig((configEnv) => {
       clearMocks: true,
       coverage: {
         provider: 'v8',
-        reportsDirectory: '../../coverage/libs/shared',
+        reportsDirectory: '../../coverage/apps/react-template',
       },
       environment: 'happy-dom',
       globals: true,
       include: [`src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}`],
       mockReset: true,
       reporters: ['default'],
-    },
+      setupFiles: [path.join(__dirname, 'tests/setup/inject-dependencies.setup.ts')],
+    } satisfies InlineConfig,
   };
 });

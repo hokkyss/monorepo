@@ -1,4 +1,4 @@
-import type { Except } from '@monorepo/shared/types';
+import type { Except } from '@monorepo/shared';
 import type { RouteObject } from 'react-router-dom';
 
 import type { RouteName } from '../locale/locale.config';

@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/nx/schemas/project-schema.json",
+  "name": "@org/source",
+  "targets": {
+    "local-registry": {
+      "executor": "@nx/js:verdaccio",
+      "options": {
+        "config": ".verdaccio/config.yml",
+        "port": 4873,
+        "storage": ".yarn/local-registry/storage"
+      }
+    }
+  }
+}

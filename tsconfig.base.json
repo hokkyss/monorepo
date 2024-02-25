@@ -3,7 +3,6 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
-    "customConditions": ["browser", "module", "import", "default", "require"],
     "declaration": false,
     "emitDecoratorMetadata": true,
     "exactOptionalPropertyTypes": true,
@@ -11,10 +10,13 @@
     "importHelpers": true,
     "lib": ["ES2020", "DOM"],
     "module": "ESNext",
-    "moduleResolution": "Bundler",
-    "paths": {},
+    "moduleResolution": "Node",
+    "paths": {
+      "@monorepo/shared": ["libs/shared/src/index.ts"],
+      "@monorepo/todo": ["libs/todo/src/index.ts"],
+      "@monorepo/ui": ["libs/ui/src/index.ts"]
+    },
     "resolveJsonModule": true,
-    "resolvePackageJsonExports": true,
     "rootDir": ".",
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,

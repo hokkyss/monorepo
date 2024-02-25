@@ -1,7 +1,6 @@
 import type { ListTodoReq, ListTodoRes } from '../models/list.model';
 
-import { HttpClient } from '@monorepo/shared/clients/abstract/http';
-import { lastValueFrom } from 'rxjs';
+import { HttpClient } from '@monorepo/shared';
 import { inject, injectable } from 'tsyringe';
 
 import AbstractTodoRepository from './todo.repository';
@@ -13,11 +12,9 @@ export default class TodoRepository extends AbstractTodoRepository {
   }
 
   public override list(params: ListTodoReq, signal?: AbortSignal): Promise<ListTodoRes> {
-    return lastValueFrom(
-      this.httpClient.get<ListTodoRes>('https://jsonplaceholder.typicode.com/todos', {
-        searchParams: params,
-        ...(signal ? { signal } : {}),
-      }),
-    );
+    return this.httpClient.get<ListTodoRes>('https://jsonplaceholder.typicode.com/todos', {
+      searchParams: params,
+      ...(signal ? { signal } : {}),
+    });
   }
 }

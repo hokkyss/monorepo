@@ -8,18 +8,20 @@
     "build": {
       "executor": "@nx/vite:build",
       "options": {
-        "outputPath": "libs/ui/dist"
+        "assets": ["libs/ui/*.md"],
+        "main": "libs/ui/src/index.ts",
+        "outputPath": "dist/libs/ui",
+        "tsConfig": "libs/ui/tsconfig.lib.json"
       },
       "outputs": ["{options.outputPath}"]
     },
-    "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
+    "publish": {
+      "command": "node tools/scripts/publish.mjs ui {args.ver} {args.tag}",
+      "dependsOn": ["build"]
     },
     "test": {
       "executor": "@nx/vite:test",
       "options": {
-        "passWithNoTests": true,
         "reportsDirectory": "../../coverage/libs/ui"
       },
       "outputs": ["{options.reportsDirectory}"]

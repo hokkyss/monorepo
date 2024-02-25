@@ -6,6 +6,7 @@
   "extends": "./tsconfig.json",
   "include": [
     "vite.config.ts",
+    "vitest.config.ts",
     "src/**/*.test.ts",
     "src/**/*.spec.ts",
     "src/**/*.test.tsx",
@@ -14,9 +15,7 @@
     "src/**/*.spec.js",
     "src/**/*.test.jsx",
     "src/**/*.spec.jsx",
-    "tests/**/*.ts",
-    "tests/**/*.tsx",
-    "src/**/*.d.ts"
-  ],
-  "typeAcquisition": { "enable": true }
+    "src/**/*.d.ts",
+    "tests/**/*"
+  ]
 }
