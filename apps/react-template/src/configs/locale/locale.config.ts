@@ -17,7 +17,7 @@ export const i18n = createInstance({
   fallbackLng: Languages.EN,
   fallbackNS: false,
   lng: Languages.EN,
-  ns: Object.keys(routeMap),
+  ns: Object.values(routeMap),
   resources: {},
   returnNull: false,
 });
