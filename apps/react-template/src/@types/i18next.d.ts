@@ -1,12 +1,12 @@
 /// <reference types="i18next" />
 
-import type { LanguageResource, RouteName } from '../configs/locale/locale.config';
+import type { LanguageResource } from '../configs/locale/locale.resource';
 
 declare module 'i18next' {
   interface CustomTypeOptions {
-    defaultNS: RouteName;
+    defaultNS: keyof LanguageResource;
     fallbackNS: false;
-    ns: RouteName[];
+    ns: (keyof LanguageResource)[];
     resources: LanguageResource;
     returnNull: false;
   }

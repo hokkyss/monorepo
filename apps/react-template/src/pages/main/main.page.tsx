@@ -1,10 +1,18 @@
-import { Languages, useTranslation } from '../../configs/locale/locale.config';
+import { Languages, i18n, useTranslation } from '../../configs/locale/locale.config';
+import routeMap from '../../configs/route/route-map.config';
 
 import useTodos from './hooks/use-todos.hook';
+import enTranslation from './translations/en.translation.json';
+import idTranslation from './translations/id.translation.json';
+import jaTranslation from './translations/ja.translation.json';
+
+i18n.addResourceBundle(Languages.EN, routeMap.main, enTranslation);
+i18n.addResourceBundle(Languages.ID, routeMap.main, idTranslation);
+i18n.addResourceBundle(Languages.JA, routeMap.main, jaTranslation);
 
 export default function MainPage() {
   const todos = useTodos();
-  const [, setLang] = useTranslation('main');
+  const [, setLang] = useTranslation(routeMap.main);
 
   return (
     <div>

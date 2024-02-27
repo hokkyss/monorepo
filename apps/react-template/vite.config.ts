@@ -2,6 +2,7 @@ import type { Plugin } from 'vite';
 import type { InlineConfig } from 'vitest';
 
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
+import { TanStackRouterVite } from '@tanstack/router-vite-plugin';
 import react from '@vitejs/plugin-react-swc';
 import { readFileSync } from 'fs';
 import path from 'path';
@@ -65,6 +66,10 @@ export default defineConfig((configEnv) => {
             role: 'img',
           },
         },
+      }),
+      TanStackRouterVite({
+        generatedRouteTree: path.join(__dirname, 'src', 'configs', 'route', 'route.config.ts'),
+        routesDirectory: path.join(__dirname, 'src', 'routes'),
       }),
       react({
         tsDecorators: true,
