@@ -7,8 +7,6 @@
   "module": "./index.mjs",
   "name": "@monorepo/shared",
   "peerDependencies": {
-    "reflect-metadata": "^0.2.1",
-    "tsyringe": "^4.8.0",
     "urlcat": "^3.0.0"
   },
   "types": "./index.d.ts",

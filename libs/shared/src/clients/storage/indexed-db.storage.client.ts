@@ -1,22 +1,10 @@
-import type {
-  DefaultOptions,
-  GetOptions,
-  GetOptionsWithDefaultValue,
-  SetOptions,
-} from '../../abstract/storage/storage.client';
+import type IStorageClient from './storage.client.interface';
+import type { DefaultOptions, GetOptions, GetOptionsWithDefaultValue, SetOptions } from './storage.client.interface';
 
-import { injectable, singleton } from 'tsyringe';
+export default class IndexedDBClient implements IStorageClient {
+  public constructor(private readonly name: string) {}
 
-import StorageClient from '../../abstract/storage/storage.client';
-
-@injectable()
-@singleton()
-export default class IndexedDBClient extends StorageClient {
-  public constructor(private readonly name: string) {
-    super();
-  }
-
-  public override async clear() {
+  public async clear() {
     const db = await this.getDb();
 
     return new Promise<boolean>((resolve, reject) => {
@@ -36,7 +24,7 @@ export default class IndexedDBClient extends StorageClient {
     });
   }
 
-  public override async deleteItem({ key }: DefaultOptions) {
+  public async deleteItem({ key }: DefaultOptions) {
     const db = await this.getDb();
 
     return new Promise<boolean>((resolve, reject) => {
@@ -56,9 +44,9 @@ export default class IndexedDBClient extends StorageClient {
     });
   }
 
-  public override getItem<T>(options: GetOptions<T>): Promise<T | undefined>;
-  public override getItem<T>(options: GetOptionsWithDefaultValue<T>): Promise<T>;
-  public override async getItem<T>({
+  public getItem<T>(options: GetOptions<T>): Promise<T | undefined>;
+  public getItem<T>(options: GetOptionsWithDefaultValue<T>): Promise<T>;
+  public async getItem<T>({
     defaultValue,
     deserialize = (val) => val,
     key,
@@ -85,7 +73,7 @@ export default class IndexedDBClient extends StorageClient {
     });
   }
 
-  public override async has({ key }: DefaultOptions) {
+  public async has({ key }: DefaultOptions) {
     const db = await this.getDb();
 
     return new Promise<boolean>((resolve, reject) => {
@@ -105,9 +93,9 @@ export default class IndexedDBClient extends StorageClient {
     });
   }
 
-  public override setItem<T>(options: SetOptions<T>): Promise<boolean>;
+  public setItem<T>(options: SetOptions<T>): Promise<boolean>;
 
-  public override async setItem<T>({ key, serialize = (val) => val, value }: SetOptions<T>) {
+  public async setItem<T>({ key, serialize = (val) => val, value }: SetOptions<T>) {
     const db = await this.getDb();
 
     return new Promise<boolean>((resolve, reject) => {

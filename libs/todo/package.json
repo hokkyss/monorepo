@@ -3,8 +3,7 @@
   "module": "./dist/index.mjs",
   "name": "@monorepo/todo",
   "peerDependencies": {
-    "@monorepo/shared": "0.0.1",
-    "tsyringe": ">=4.8.0"
+    "@monorepo/shared": "0.0.1"
   },
   "types": "./dist/index.d.ts",
   "typings": "./dist/index.d.ts",

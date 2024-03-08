@@ -1,5 +1,5 @@
 export type { Todo } from './models/list.model';
-export { default as TodoRepository } from './repositories/todo.base-repository';
-export { default as AbstractTodoRepository } from './repositories/todo.repository';
-export { default as TodoService } from './services/todo.base-service';
-export { default as AbstractTodoService } from './services/todo.service';
+export { default as TodoRepository } from './repositories/todo.repository';
+export type { default as ITodoRepository } from './repositories/todo.repository.interface';
+export { default as TodoService } from './services/todo.service';
+export type { default as ITodoService } from './services/todo.service.interface';

@@ -1,7 +1,7 @@
 import { HttpResponse, http } from 'msw';
 import { setupServer } from 'msw/node';
 
-import AxiosHttpClient from './axios.http-client';
+import FetchHttpClient from './fetch.http.client';
 
 const server = setupServer(
   http.get('*', () => HttpResponse.json({ method: 'GET' }, { status: 200 })),
@@ -19,36 +19,35 @@ afterAll(() => {
   server.close();
 });
 
-// NOTE: all tests are skipped due to happy-dom problems with msw and vitest
-describe('AxiosHttpClient', () => {
-  const axiosClient = new AxiosHttpClient();
+describe('FetchHttpClient', () => {
+  const fetchClient = new FetchHttpClient();
 
-  it.skip('should call axios with correct response', async () => {
-    const response = await axiosClient.get('https://example.com');
+  it('should call fetch with GET method', async () => {
+    const response = await fetchClient.get('https://example.com');
 
     expect(response).toEqual({ method: 'GET' });
   });
 
-  it.skip('should call axios with correct response', async () => {
-    const response = await axiosClient.post('https://example.com');
+  it('should call fetch with POST method', async () => {
+    const response = await fetchClient.post('https://example.com');
 
     expect(response).toEqual({ method: 'POST' });
   });
 
-  it.skip('should call axios with correct response', async () => {
-    const response = await axiosClient.patch('https://example.com');
+  it('should call fetch with PATCH method', async () => {
+    const response = await fetchClient.patch('https://example.com');
 
     expect(response).toEqual({ method: 'PATCH' });
   });
 
-  it.skip('should call axios with correct response', async () => {
-    const response = await axiosClient.put('https://example.com');
+  it('should call fetch with PUT method', async () => {
+    const response = await fetchClient.put('https://example.com');
 
     expect(response).toEqual({ method: 'PUT' });
   });
 
-  it.skip('should call axios with correct response', async () => {
-    const response = await axiosClient.delete('https://example.com');
+  it('should call fetch with DELETE method', async () => {
+    const response = await fetchClient.delete('https://example.com');
 
     expect(response).toEqual({ method: 'DELETE' });
   });

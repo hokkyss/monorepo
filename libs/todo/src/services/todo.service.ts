@@ -1,9 +1,12 @@
 import type { ListTodoRes } from '../models/list.model';
+import type TodoRepository from '../repositories/todo.repository.interface';
 
-export default abstract class TodoService {
-  public static readonly token = Symbol.for('TodoService');
+import type ITodoService from './todo.service.interface';
+
+export default class TodoService implements ITodoService {
+  public constructor(private readonly todoRepository: TodoRepository) {}
 
   public list(signal?: AbortSignal): Promise<ListTodoRes> {
-    throw new Error(`No implementation for "TodoService.list" is found!`);
+    return this.todoRepository.list({}, signal);
   }
 }

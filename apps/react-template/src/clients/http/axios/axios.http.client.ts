@@ -1,20 +1,17 @@
-import type { RequestOptions } from '@monorepo/shared';
+import type { IHttpClient, IRequestOptions } from '@monorepo/shared';
 import type { AxiosInstance, CreateAxiosDefaults } from 'axios';
 
-import { HttpClient } from '@monorepo/shared';
 import axiosStatic from 'axios';
-import { injectable, singleton } from 'tsyringe';
 import urlcat from 'urlcat';
 
-export default class AxiosHttpClient extends HttpClient {
+export default class AxiosHttpClient implements IHttpClient {
   private axios: AxiosInstance;
 
   public constructor(config?: CreateAxiosDefaults) {
-    super();
     this.axios = axiosStatic.create(config);
   }
 
-  public override async delete<T>(url: string, config: RequestOptions = {}): Promise<T> {
+  public async delete<T>(url: string, config: IRequestOptions = {}): Promise<T> {
     const { headers = {}, searchParams = {}, signal } = config;
 
     headers['Content-Type'] = headers['Content-Type'] || 'application/json';
@@ -27,7 +24,7 @@ export default class AxiosHttpClient extends HttpClient {
       .then((resp) => resp.data);
   }
 
-  public override async get<T>(url: string, config: RequestOptions = {}): Promise<T> {
+  public async get<T>(url: string, config: IRequestOptions = {}): Promise<T> {
     const { headers = {}, searchParams = {}, signal } = config;
 
     headers['Content-Type'] = headers['Content-Type'] || 'application/json';
@@ -40,7 +37,7 @@ export default class AxiosHttpClient extends HttpClient {
       .then((resp) => resp.data);
   }
 
-  public override async patch<T>(url: string, config: RequestOptions = {}): Promise<T> {
+  public async patch<T>(url: string, config: IRequestOptions = {}): Promise<T> {
     const { body, headers = {}, json, searchParams = {}, signal } = config;
 
     if (body) {
@@ -65,7 +62,7 @@ export default class AxiosHttpClient extends HttpClient {
       .then((resp) => resp.data);
   }
 
-  public override async post<T>(url: string, config: RequestOptions = {}): Promise<T> {
+  public async post<T>(url: string, config: IRequestOptions = {}): Promise<T> {
     const { body, headers = {}, json, searchParams = {}, signal } = config;
 
     if (body) {
@@ -89,7 +86,7 @@ export default class AxiosHttpClient extends HttpClient {
       .then((resp) => resp.data);
   }
 
-  public override async put<T>(url: string, config: RequestOptions = {}): Promise<T> {
+  public async put<T>(url: string, config: IRequestOptions = {}): Promise<T> {
     const { body, headers = {}, json, searchParams = {}, signal } = config;
 
     if (body) {
@@ -113,7 +110,3 @@ export default class AxiosHttpClient extends HttpClient {
       .then((resp) => resp.data);
   }
 }
-
-// FIXME: temporary workaround to fix rollup errors
-singleton()(AxiosHttpClient);
-injectable()(AxiosHttpClient);

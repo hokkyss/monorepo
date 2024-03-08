@@ -1,14 +1,10 @@
-import type { RequestOptions } from '../../abstract/http/http.client';
+import type IHttpClient from './http.client.interface';
+import type { RequestOptions } from './http.client.interface';
 
-import { injectable, singleton } from 'tsyringe';
 import urlcat from 'urlcat';
 
-import BaseHttpClient from '../../abstract/http/http.client';
-
-@injectable()
-@singleton()
-export default class FetchHttpClient extends BaseHttpClient {
-  public override async delete<T>(url: string, config: RequestOptions = {}): Promise<T> {
+export default class FetchHttpClient implements IHttpClient {
+  public async delete<T>(url: string, config: RequestOptions = {}): Promise<T> {
     const { headers = {}, searchParams = {}, signal } = config;
 
     return fetch(urlcat(url, searchParams), {
@@ -18,7 +14,7 @@ export default class FetchHttpClient extends BaseHttpClient {
     }).then((resp) => resp.json());
   }
 
-  public override async get<T>(url: string, config: RequestOptions = {}): Promise<T> {
+  public async get<T>(url: string, config: RequestOptions = {}): Promise<T> {
     const { headers = {}, searchParams = {}, signal } = config;
 
     return fetch(urlcat(url, searchParams), {
@@ -28,7 +24,7 @@ export default class FetchHttpClient extends BaseHttpClient {
     }).then((resp) => resp.json());
   }
 
-  public override async patch<T>(url: string, config: RequestOptions = {}): Promise<T> {
+  public async patch<T>(url: string, config: RequestOptions = {}): Promise<T> {
     const { body, headers = {}, json, searchParams = {}, signal } = config;
 
     if (body) {
@@ -53,7 +49,7 @@ export default class FetchHttpClient extends BaseHttpClient {
     }).then((resp) => resp.json());
   }
 
-  public override async post<T>(url: string, config: RequestOptions = {}): Promise<T> {
+  public async post<T>(url: string, config: RequestOptions = {}): Promise<T> {
     const { body, headers = {}, json, searchParams = {}, signal } = config;
 
     if (body) {
@@ -78,7 +74,7 @@ export default class FetchHttpClient extends BaseHttpClient {
     }).then((resp) => resp.json());
   }
 
-  public override async put<T>(url: string, config: RequestOptions = {}): Promise<T> {
+  public async put<T>(url: string, config: RequestOptions = {}): Promise<T> {
     const { body, headers = {}, json, searchParams = {}, signal } = config;
 
     if (body) {

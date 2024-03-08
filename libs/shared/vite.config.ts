@@ -57,9 +57,6 @@ export default defineConfig((configEnv) => ({
     include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     mockReset: true,
     reporters: ['default'],
-    setupFiles: [
-      path.join(__dirname, 'tests/setup/inject-dependencies.setup.ts'),
-      path.join(__dirname, 'tests/setup/mocks.setup.ts'),
-    ],
+    setupFiles: [path.join(__dirname, 'tests/test.setup.ts')],
   } satisfies InlineConfig,
 }));

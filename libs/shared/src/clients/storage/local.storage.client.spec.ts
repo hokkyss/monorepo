@@ -1,6 +1,6 @@
-import mockLocalStorage from '../../../../tests/mocks/local-storage.mock';
+import mockLocalStorage from '../../../tests/mocks/local-storage.mock';
 
-import LocalStorageClient from './local.storage-client';
+import LocalStorageClient from './local.storage.client';
 
 describe('LocalStorageClient', () => {
   const client = new LocalStorageClient();
