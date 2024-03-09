@@ -1,5 +1,5 @@
 {
-  "ignorePatterns": ["**/*", "!/*.json"],
+  "ignorePatterns": ["**/*"],
   "overrides": [
     {
       "extends": [

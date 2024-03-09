@@ -1,11 +1,11 @@
 {
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
+  "main": "./index.js",
+  "module": "./index.mjs",
   "name": "@monorepo/todo",
   "peerDependencies": {
     "@monorepo/shared": "0.0.1"
   },
-  "types": "./dist/index.d.ts",
-  "typings": "./dist/index.d.ts",
+  "types": "./index.d.ts",
+  "typings": "./index.d.ts",
   "version": "0.0.1"
 }

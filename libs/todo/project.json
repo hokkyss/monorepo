@@ -1,28 +1,30 @@
 {
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "build": {
-    "executor": "@nx/vite:build",
-    "options": {
-      "assets": ["libs/todo/*.md"],
-      "main": "libs/todo/src/index.ts",
-      "outputPath": "dist/libs/todo",
-      "tsConfig": "libs/todo/tsconfig.lib.json"
-    },
-    "outputs": ["{options.outputPath}"]
-  },
   "name": "todo",
   "projectType": "library",
-  "publish": {
-    "command": "node tools/scripts/publish.mjs todo {args.ver} {args.tag}",
-    "dependsOn": ["build"]
-  },
   "sourceRoot": "libs/todo/src",
   "tags": ["type:lib", "scope:todo"],
-  "test": {
-    "executor": "@nx/vite:test",
-    "options": {
-      "reportsDirectory": "../../coverage/libs/todo"
+  "targets": {
+    "build": {
+      "executor": "@nx/vite:build",
+      "options": {
+        "assets": ["libs/todo/*.md"],
+        "main": "libs/todo/src/index.ts",
+        "outputPath": "dist/libs/todo",
+        "tsConfig": "libs/todo/tsconfig.lib.json"
+      },
+      "outputs": ["{options.outputPath}"]
     },
-    "outputs": ["{options.reportsDirectory}"]
+    "publish": {
+      "command": "node tools/scripts/publish.mjs todo {args.ver} {args.tag}",
+      "dependsOn": ["build"]
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "options": {
+        "reportsDirectory": "../../coverage/libs/todo"
+      },
+      "outputs": ["{options.reportsDirectory}"]
+    }
   }
 }
