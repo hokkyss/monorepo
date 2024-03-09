@@ -21,7 +21,7 @@ export default class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBo
   }
 
   public override componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
-    this.props.onError(error, errorInfo);
+    this.props.onError?.(error, errorInfo);
   }
 
   public reset() {
