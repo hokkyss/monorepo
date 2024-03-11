@@ -1,5 +1,6 @@
-import { Languages, i18n, useTranslation } from '../../configs/locale/locale.config';
+import { Languages, i18n } from '../../configs/locale/locale.config';
 import routeMap from '../../configs/route/route-map.config';
+import { useTranslation } from '../main/hooks/use-translation/use-translation.hook';
 
 import enTranslation from './translations/en.translation.json';
 import idTranslation from './translations/id.translation.json';
@@ -13,7 +14,9 @@ i18n.init(() => {
 });
 
 export default function LoginPage() {
-  const [t] = useTranslation(routeMap.login);
+  const [t] = useTranslation({
+    namespace: routeMap.login,
+  });
 
   return <div>{t('login')}</div>;
 }

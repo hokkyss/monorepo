@@ -1,5 +1,5 @@
 import { QueryClientProvider } from '@tanstack/react-query';
-import { Outlet, createRootRoute } from '@tanstack/react-router';
+import { Outlet, createRootRouteWithContext } from '@tanstack/react-router';
 import { Suspense, lazy } from 'react';
 
 import envConfig from '../configs/env/env.config';
@@ -22,7 +22,7 @@ const TanStackRouterDevtools =
       )
     : () => null;
 
-export const Route = createRootRoute({
+export const Route = createRootRouteWithContext()({
   component: () => (
     <QueryClientProvider client={queryClient}>
       <Outlet />
