@@ -21,6 +21,11 @@ type ReportCallback =
       onTTFB: TTFBReportCallback;
     };
 
+/**
+ * Report web vitals
+ * @dev
+ * @param onEntry Executed callback when a metric has been calculated
+ */
 const reportWebVitals = async (onEntry: ReportCallback) => {
   if (envConfig.env !== 'development') {
     return;

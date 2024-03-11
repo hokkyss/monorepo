@@ -21,7 +21,9 @@ if (rootElement) {
     </StrictMode>,
   );
 
-  reportAccessibility();
+  // NOTE: accessibility report is DEV only
+  // eslint-disable-next-line no-console
+  reportAccessibility(console.debug);
   // NOTE: report web vitals is DEV only
   // eslint-disable-next-line no-console
   reportWebVitals(console.debug);

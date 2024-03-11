@@ -5,9 +5,12 @@ import enTranslation from './translations/en.translation.json';
 import idTranslation from './translations/id.translation.json';
 import jaTranslation from './translations/ja.translation.json';
 
-i18n.addResourceBundle(Languages.EN, routeMap.login, enTranslation);
-i18n.addResourceBundle(Languages.ID, routeMap.login, idTranslation);
-i18n.addResourceBundle(Languages.JA, routeMap.login, jaTranslation);
+i18n.init(() => {
+  i18n
+    .addResourceBundle(Languages.EN, routeMap.login, enTranslation)
+    .addResourceBundle(Languages.ID, routeMap.login, idTranslation)
+    .addResourceBundle(Languages.JA, routeMap.login, jaTranslation);
+});
 
 export default function LoginPage() {
   const [t] = useTranslation(routeMap.login);

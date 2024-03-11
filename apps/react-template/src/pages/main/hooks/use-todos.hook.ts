@@ -5,13 +5,15 @@ import todoService from '../../../services/todo/todo.service';
 export default function useTodos() {
   const queryClient = useQueryClient();
 
-  return useSuspenseQuery(
+  const { data } = useSuspenseQuery(
     {
       queryFn: ({ signal }) => todoService.list(signal),
       queryKey: [useTodos.queryKey],
     },
     queryClient,
   );
+
+  return data;
 }
 
 useTodos.queryKey = 'todo';

@@ -6,9 +6,12 @@ import enTranslation from './translations/en.translation.json';
 import idTranslation from './translations/id.translation.json';
 import jaTranslation from './translations/ja.translation.json';
 
-i18n.addResourceBundle(Languages.EN, routeMap.main, enTranslation);
-i18n.addResourceBundle(Languages.ID, routeMap.main, idTranslation);
-i18n.addResourceBundle(Languages.JA, routeMap.main, jaTranslation);
+i18n.init(() => {
+  i18n
+    .addResourceBundle(Languages.EN, routeMap.main, enTranslation)
+    .addResourceBundle(Languages.ID, routeMap.main, idTranslation)
+    .addResourceBundle(Languages.JA, routeMap.main, jaTranslation);
+});
 
 export default function MainPage() {
   const todos = useTodos();

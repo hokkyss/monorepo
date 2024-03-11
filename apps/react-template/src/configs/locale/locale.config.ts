@@ -22,8 +22,6 @@ export const i18n = createInstance({
   returnNull: false,
 });
 
-i18n.init();
-
 const getT = <NS extends Namespace>(language: string, ns: NS) => i18n.getFixedT(language, ns);
 
 // #region UTILITY HOOKS
