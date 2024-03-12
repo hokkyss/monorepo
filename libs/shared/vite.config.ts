@@ -49,6 +49,7 @@ export default defineConfig((configEnv) => ({
     },
     clearMocks: true,
     coverage: {
+      enabled: true,
       provider: 'v8',
       reportsDirectory: '../../coverage/libs/shared',
     },

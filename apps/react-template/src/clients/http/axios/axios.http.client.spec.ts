@@ -1,3 +1,5 @@
+import type { IHttpClient } from '@monorepo/shared';
+
 import { HttpResponse, http } from 'msw';
 import { setupServer } from 'msw/node';
 
@@ -22,6 +24,10 @@ afterAll(() => {
 // NOTE: all tests are skipped due to happy-dom problems with msw and vitest
 describe('AxiosHttpClient', () => {
   const axiosClient = new AxiosHttpClient();
+
+  it('should implement `IHttpClient`', () => {
+    expectTypeOf(axiosClient).toMatchTypeOf<IHttpClient>();
+  });
 
   it.skip('should call axios with correct response', async () => {
     const response = await axiosClient.get('https://example.com');

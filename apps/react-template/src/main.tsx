@@ -11,7 +11,7 @@ import reportWebVitals from './reports/web-vitals/web-vitals.report';
 const rootElement = document.getElementById('root');
 
 if (rootElement) {
-  const root = createRoot(rootElement);
+  const root = createRoot(rootElement, {});
 
   root.render(
     <StrictMode>
